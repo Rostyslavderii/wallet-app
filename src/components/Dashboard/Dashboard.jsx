@@ -1,3 +1,17 @@
+import { useMedia } from 'react-use';
+import { Balance } from 'components/Balance/Balance';
+
 export const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const isMobile = useMedia('(max-width: 768px)');
+  return (
+    <>
+      <div>Navigation</div>
+      {!isMobile && (
+        <>
+          <Balance />
+          <div>Currency</div>
+        </>
+      )}
+    </>
+  );
 };

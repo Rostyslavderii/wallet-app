@@ -7,19 +7,21 @@ import {
   LogOutButton,
 } from './Header.styled';
 import { useMedia } from 'react-use';
+import { logout } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 export const Header = () => {
   const isMobile = useMedia('(max-width: 767px)');
-  const isTablet = useMedia('(max-width: 1279px)');
+  // const isTablet = useMedia('(max-width: 1279px)');
+  const dispatch = useDispatch();
   return (
     <DivHeader>
       <Logo />
       <DivHeaderUser>
         {!isMobile ? <SpanNameHeader>Name</SpanNameHeader> : <span>Name</span>}
         <LogOutButton
-          type="button"
           onClick={() => {
-            alert('Need logout fetch');
+            dispatch(logout());
           }}
         >
           <IoLogOutOutline /> {!isMobile && <>Exit</>}

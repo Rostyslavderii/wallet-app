@@ -39,6 +39,7 @@ export const LogOutButton = styled('button')`
   margin: 0;
 
   background-color: transparent;
+  cursor: pointer;
 
   font-family: 'Circe', sans-serif;
   font-style: normal;

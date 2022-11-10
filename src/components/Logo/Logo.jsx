@@ -1,11 +1,14 @@
 import logoIcon from '../../images/header/Wallet.svg';
-import { LogoLink } from './logo.styled';
+import { LogoLink, LogoImg } from './logo.styled';
+import { useMedia } from 'react-use';
 
 export const Logo = () => {
+  const isMobile = useMedia('(max-width: 767px)');
+
   return (
     <LogoLink to="/">
-      <img width="40px" height="40px" src={logoIcon} alt="Logo Icon" />
-      <span>Wallet</span>
+      <LogoImg src={logoIcon} alt="Wallet" />
+      Wallet
     </LogoLink>
   );
 };

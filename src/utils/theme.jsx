@@ -26,8 +26,8 @@ const theme = {
 
   Container: {
     display: 'flex',
-    justifyContentCenter: 'center',
-    alignItemsCenter: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   //font-family
   ff: {

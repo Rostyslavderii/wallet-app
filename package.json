@@ -1,15 +1,22 @@
 {
-  "name": "react-homework-template",
+  "name": "wallet-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goitacademy.github.io/react-homework-template/",
+  "homepage": "https://Rostyslavderii.github.io/wallet-app/",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.1.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.6.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.3"
   },
   "scripts": {

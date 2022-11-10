@@ -45,10 +45,10 @@ const StyledIcon = styled(AiFillHome)`
   }
   fill: #fff;
 `;
-const Link = ({ children }) => {
+const Link = ({to, children }) => {
   const isWide = useMedia('(min-width: 768px)');
   return (
-    <StyledLink to="/Rat">
+    <StyledLink to={to}>
       <div>
         <StyledIcon />
       </div>

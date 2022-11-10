@@ -9,10 +9,12 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authPersistedReducer } from './auth/authSlice';
+import { transactionsReducer } from './transactions/transactionSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authPersistedReducer,
+    transactions: transactionsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

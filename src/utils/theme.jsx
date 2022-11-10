@@ -3,7 +3,6 @@ const theme = {
     // default
     white: '#ffffff',
     black: '#000000',
-    inputGray: '#BDBDBD',
     // background
     bgPurple: '#C5BAFF',
     bgOrange: '#FFD8D0',
@@ -22,6 +21,7 @@ const theme = {
     lBlight: '#81E1FF',
     lBlue: '#6E78E8',
     lPurple: '#C5BAFF',
+    inputGray: '#BDBDBD',
   },
 
   Container: {

@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const authPersistConfig = {
-  key: 'auth',
+  key: 'token',
   storage,
   whitelist: ['token'],
 };

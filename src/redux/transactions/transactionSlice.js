@@ -14,7 +14,7 @@ const transactionsSlice = createSlice({
   initialState: {
     items: [],
     categories: [],
-    summary: {},
+    summary: null,
     isLoading: false,
     error: null,
   },

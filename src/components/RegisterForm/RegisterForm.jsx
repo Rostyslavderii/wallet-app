@@ -24,7 +24,7 @@ export const RegisterForm = () => {
         'Entered password doesn`t match the previous one'
       )
       .required('Password is required'),
-    name: yup
+    username: yup
       .string('Please, enter your name')
       .min(1, 'Name must contain at least 1 symbol')
       .max(12, 'Name must contain no more than 12 symbols')
@@ -36,11 +36,11 @@ export const RegisterForm = () => {
       email: '',
       password: '',
       confirmPassword: '',
-      name: '',
+      username: '',
     },
     validationSchema,
-    onSubmit: values => {
-      dispatch(register(values));
+    onSubmit: ({ username, email, password }) => {
+      dispatch(register({ username, email, password }));
       resetForm();
     },
   });
@@ -85,12 +85,12 @@ export const RegisterForm = () => {
           First name
           <input
             type="text"
-            name="name"
-            value={values.name}
+            name="username"
+            value={values.username}
             onChange={handleChange}
             required
           />
-          {errors.name && <div>{errors.name}</div>}
+          {errors.username && <div>{errors.username}</div>}
         </label>
 
         <button type="submit">Register</button>

@@ -63,12 +63,14 @@ const theme = {
   // borders & box-shadows
   boxShadow: {
     buttonShadow: '0px 6px 15px rgba(36, 204, 167, 0.5)',
+    confirmPassword: '0px 1px 8px rgba(36, 204, 167, 0.5)',
     modalCategory: '0px 6px 15px rgba(0, 0, 0, 0.1)',
   },
 
   borderColor: {
     b: '1px solid #4A56E2',
     comment: '1px solid #E0E0E0',
+    c: '4px solid #E5F1EF',
     x: 'border: 1px solid #000000',
   },
 

@@ -3,8 +3,8 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { useMedia } from 'react-use';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { PrivateRoute } from './HOCs/PrivateRoute';
-import { PublicRoute } from './HOCs/PublicRoute';
+import { PrivateRoute } from 'HOCs/PrivateRoute';
+import { PublicRoute } from 'HOCs/PublicRoute';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
@@ -45,7 +45,14 @@ export const App = () => {
             </PublicRoute>
           }
         />
-        <Route path="/" element={<DashboardPage />}>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<HomePage />} />
           <Route path="statistic" element={<StatisticPage />} />
           {isMobile && <Route path="currency" element={<CurrencyPage />} />}

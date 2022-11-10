@@ -1,8 +1,9 @@
-import { Dashboard } from 'components/Dashboard/Dashboard';
-import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header/Header';
 import { Suspense } from 'react';
-export const Layout = () => {
+import { Outlet } from 'react-router-dom';
+import { Dashboard } from 'components/Dashboard/Dashboard';
+import { Header } from 'components/Header/Header';
+
+export const DashboardPage = () => {
   return (
     <>
       <Header />

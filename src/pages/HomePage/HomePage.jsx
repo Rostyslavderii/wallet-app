@@ -6,9 +6,12 @@ import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { TransactionTable } from 'components/TransactionTable/TransactionTable';
 import { ModalAddTransaction } from 'components/ModalAddTransaction/ModalAddTransaction';
 import { useState } from 'react';
+import { useMedia } from 'react-use';
+import { Balance } from 'components/Balance/Balance';
 
 const HomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const isMobile = useMedia('(max-width: 768px)');
   const transactions = useSelector(selectTransaction);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
@@ -22,6 +25,7 @@ const HomePage = () => {
 
   return (
     <>
+      {isMobile && <Balance />}
       <TransactionTable transactions={transactions} categories={categories} />
       <button
         type="button"

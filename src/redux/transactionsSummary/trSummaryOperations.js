@@ -3,9 +3,11 @@ import axios from 'axios';
 
 export const getTransactionsSummary = createAsyncThunk(
   'trSummary/getTransactionsSummary',
-  async (_, { rejectWithValue }) => {
+  async ({ month, year }, { rejectWithValue }) => {
     try {
-      const { data } = await axios('/transactions-summary');
+      const { data } = await axios(
+        `/transactions-summary?month=${month}&year=${year}`
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

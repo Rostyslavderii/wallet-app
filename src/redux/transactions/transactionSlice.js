@@ -18,6 +18,7 @@ const transactionsSlice = createSlice({
     isLoading: false,
     error: null,
   },
+
   extraReducers: {
     [fetchTransactions.pending]: state => {
       state.isLoading = true;

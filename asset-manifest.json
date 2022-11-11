@@ -1,14 +1,21 @@
 {
   "files": {
-    "main.css": "/wallet-app/static/css/main.7acaea2f.css",
-    "main.js": "/wallet-app/static/js/main.a64bf6a8.js",
-    "static/media/Wallet.svg": "/wallet-app/static/media/Wallet.d7adee0ab11608d013165fe6f2dc76e8.svg",
+    "main.css": "/wallet-app/static/css/main.0441364d.css",
+    "main.js": "/wallet-app/static/js/main.656ccbea.js",
+    "static/js/696.fd91bf51.chunk.js": "/wallet-app/static/js/696.fd91bf51.chunk.js",
+    "static/js/330.6b80e8f8.chunk.js": "/wallet-app/static/js/330.6b80e8f8.chunk.js",
+    "static/js/872.d7730db1.chunk.js": "/wallet-app/static/js/872.d7730db1.chunk.js",
+    "static/media/Poppins-Regular.ttf": "/wallet-app/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
+    "static/media/Wallet.svg": "/wallet-app/static/media/Wallet.20a9ce0d1a7ea5660c25f7c6dbab91bf.svg",
     "index.html": "/wallet-app/index.html",
-    "main.7acaea2f.css.map": "/wallet-app/static/css/main.7acaea2f.css.map",
-    "main.a64bf6a8.js.map": "/wallet-app/static/js/main.a64bf6a8.js.map"
+    "main.0441364d.css.map": "/wallet-app/static/css/main.0441364d.css.map",
+    "main.656ccbea.js.map": "/wallet-app/static/js/main.656ccbea.js.map",
+    "696.fd91bf51.chunk.js.map": "/wallet-app/static/js/696.fd91bf51.chunk.js.map",
+    "330.6b80e8f8.chunk.js.map": "/wallet-app/static/js/330.6b80e8f8.chunk.js.map",
+    "872.d7730db1.chunk.js.map": "/wallet-app/static/js/872.d7730db1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.a64bf6a8.js"
+    "static/css/main.0441364d.css",
+    "static/js/main.656ccbea.js"
   ]
 }

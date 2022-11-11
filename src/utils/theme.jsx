@@ -24,15 +24,10 @@ const theme = {
     inputGray: '#BDBDBD',
   },
 
-  Container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   //font-family
   ff: {
-    familyPoppins: 'Poppins',
-    familyCirce: 'Circe',
+    familyPoppins: 'Poppins  sans-serif',
+    familyCirce: 'Circe  sans-serif',
     fontStyle: 'normal',
   },
 

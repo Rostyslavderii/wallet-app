@@ -5,6 +5,7 @@ import { Header } from 'components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from 'redux/transactions/transactionOperation';
 import { selectIsAuth } from 'redux/auth/authSelectors';
+import { Container } from 'utils/GlobalStyle';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,12 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-      <Dashboard />
-      <Suspense fallback={<div>loading...</div>}>
-        <Outlet />
-      </Suspense>
+      <Container>
+        <Dashboard />
+        <Suspense fallback={<div>loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </Container>
     </>
   );
 };

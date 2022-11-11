@@ -8,11 +8,18 @@ export const Currency = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const baseRequest = axios.create({
+            baseURL: "https://api.privatbank.ua/p24api",
+            headers: {
+                Authorization: null,
+            }
+        });
+
         async function fetchCurrency() {
             const list = ["USD", "EUR"];
             setIsLoading(true)
             try {
-                const { data } = await axios("https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11");
+                const { data } = await baseRequest.get("/pubinfo?json&exchange&coursid=5");
                 const result = data.filter(({ ccy }) => list.includes(ccy));
                 setDataCurrency(result);
             } catch (error) {

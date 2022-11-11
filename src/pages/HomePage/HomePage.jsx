@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCategories } from 'redux/transactions/transactionOperation';
-import {
-  selectCategories,
-  selectTransaction,
-} from 'redux/transactions/transactionSelectors';
+import { getCategories } from 'redux/categories/categoriesOperations';
+import { selectTransaction } from 'redux/transactions/transactionSelectors';
+import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { TransactionTable } from 'components/TransactionTable/TransactionTable';
 import { ModalAddTransaction } from 'components/ModalAddTransaction/ModalAddTransaction';
 import { useState } from 'react';

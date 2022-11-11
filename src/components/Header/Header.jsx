@@ -12,8 +12,6 @@ import { useDispatch } from 'react-redux';
 
 export const Header = () => {
   const isMobile = useMedia('(max-width: 767px)');
-  // const isTablet = useMedia('(max-width: 1279px)');
-  const dispatch = useDispatch();
   return (
     <DivHeader>
       <Logo />

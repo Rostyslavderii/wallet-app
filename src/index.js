@@ -12,7 +12,7 @@ import { GlobalStyle } from './utils/GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='/wallet-app/'>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <PersistGate persistor={persistor}>

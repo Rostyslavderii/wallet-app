@@ -25,6 +25,7 @@ body {
 body {
   font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  background-color: ${p => p.theme.colors.bgGray};
 }
 
 ul{
@@ -68,8 +69,8 @@ export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;
-  @media screen and (max-width: 767px) {
-    max-width: 480px;
+  @media screen and (min-width: 480px) {
+    width: 480px;
   }
 
   @media screen and (min-width: 768px) {

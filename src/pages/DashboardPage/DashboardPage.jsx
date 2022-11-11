@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from 'redux/transactions/transactionOperation';
 import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
+import { ModalWindowWraper } from 'components/ModalWindowWraper/ModalWindowWraper';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export const DashboardPage = () => {
       <Header />
       <Container>
         <Dashboard />
+        <ModalWindowWraper />
         <Suspense fallback={<div>loading...</div>}>
           <Outlet />
         </Suspense>

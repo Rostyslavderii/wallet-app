@@ -1,8 +1,9 @@
-export const ModalWindowWraper = ({ children }) => {
+import { Backdrop, Content } from './ModalWindow.styled';
+
+export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
   return (
-    <div>
-      backdrop
-      <div>red</div>
-    </div>
+    <Backdrop onClick={clickOnBackdrop}>
+      <Content>{children}</Content>
+    </Backdrop>
   );
 };

@@ -24,11 +24,6 @@ const theme = {
     inputGray: '#BDBDBD',
   },
 
-  Container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   //font-family
   ff: {
     familyPoppins: 'Poppins',

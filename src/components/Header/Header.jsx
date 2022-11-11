@@ -10,7 +10,7 @@ import { useMedia } from 'react-use';
 
 export const Header = () => {
   const isMobile = useMedia('(max-width: 767px)');
-  const isTablet = useMedia('(max-width: 1279px)');
+
   return (
     <DivHeader>
       <Logo />

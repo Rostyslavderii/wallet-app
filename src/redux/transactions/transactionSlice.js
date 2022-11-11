@@ -5,16 +5,12 @@ import {
   addTransaction,
   updateTransaction,
   deleteTransaction,
-  getCategories,
-  getTransactionsSummary,
 } from './transactionOperation';
 
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState: {
     items: [],
-    categories: [],
-    summary: null,
     isLoading: false,
     error: null,
   },
@@ -66,30 +62,6 @@ const transactionsSlice = createSlice({
       state.isLoading = false;
     },
     [deleteTransaction.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.isLoading = false;
-    },
-    [getCategories.pending]: state => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [getCategories.fulfilled]: (state, { payload }) => {
-      state.categories = payload;
-      state.isLoading = false;
-    },
-    [getCategories.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.isLoading = false;
-    },
-    [getTransactionsSummary.pending]: state => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [getTransactionsSummary.fulfilled]: (state, { payload }) => {
-      state.summary = payload;
-      state.isLoading = false;
-    },
-    [getTransactionsSummary.rejected]: (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
     },

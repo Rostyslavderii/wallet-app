@@ -50,27 +50,3 @@ export const deleteTransaction = createAsyncThunk(
     }
   }
 );
-
-export const getCategories = createAsyncThunk(
-  'transaction/getCategories',
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axios('/transaction-categories');
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getTransactionsSummary = createAsyncThunk(
-  'transaction/getTransactionsSummary',
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axios('/transactions-summary');
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);

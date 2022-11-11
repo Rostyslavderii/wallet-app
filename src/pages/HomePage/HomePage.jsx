@@ -15,6 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
   const onClose = () => {
     setModalIsOpen(false);
   };

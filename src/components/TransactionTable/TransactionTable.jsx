@@ -1,16 +1,30 @@
+import {
+  Table,
+  TableHeading,
+  TrData,
+  StyledTd,
+} from './TransactionsTable.styled';
 export const TransactionTable = ({ transactions, categories }) => {
   const isShown = transactions.length > 0 && categories.length > 0;
+  const transformDate = date => {
+    const dateString = new Date(date);
+    const day = dateString.getDate().toString().padStart(2, '0');
+    const month = (dateString.getMonth() + 1).toString().padStart(2, '0');
+    const year = dateString.getFullYear().toString().slice(2);
+
+    return `${day}.${month}.${year}`;
+  };
   return (
     isShown && (
-      <table>
+      <Table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
-            <th>Balance</th>
+            <TableHeading>Date</TableHeading>
+            <TableHeading>Type</TableHeading>
+            <TableHeading left>Category</TableHeading>
+            <TableHeading left>Comment</TableHeading>
+            <TableHeading>Sum</TableHeading>
+            <TableHeading>Balance</TableHeading>
           </tr>
         </thead>
         <tbody>
@@ -24,20 +38,20 @@ export const TransactionTable = ({ transactions, categories }) => {
               amount,
               balanceAfter,
             }) => (
-              <tr key={id}>
-                <td>{transactionDate}</td>
-                <td>{type === 'INCOME' ? '+' : '-'}</td>
-                <td>
+              <TrData key={id}>
+                <StyledTd>{transformDate(transactionDate)}</StyledTd>
+                <StyledTd>{type === 'INCOME' ? '+' : '-'}</StyledTd>
+                <StyledTd left>
                   {categories.find(category => category.id === categoryId).name}
-                </td>
-                <td>{comment}</td>
-                <td>{Math.abs(amount).toFixed(2)}</td>
-                <td>{balanceAfter.toFixed(2)}</td>
-              </tr>
+                </StyledTd>
+                <StyledTd left>{comment}</StyledTd>
+                <StyledTd type={type}>{Math.abs(amount).toFixed(2)}</StyledTd>
+                <StyledTd>{balanceAfter.toFixed(2)}</StyledTd>
+              </TrData>
             )
           )}
         </tbody>
-      </table>
+      </Table>
     )
   );
 };

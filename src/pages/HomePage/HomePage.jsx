@@ -11,7 +11,7 @@ import { Balance } from 'components/Balance/Balance';
 
 const HomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const isMobile = useMedia('(max-width: 768px)');
+  const isMobile = useMedia('(max-width: 767px)');
   const transactions = useSelector(selectTransaction);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();

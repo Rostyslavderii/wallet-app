@@ -6,6 +6,7 @@ import {
   selectTransaction,
 } from 'redux/transactions/transactionSelectors';
 import { TransactionTable } from 'components/TransactionTable/TransactionTable';
+import { AddTransactionBtn } from 'components/AddTransaction/AddTransactionBtn';
 
 const HomePage = () => {
   const transactions = useSelector(selectTransaction);
@@ -15,7 +16,10 @@ const HomePage = () => {
     dispatch(getCategories());
   }, [dispatch]);
   return (
-    <TransactionTable transactions={transactions} categories={categories} />
+    <>
+      <TransactionTable transactions={transactions} categories={categories} />
+      <AddTransactionBtn />
+    </>
   );
 };
 

@@ -8,23 +8,32 @@ import {
 } from './Header.styled';
 import { useMedia } from 'react-use';
 import { logout } from 'redux/auth/authOperations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Container } from 'utils/GlobalStyle';
+import { selectName } from 'redux/auth/authSelectors';
 
 export const Header = () => {
   const isMobile = useMedia('(max-width: 767px)');
+  const dispatch = useDispatch();
+  const name = useSelector(selectName);
+
   return (
-    <DivHeader>
-      <Logo />
-      <DivHeaderUser>
-        {!isMobile ? <SpanNameHeader>Name</SpanNameHeader> : <span>Name</span>}
-        <LogOutButton
-          onClick={() => {
-            dispatch(logout());
-          }}
-        >
-          <IoLogOutOutline /> {!isMobile && <>Exit</>}
-        </LogOutButton>
-      </DivHeaderUser>
-    </DivHeader>
+    <header>
+      <Container>
+        <DivHeader>
+          <Logo />
+          <DivHeaderUser>
+            <SpanNameHeader>{name}</SpanNameHeader>
+            <LogOutButton
+              onClick={() => {
+                dispatch(logout());
+              }}
+            >
+              <IoLogOutOutline /> {!isMobile && 'Exit'}
+            </LogOutButton>
+          </DivHeaderUser>
+        </DivHeader>
+      </Container>
+    </header>
   );
 };

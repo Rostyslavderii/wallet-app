@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { register, login, logout, fetchCurrentUser } from './authOperations';
 
 const initialState = {
-  user: { name: '', email: '' },
+  user: { username: '', email: '', id: '' },
   token: null,
   isLoading: false,
   isAuth: false,
@@ -47,6 +47,8 @@ const authSlice = createSlice({
       state.isLoading = false;
     },
     [login.fulfilled]: (state, { payload: { user, token } }) => {
+      console.log(user);
+
       state.token = token;
       state.user = user;
       state.isAuth = true;

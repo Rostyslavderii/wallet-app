@@ -26,8 +26,8 @@ const theme = {
 
   //font-family
   ff: {
-    familyPoppins: 'Poppins  sans-serif',
-    familyCirce: 'Circe  sans-serif',
+    familyPoppins: 'Poppins,  sans-serif',
+    familyExo: 'Exo,  sans-serif',
     fontStyle: 'normal',
   },
 

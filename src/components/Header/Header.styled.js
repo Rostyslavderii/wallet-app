@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
-export const DivHeader = styled('div')`
-  padding-left: 20px; /* tab 32px */ /* desk 16px */
-  padding-right: 20px; /* tab 32px */ /* desk 16px */
+export const DivHeader = styled.div`
   padding-top: 15px; /* tab 20px */ /* desk 20px */
   padding-bottom: 15px; /* tab 20px */ /* desk 20px */
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
 
-  font-family: 'Circe', sans-serif;
-  font-style: normal;
+  font-family: ${p => p.theme.ff.familyExo};
   font-weight: 400;
   font-size: 18px;
   line-height: calc(27 / 18);
@@ -41,8 +39,7 @@ export const LogOutButton = styled('button')`
   background-color: transparent;
   cursor: pointer;
 
-  font-family: 'Circe', sans-serif;
-  font-style: normal;
+  font-family: ${p => p.theme.ff.familyExo};
   font-weight: 400;
   font-size: 18px;
   line-height: calc(27 / 18);

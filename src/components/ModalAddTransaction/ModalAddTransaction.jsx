@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { useState } from 'react';
-import { selectCategories } from 'redux/transactions/transactionSelectors';
+import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { addTransaction } from 'redux/transactions/transactionOperation';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';

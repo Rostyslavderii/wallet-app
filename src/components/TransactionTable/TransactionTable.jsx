@@ -31,8 +31,8 @@ export const TransactionTable = ({ transactions, categories }) => {
                   {categories.find(category => category.id === categoryId).name}
                 </td>
                 <td>{comment}</td>
-                <td>{amount}</td>
-                <td>{balanceAfter}</td>
+                <td>{Math.abs(amount).toFixed(2)}</td>
+                <td>{balanceAfter.toFixed(2)}</td>
               </tr>
             )
           )}

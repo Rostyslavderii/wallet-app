@@ -5,3 +5,5 @@ export const selectIsAuth = state => state.auth.isAuth;
 export const selectIsLoadingUser = state => state.auth.isLoading;
 export const selectIsFetching = state => state.auth.isFetching;
 export const selectAuthError = state => state.auth.error;
+
+export const selectUserId = state => state.auth.user.id;

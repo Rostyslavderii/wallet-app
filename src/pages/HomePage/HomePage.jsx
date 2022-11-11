@@ -20,6 +20,7 @@ const HomePage = () => {
   const onClose = () => {
     setModalIsOpen(false);
   };
+
   return (
     <>
       <TransactionTable transactions={transactions} categories={categories} />

@@ -10,10 +10,7 @@ const StyledUl = styled.ul`
   flex-direction: column;
   gap: 17px;
 
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: row;
     justify-content: center;
     gap: 35px;
@@ -21,7 +18,7 @@ const StyledUl = styled.ul`
 `;
 
 export const Navigation = () => {
-  const isMob = useMedia('(max-width: 768px)');
+  const isMob = useMedia('(max-width: 767px)');
   return (
     <nav>
       <StyledUl>

@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/872.d7730db1.chunk.js","mappings":"2IAMA,UAJqB,WACjB,OAAO,SAAC,IAAD,GACV,C","sources":["pages/CurrencyPage/CurrencyPage.jsx"],"sourcesContent":["import { Currency } from \"components/Currency/Currency\";\n\nconst CurrencyPage = () => {\n    return <Currency />\n}\n\nexport default CurrencyPage;"],"names":[],"sourceRoot":""}

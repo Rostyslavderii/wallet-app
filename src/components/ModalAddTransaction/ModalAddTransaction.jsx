@@ -1,16 +1,42 @@
 import { GrClose } from 'react-icons/gr';
+import { BsCalendar4Week } from 'react-icons/bs'; //BsBorder;
+import styles from '../ModalAddTransaction/ModalAddTransaction.module.css';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 import { useState } from 'react';
 import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { addTransaction } from 'redux/transactions/transactionOperation';
+import { Button } from 'components/Button/Button';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import {
+  ModalTitle,
+  ModalForm,
+  InputCheckBox,
+  TypeLabel,
+  CheckBox,
+  CheckButton,
+  Plus,
+  Minus,
+  Span,
+  SpanIncome,
+  SpanExpense,
+  SelectCategory,
+  OptionCategory,
+  DivSumm,
+  Amount,
+  DateInput,
+  Calendar,
+  Comment,
+  ButtonCard,
+  CloseButton,
+  ADDButton,
+} from './ModalAddTransaction.styled';
 
 export const ModalAddTransaction = ({ onClose }) => {
   const categories = useSelector(selectCategories);
-  const [transactionDate, setTransactionDate] = useState('');
+  const [transactionDate, setTransactionDate] = useState(new Date());
   const dispatch = useDispatch();
 
   const validationSchema = yup.object({
@@ -40,39 +66,44 @@ export const ModalAddTransaction = ({ onClose }) => {
         comment,
         amount: type ? -Number(amount) : Number(amount),
       };
-
-      console.log(newTransaction);
-
       dispatch(addTransaction(newTransaction));
-
       resetForm();
     },
   });
 
   return (
     <>
-      <h2>Add transaction</h2>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          <span>Income</span>
-          <input
+      <ModalTitle>Add transaction</ModalTitle>
+      <ModalForm onSubmit={handleSubmit} autoComplete="off">
+        <TypeLabel>
+          {values.type ? <Span>Income</Span> : <SpanIncome>Income</SpanIncome>}
+          <InputCheckBox
             type="checkbox"
             name="type"
             value={values.type}
             onChange={handleChange}
           />
-          <span>Expense</span>
-        </label>
+          <CheckBox>
+            <CheckButton props={values.type}>
+              {!values.type ? <Plus /> : <Minus />}
+            </CheckButton>
+          </CheckBox>
+          {!values.type ? (
+            <Span>Expense</Span>
+          ) : (
+            <SpanExpense>Expense</SpanExpense>
+          )}
+        </TypeLabel>
         {values.type && (
           <>
-            <select name="categoryId" onChange={handleChange} required>
+            <SelectCategory name="categoryId" onChange={handleChange} required>
               {categories.reduce(
                 (acc, categori) => {
                   if (categori.type !== 'INCOME') {
                     acc.push(
-                      <option key={categori.id} value={categori.id}>
+                      <OptionCategory key={categori.id} value={categori.id}>
                         {categori.name}
-                      </option>
+                      </OptionCategory>
                     );
                   }
                   return acc;
@@ -83,56 +114,56 @@ export const ModalAddTransaction = ({ onClose }) => {
                   </option>,
                 ]
               )}
-            </select>
-            {/* <input
-              list="category"
-              placeholder="Select a category"
-              name="categoryName"
-              onChange={handleChange}
-            />
-            <datalist id="category">
-              {categories.reduce((acc, categori) => {
-                if (categori.type !== 'INCOME') {
-                  acc.push(<option key={categori.id} value={categori.name} />);
-                }
-                return acc;
-              }, [])}
-            </datalist> */}
+            </SelectCategory>
           </>
         )}
 
-        <div>
-          <input
-            type="text"
-            placeholder="0.00"
-            name="amount"
-            value={values.amount}
-            onChange={handleChange}
-            required
-          />
-          {errors.amount && <div>{errors.amount}</div>}
-          <Datetime
-            type="date"
-            name="transactionDate"
-            value={values.transactionDate}
-            onChange={evt => {
-              changeDate(evt);
-            }}
-          />
-        </div>
-        <input
+        <DivSumm>
+          <div>
+            <Amount
+              type="text"
+              placeholder="0.00"
+              name="amount"
+              value={values.amount}
+              onChange={handleChange}
+              required
+            />
+            {errors.amount && <div>{errors.amount}</div>}
+          </div>
+
+          <DateInput>
+            <Datetime
+              dateFormat="DD.MM.YY"
+              timeFormat={false}
+              name="transactionDate"
+              value={transactionDate}
+              onChange={evt => {
+                changeDate(evt);
+              }}
+              inputProps={{ className: styles.dateTime }}
+            />
+            <Calendar>
+              <BsCalendar4Week />
+            </Calendar>
+          </DateInput>
+        </DivSumm>
+        <Comment
           type="text"
           placeholder="Comment"
           name="comment"
           value={values.comment}
           onChange={handleChange}
         />
-        <button type="submit">ADD</button>
-        <button type="button">CANCEL</button>
-        <button type="button" onClick={onClose}>
+        <ButtonCard>
+          <ADDButton type="submit">ADD</ADDButton>
+          <Button type="button" onClick={onClose}>
+            CANCEL
+          </Button>
+        </ButtonCard>
+        <CloseButton type="button" onClick={onClose}>
           <GrClose />
-        </button>
-      </form>
+        </CloseButton>
+      </ModalForm>
     </>
   );
 };

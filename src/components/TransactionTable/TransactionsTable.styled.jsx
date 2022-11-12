@@ -16,12 +16,11 @@ export const Wrapper = styled.div`
   max-width: 320px;
   overflow: hidden scroll;
   margin: 0 auto;
+  max-height: 60vh;
   @media screen and (min-width: 768px) {
-    max-height: 40vh;
     max-width: 704px;
   }
   @media screen and (min-width: 1280px) {
-    max-height: 60vh;
     margin-top: 46px;
     margin-right: 0;
     max-width: 715px;

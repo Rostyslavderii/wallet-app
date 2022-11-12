@@ -4,6 +4,7 @@ import { Dashboard } from 'components/Dashboard/Dashboard';
 import { Header } from 'components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from 'redux/transactions/transactionOperation';
+import { getCategories } from 'redux/categories/categoriesOperations';
 import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper } from './DashboardPage.styled';
@@ -15,6 +16,7 @@ export const DashboardPage = () => {
   useEffect(() => {
     if (isAuth) {
       dispatch(fetchTransactions());
+      dispatch(getCategories());
     }
   }, [dispatch, isAuth]);
 

@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useMedia } from 'react-use';
 import { Balance } from 'components/Balance/Balance';
 import { AddTransactionBtn } from 'components/AddTransaction/AddTransactionBtn';
+import { ModalWindowWraper } from 'components/ModalWindowWraper/ModalWindowWraper';
 
 const HomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -37,7 +38,11 @@ const HomePage = () => {
       >
         add transaction
       </AddTransactionBtn>
-      {modalIsOpen && <ModalAddTransaction onClose={onClose} />}
+      {modalIsOpen && (
+        <ModalWindowWraper clickOnBackdrop={onClose}>
+          <ModalAddTransaction onClose={onClose} />
+        </ModalWindowWraper>
+      )}
     </>
   );
 };

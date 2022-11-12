@@ -9,8 +9,12 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 
 import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
-import { selectIsFetching } from 'redux/auth/authSelectors';
+import {
+  selectIsFetching,
+  selectIsLoadingUser,
+} from 'redux/auth/authSelectors';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
+import { Loader } from './Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const StatisticPage = lazy(() =>
@@ -21,52 +25,53 @@ const CurrencyPage = lazy(() => import('../pages/CurrencyPage/CurrencyPage'));
 export const App = () => {
   const isMobile = useMedia('(max-width: 768px)');
   const isFetching = useSelector(selectIsFetching);
+  const isLoading = useSelector(selectIsLoadingUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  return (
-    !isFetching && (
-      <Routes>
+  return isFetching || isLoading ? (
+    <Loader />
+  ) : (
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          <PublicRoute restricted>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute restricted>
+            <RegisterPage />
+          </PublicRoute>
+        }
+      />
+      <Route path="/" element={<DashboardPage />}>
         <Route
-          path="/login"
+          index
           element={
-            <PublicRoute restricted>
-              <LoginPage />
-            </PublicRoute>
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
           }
         />
         <Route
-          path="/register"
+          path="statistic"
           element={
-            <PublicRoute restricted>
-              <RegisterPage />
-            </PublicRoute>
+            <PrivateRoute>
+              <StatisticPage />
+            </PrivateRoute>
           }
         />
-        <Route path="/" element={<DashboardPage />}>
-          <Route
-            index
-            element={
-              <PrivateRoute>
-                <HomePage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="statistic"
-            element={
-              <PrivateRoute>
-                <StatisticPage />
-              </PrivateRoute>
-            }
-          />
-          {isMobile && <Route path="currency" element={<CurrencyPage />} />}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Route>
-      </Routes>
-    )
+        {isMobile && <Route path="currency" element={<CurrencyPage />} />}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
 };

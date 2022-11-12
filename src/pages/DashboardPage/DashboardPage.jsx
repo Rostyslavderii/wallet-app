@@ -7,6 +7,7 @@ import { fetchTransactions } from 'redux/transactions/transactionOperation';
 import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper } from './DashboardPage.styled';
+import { Loader } from 'components/Loader/Loader';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,12 @@ export const DashboardPage = () => {
       <Container>
         <FlexWrapper>
           <Dashboard />
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </FlexWrapper>
       </Container>
+      {/* <Loader /> */}
     </>
   );
 };

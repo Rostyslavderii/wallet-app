@@ -4,6 +4,7 @@ import {
   TrData,
   StyledTd,
   DataHeading,
+  DataValue,
 } from './TransactionsTable.styled';
 import { transformDate } from 'helpers/transformDate';
 import { useMedia } from 'react-use';
@@ -57,7 +58,9 @@ export const TransactionTable = ({ transactions, categories }) => {
                 </StyledTd>
                 <StyledTd left>
                   {isMobile && <DataHeading>Comment</DataHeading>}
-                  {comment}
+                  <DataValue isScrollShown={comment.length > 30}>
+                    {comment}
+                  </DataValue>
                 </StyledTd>
                 <StyledTd type={type}>
                   {isMobile && <DataHeading>Sum</DataHeading>}

@@ -92,7 +92,7 @@ export const Label = styled.label`
     top: -4px;
     left: -4px;
     display: block;
-    width: ${p => (p.value < 13 ? (p.value / 12) * 104 : 104)}%;
+    width: ${p => (p.value < 13 ? (p.value / 12) * 102 : 102)}%;
     height: 0;
 
     border: 4px solid

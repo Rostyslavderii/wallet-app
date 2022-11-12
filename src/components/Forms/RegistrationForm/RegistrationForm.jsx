@@ -1,10 +1,21 @@
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { register } from 'redux/auth/authOperations';
+import { Container } from 'utils/GlobalStyle';
 import { Logo } from 'components/Logo/Logo';
-import { Form, Input } from '../Forms.styled';
+import {
+  Form,
+  FormButton,
+  FormLink,
+  HeaderLogo,
+  Input,
+  Label,
+  Wrapper,
+} from '../Forms.styled';
+import { IoMdMail } from 'react-icons/io';
+import { MdLock } from 'react-icons/md';
+import { IoPersonSharp } from 'react-icons/io5';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -33,73 +44,108 @@ export const RegistrationForm = () => {
       .required('Name is required'),
   });
 
-  const { handleSubmit, values, handleChange, errors, resetForm } = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      username: '',
-    },
-    validationSchema,
-    onSubmit: ({ username, email, password }) => {
-      dispatch(register({ username, email, password }));
-      resetForm();
-    },
-  });
+  const { handleSubmit, values, handleChange, errors, touched, resetForm } =
+    useFormik({
+      initialValues: {
+        email: '',
+        password: '',
+        confirmPassword: '',
+        username: '',
+      },
+      validationSchema,
+      onSubmit: ({ username, email, password }) => {
+        dispatch(register({ username, email, password }));
+        resetForm();
+      },
+    });
 
   return (
-    <>
-      <Logo />
-      <Form onSubmit={handleSubmit}>
-        <label>
-          E-mail
-          <Input
-            type="text"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            required
-          />
-          {errors.email && <div>{errors.email}</div>}
-        </label>
-        <label>
-          Password
-          <Input
-            type="password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-            required
-          />
-          {errors.password && <div>{errors.password}</div>}
-        </label>
-        <label>
-          Confirm password
-          <Input
-            type="password"
-            name="confirmPassword"
-            value={values.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-          {errors.confirmPassword && <div>{errors.confirmPassword}</div>}
-        </label>
-        <label>
-          First name
-          <Input
-            type="text"
-            name="username"
-            value={values.username}
-            onChange={handleChange}
-            required
-          />
-          {errors.username && <div>{errors.username}</div>}
-        </label>
+    <Container>
+      <Wrapper>
+        <HeaderLogo>
+          <Logo />
+        </HeaderLogo>
 
-        <button type="submit">Register</button>
-      </Form>
+        <section>
+          <Form onSubmit={handleSubmit}>
+            <Label>
+              <IoMdMail />
+              <Input
+                type="text"
+                name="email"
+                value={values.email}
+                placeholder="E-mail"
+                onChange={handleChange}
+                required
+              />
+              {touched.email && errors.email && (
+                <div>
+                  <span></span>
+                  <p>{errors.email}</p>
+                </div>
+              )}
+            </Label>
 
-      <Link to="/login">Log in</Link>
-    </>
+            <Label value={values.password.length}>
+              <MdLock />
+              <Input
+                type="password"
+                name="password"
+                value={values.password}
+                placeholder="Password"
+                onChange={handleChange}
+                required
+              />
+              {touched.password && (
+                <div>
+                  <span></span>
+                  {errors.password && <p>{errors.password}</p>}
+                </div>
+              )}
+            </Label>
+
+            <Label>
+              <MdLock />
+              <Input
+                type="password"
+                name="confirmPassword"
+                value={values.confirmPassword}
+                placeholder="Confirm password"
+                onChange={handleChange}
+                required
+              />
+              {touched.confirmPassword && (
+                <div>
+                  <span></span>
+                  {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+                </div>
+              )}
+            </Label>
+
+            <Label>
+              <IoPersonSharp />
+              <Input
+                type="text"
+                name="username"
+                value={values.username}
+                placeholder="First name"
+                onChange={handleChange}
+                required
+              />
+              {touched.username && errors.username && (
+                <div>
+                  <span></span>
+                  <p>{errors.username}</p>
+                </div>
+              )}
+            </Label>
+
+            <FormButton type="submit">Register</FormButton>
+          </Form>
+
+          <FormLink to="/login">Log in</FormLink>
+        </section>
+      </Wrapper>
+    </Container>
   );
 };

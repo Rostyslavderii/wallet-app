@@ -11,6 +11,10 @@ import { useMedia } from 'react-use';
 export const TransactionTable = ({ transactions, categories }) => {
   const isShown = transactions.length > 0 && categories.length > 0;
   const isMobile = useMedia('(max-width: 767px)');
+  const sortedTransactions = [...transactions].sort(
+    (prevTr, nextTr) =>
+      Date.parse(nextTr.transactionDate) - Date.parse(prevTr.transactionDate)
+  );
 
   return (
     isShown && (
@@ -28,7 +32,7 @@ export const TransactionTable = ({ transactions, categories }) => {
           </thead>
         )}
         <tbody>
-          {transactions.map(
+          {sortedTransactions.map(
             ({
               id,
               transactionDate,

@@ -92,14 +92,11 @@ export const Label = styled.label`
     top: -4px;
     left: -4px;
     display: block;
-    width: ${p => (p.value < 13 ? (p.value / 12) * 104 : 104)}%;
+    width: ${p => (p.value < 13 ? (p.value / 12) * 102 : 102)}%;
     height: 0;
 
     border: 4px solid
-      ${p =>
-        p.value > 5 && p.value < 13
-          ? p.theme.colors.btGreen
-          : p.theme.colors.btPink};
+      ${p => (!p.error ? p.theme.colors.btGreen : p.theme.colors.btPink)};
     border-radius: 8px;
     box-shadow: ${p => p.theme.boxShadow.confirmPassword};
   }

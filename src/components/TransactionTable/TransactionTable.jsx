@@ -4,6 +4,7 @@ import {
   TrData,
   StyledTd,
   DataHeading,
+  DataValue,
 } from './TransactionsTable.styled';
 import { transformDate } from 'helpers/transformDate';
 import { useMedia } from 'react-use';
@@ -11,6 +12,10 @@ import { useMedia } from 'react-use';
 export const TransactionTable = ({ transactions, categories }) => {
   const isShown = transactions.length > 0 && categories.length > 0;
   const isMobile = useMedia('(max-width: 767px)');
+  const sortedTransactions = [...transactions].sort(
+    (prevTr, nextTr) =>
+      Date.parse(nextTr.transactionDate) - Date.parse(prevTr.transactionDate)
+  );
 
   return (
     isShown && (
@@ -28,7 +33,7 @@ export const TransactionTable = ({ transactions, categories }) => {
           </thead>
         )}
         <tbody>
-          {transactions.map(
+          {sortedTransactions.map(
             ({
               id,
               transactionDate,
@@ -53,7 +58,9 @@ export const TransactionTable = ({ transactions, categories }) => {
                 </StyledTd>
                 <StyledTd left>
                   {isMobile && <DataHeading>Comment</DataHeading>}
-                  {comment}
+                  <DataValue isScrollShown={comment.length > 30}>
+                    {comment}
+                  </DataValue>
                 </StyledTd>
                 <StyledTd type={type}>
                   {isMobile && <DataHeading>Sum</DataHeading>}

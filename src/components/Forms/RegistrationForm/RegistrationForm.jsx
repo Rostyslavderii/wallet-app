@@ -32,6 +32,8 @@ export const RegistrationForm = () => {
       .required('Password is required'),
     confirmPassword: yup
       .string('Please, confirm your password')
+      .min(6, 'Password must contain at least 6 symbols')
+      .max(12, 'Password must contain no more than 12 symbols')
       .oneOf(
         [yup.ref('password')],
         'Entered password doesn`t match the previous one'
@@ -44,20 +46,19 @@ export const RegistrationForm = () => {
       .required('Name is required'),
   });
 
-  const { handleSubmit, values, handleChange, errors, touched, resetForm } =
-    useFormik({
-      initialValues: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-        username: '',
-      },
-      validationSchema,
-      onSubmit: ({ username, email, password }) => {
-        dispatch(register({ username, email, password }));
-        resetForm();
-      },
-    });
+  const { handleSubmit, values, handleChange, errors, resetForm } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      username: '',
+    },
+    validationSchema,
+    onSubmit: ({ username, email, password }) => {
+      dispatch(register({ username, email, password }));
+      resetForm();
+    },
+  });
 
   return (
     <Container>
@@ -68,7 +69,7 @@ export const RegistrationForm = () => {
 
         <section>
           <Form onSubmit={handleSubmit}>
-            <Label>
+            <Label error={errors.email}>
               <IoMdMail />
               <Input
                 type="text"
@@ -78,15 +79,15 @@ export const RegistrationForm = () => {
                 onChange={handleChange}
                 required
               />
-              {touched.email && errors.email && (
+              {values.email.length > 0 && (
                 <div>
                   <span></span>
-                  <p>{errors.email}</p>
+                  {errors.email && <p>{errors.email}</p>}
                 </div>
               )}
             </Label>
 
-            <Label value={values.password.length}>
+            <Label error={errors.password} value={values.password.length}>
               <MdLock />
               <Input
                 type="password"
@@ -96,7 +97,7 @@ export const RegistrationForm = () => {
                 onChange={handleChange}
                 required
               />
-              {touched.password && (
+              {values.password.length > 0 && (
                 <div>
                   <span></span>
                   {errors.password && <p>{errors.password}</p>}
@@ -104,7 +105,10 @@ export const RegistrationForm = () => {
               )}
             </Label>
 
-            <Label>
+            <Label
+              error={errors.confirmPassword}
+              value={values.confirmPassword.length}
+            >
               <MdLock />
               <Input
                 type="password"
@@ -114,7 +118,7 @@ export const RegistrationForm = () => {
                 onChange={handleChange}
                 required
               />
-              {touched.confirmPassword && (
+              {values.confirmPassword.length > 0 && (
                 <div>
                   <span></span>
                   {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
@@ -122,7 +126,7 @@ export const RegistrationForm = () => {
               )}
             </Label>
 
-            <Label>
+            <Label error={errors.username}>
               <IoPersonSharp />
               <Input
                 type="text"
@@ -132,10 +136,10 @@ export const RegistrationForm = () => {
                 onChange={handleChange}
                 required
               />
-              {touched.username && errors.username && (
+              {values.username.length > 0 && (
                 <div>
                   <span></span>
-                  <p>{errors.username}</p>
+                  {errors.username && <p>{errors.username}</p>}
                 </div>
               )}
             </Label>

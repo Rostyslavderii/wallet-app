@@ -52,7 +52,7 @@ export const LoginForm = () => {
 
         <section>
           <Form onSubmit={handleSubmit}>
-            <Label>
+            <Label error={errors.email}>
               <IoMdMail />
               <Input
                 type="text"
@@ -62,15 +62,15 @@ export const LoginForm = () => {
                 onChange={handleChange}
                 required
               />
-              {values.email.length > 0 && errors.email && (
+              {values.email.length > 0 && (
                 <div>
                   <span></span>
-                  <p>{errors.email}</p>
+                  {errors.email && <p>{errors.email}</p>}
                 </div>
               )}
             </Label>
 
-            <Label value={values.password.length}>
+            <Label error={errors.password} value={values.password.length}>
               <MdLock />
               <Input
                 type="password"

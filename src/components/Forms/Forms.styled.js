@@ -96,10 +96,7 @@ export const Label = styled.label`
     height: 0;
 
     border: 4px solid
-      ${p =>
-        p.value > 5 && p.value < 13
-          ? p.theme.colors.btGreen
-          : p.theme.colors.btPink};
+      ${p => (!p.error ? p.theme.colors.btGreen : p.theme.colors.btPink)};
     border-radius: 8px;
     box-shadow: ${p => p.theme.boxShadow.confirmPassword};
   }

@@ -6,7 +6,6 @@ const TableCurrency = styled.table`
 `;
 
 const Container = styled.div`
-  margin-left: 50px;
   width: 393px;
   height: 347px;
   background: #4a56e2;

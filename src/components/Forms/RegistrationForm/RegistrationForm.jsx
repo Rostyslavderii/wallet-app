@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { register } from 'redux/auth/authOperations';
+import { Logo } from 'components/Logo/Logo';
+import { Form, Input } from '../Forms.styled';
 
-export const RegisterForm = () => {
+export const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const validationSchema = yup.object({
@@ -47,10 +49,11 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <Logo />
+      <Form onSubmit={handleSubmit}>
         <label>
           E-mail
-          <input
+          <Input
             type="text"
             name="email"
             value={values.email}
@@ -61,7 +64,7 @@ export const RegisterForm = () => {
         </label>
         <label>
           Password
-          <input
+          <Input
             type="password"
             name="password"
             value={values.password}
@@ -72,7 +75,7 @@ export const RegisterForm = () => {
         </label>
         <label>
           Confirm password
-          <input
+          <Input
             type="password"
             name="confirmPassword"
             value={values.confirmPassword}
@@ -83,7 +86,7 @@ export const RegisterForm = () => {
         </label>
         <label>
           First name
-          <input
+          <Input
             type="text"
             name="username"
             value={values.username}
@@ -94,7 +97,7 @@ export const RegisterForm = () => {
         </label>
 
         <button type="submit">Register</button>
-      </form>
+      </Form>
 
       <Link to="/login">Log in</Link>
     </>

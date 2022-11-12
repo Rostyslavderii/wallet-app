@@ -8,9 +8,11 @@ import { ModalAddTransaction } from 'components/ModalAddTransaction/ModalAddTran
 import { useState } from 'react';
 import { useMedia } from 'react-use';
 import { Balance } from 'components/Balance/Balance';
+import { AddTransactionBtn } from 'components/AddTransaction/AddTransactionBtn';
 
 const HomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const isMobile = useMedia('(max-width: 767px)');
   const transactions = useSelector(selectTransaction);
   const categories = useSelector(selectCategories);
@@ -27,14 +29,14 @@ const HomePage = () => {
     <>
       {isMobile && <Balance />}
       <TransactionTable transactions={transactions} categories={categories} />
-      <button
+      <AddTransactionBtn
         type="button"
         onClick={() => {
           setModalIsOpen(true);
         }}
       >
         add transaction
-      </button>
+      </AddTransactionBtn>
       {modalIsOpen && <ModalAddTransaction onClose={onClose} />}
     </>
   );

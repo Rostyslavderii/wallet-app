@@ -1,6 +1,7 @@
 import { IoLogOutOutline } from 'react-icons/io5';
 import { Logo } from 'components/Logo/Logo';
 import {
+  Head,
   DivHeader,
   SpanNameHeader,
   DivHeaderUser,
@@ -18,7 +19,7 @@ export const Header = () => {
   const name = useSelector(selectName);
 
   return (
-    <header>
+    <Head>
       <Container>
         <DivHeader>
           <Logo />
@@ -34,6 +35,6 @@ export const Header = () => {
           </DivHeaderUser>
         </DivHeader>
       </Container>
-    </header>
+    </Head>
   );
 };

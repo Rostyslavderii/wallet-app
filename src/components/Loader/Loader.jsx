@@ -1,32 +1,16 @@
-import { Watch } from 'react-loader-spinner';
-import { Discuss } from 'react-loader-spinner';
-
+import { StyledLoader, DivLoader } from './Loader.styled';
 export const Loader = () => {
   return (
-    <Watch
-      height="80"
-      width="80"
-      radius="48"
-      color="#24CCA7"
-      ariaLabel="watch-loading"
-      wrapperStyle={{}}
-      wrapperClassName=""
-      visible={true}
-    />
-  );
-};
-
-export const LoaderCurrency = () => {
-  return (
-    <Discuss
-      visible={true}
-      height="45"
-      width="45"
-      ariaLabel="comment-loading"
-      wrapperStyle={{}}
-      wrapperClass="comment-wrapper"
-      color="#fff"
-      backgroundColor="#4A56E2"
-    />
+    <DivLoader>
+      <StyledLoader
+        height="120"
+        width="120"
+        radius="48"
+        color="#4A56E2"
+        ariaLabel="watch-loading"
+        wrapperStyle={{}}
+        visible={true}
+      />
+    </DivLoader>
   );
 };

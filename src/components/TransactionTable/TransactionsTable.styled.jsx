@@ -11,22 +11,41 @@ const switchColor = ({ type, theme: { colors } }) => {
   }
 };
 
-export const Table = styled.table`
+export const Wrapper = styled.div`
   width: 100%;
   max-width: 320px;
+  overflow: hidden scroll;
   margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    max-height: 40vh;
+    max-width: 704px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-height: 60vh;
+    margin-top: 46px;
+    margin-right: 0;
+    max-width: 715px;
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${p => p.theme.colors.bgGrayRight};
+    border-radius: 2px;
+  }
+`;
+
+export const Table = styled.table`
+  width: 100%;
   border-collapse: collapse;
   font-family: ${p => p.theme.ff.familyExo};
   color: ${p => p.theme.colors.black};
 
   @media screen and (min-width: 768px) {
-    max-width: 704px;
     text-align: center;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-top: 46px;
-    margin-right: 0;
-    max-width: 715px;
   }
 `;
 
@@ -117,12 +136,12 @@ export const DataValue = styled.span`
     width: ${p => (p.isScrollShown ? '4px' : '0')};
   }
   &::-webkit-scrollbar-track {
-    background-color: ${p => p.theme.colors.lPurple};
+    background-color: ${p => p.theme.colors.bgGrayRight};
     border-radius: 2px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${p => p.theme.colors.lBlue};
+    background-color: ${p => p.theme.colors.lPurple};
     border-radius: 2px;
   }
-  scrollbar-color: ${p => p.theme.colors.lBlue} ${p => p.theme.colors.lPurple};
+  scrollbar-color: ${p => p.theme.colors.lPurple}${p => p.theme.colors.bgGrayRight};
 `;

@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { AiOutlineMinus } from 'react-icons/ai';
 
-const checkButtonColor = (type, incomeColor, expenseColor) => {
+const checkButtonColor = (p) => {
   let backgroundColor;
-  if (!type) {
-    backgroundColor = incomeColor;
+  if (!p.props) {
+    backgroundColor = p.theme.colors.btGreen;
   } else {
-    backgroundColor = expenseColor;
+    backgroundColor = p.theme.colors.btPink;
   }
   return backgroundColor;
 };
-const checkButtonPosition = type => {
-  if (!type) {
+const checkButtonPosition = p => {
+  if (!p.props) {
     return 0;
   } else {
     return 50;
@@ -31,6 +31,10 @@ export const ModalTitle = styled.h2`
   font-weight: ${p => p.theme.fontWeight.fw4};
   font-size: ${p => p.theme.fontSize.fs30};
   line-height: 1.5;
+
+  @media screen and (max-width: 767px) {
+    font-size: ${p => p.theme.fontSize.fs24};
+  }
 `;
 
 export const ModalForm = styled.form`
@@ -84,12 +88,9 @@ export const CheckButton = styled.div`
   border-radius: 100%;
 
   position: absolute;
-  left: ${p => checkButtonPosition(p.props)}%;
-  background-color: ${p =>
-    checkButtonColor(p.props, p.theme.colors.btGreen, p.theme.colors.btPink)};
-  box-shadow: 0px 3px 10px
-    ${p =>
-      checkButtonColor(p.props, p.theme.colors.btGreen, p.theme.colors.btPink)};
+  left: ${checkButtonPosition}%;
+  background-color: ${checkButtonColor};
+  box-shadow: 0px 3px 10px ${checkButtonColor};
 `;
 
 export const Span = styled.span`
@@ -127,6 +128,10 @@ export const SelectCategory = styled.select`
   font-weight: ${p => p.theme.fontWeight.fw4};
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
 `;
 
 export const OptionCategory = styled.option`
@@ -136,6 +141,11 @@ export const OptionCategory = styled.option`
 export const DivSumm = styled.div`
   display: flex;
   gap: 30px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    gap: 40px;
+  }
 `;
 
 export const Amount = styled.input`
@@ -148,6 +158,10 @@ export const Amount = styled.input`
   font-weight: ${p => p.theme.fontWeight.fw4};
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
 `;
 
 export const DateInput = styled.div`
@@ -156,6 +170,10 @@ export const DateInput = styled.div`
   border: 0;
 
   position: relative;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
 `;
 
 export const Calendar = styled.span`
@@ -170,10 +188,17 @@ export const Comment = styled.textarea`
   border: 0;
   border-bottom: ${p => p.theme.borderColor.comment};
 
+  resize: none;
+
   font-family: ${p => p.theme.ff.familyExo};
   font-weight: ${p => p.theme.fontWeight.fw4};
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
+
+   @media screen and (max-width: 767px) {
+    width: 280px;
+    height: 84px;
+  }
 `;
 
 export const ButtonCard = styled.div`

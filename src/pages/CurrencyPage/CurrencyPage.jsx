@@ -1,7 +1,12 @@
-import { Currency } from "components/Currency/Currency";
+import { Currency } from 'components/Currency/Currency';
+import { Wrapper } from 'components/Currency/Currency.styled';
 
 const CurrencyPage = () => {
-    return <Currency />
-}
+  return (
+    <Wrapper>
+      <Currency />
+    </Wrapper>
+  );
+};
 
 export default CurrencyPage;

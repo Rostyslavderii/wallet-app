@@ -3,7 +3,6 @@ import { useFormik } from 'formik';
 import { GrClose } from 'react-icons/gr';
 import * as yup from 'yup';
 import {
-  ADDButton,
   CloseButton,
   ModalForm,
   ModalTitle,
@@ -68,7 +67,9 @@ export const EditModal = ({ transaction, close }) => {
           {values.comment}
         </Comment>
 
-        <ADDButton type="submit">UPDATE</ADDButton>
+        <Button primary type="submit">
+          UPDATE
+        </Button>
         <Button type="button" onClick={close}>
           Cancel
         </Button>

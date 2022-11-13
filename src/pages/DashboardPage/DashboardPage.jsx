@@ -7,10 +7,12 @@ import { fetchTransactions } from 'redux/transactions/transactionOperation';
 import { getCategories } from 'redux/categories/categoriesOperations';
 import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
-import { FlexWrapper } from './DashboardPage.styled';
+import { FlexWrapper, Section } from './DashboardPage.styled';
 import { Loader } from 'components/Loader/Loader';
+import { useMedia } from 'react-use';
 
 export const DashboardPage = () => {
+  const isMobile = useMedia('(max-width: 767px)');
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
   useEffect(() => {
@@ -24,15 +26,27 @@ export const DashboardPage = () => {
     <>
       <Header />
 
-      <Container>
-        <FlexWrapper>
-          <Dashboard />
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </FlexWrapper>
-      </Container>
-      {/* <Loader /> */}
+      {isMobile ? (
+        <Container>
+          <FlexWrapper>
+            <Dashboard />
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
+          </FlexWrapper>
+        </Container>
+      ) : (
+        <Section>
+          <Container>
+            <FlexWrapper>
+              <Dashboard />
+              <Suspense fallback={<Loader />}>
+                <Outlet />
+              </Suspense>
+            </FlexWrapper>
+          </Container>
+        </Section>
+      )}
     </>
   );
 };

@@ -5,3 +5,15 @@ export const FlexWrapper = styled.div`
     display: flex;
   }
 `;
+
+export const Section = styled.section`
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.4)
+  );
+  backdrop-filter: blur(25px);
+
+  background-size: cover;
+  min-height: calc(100vh - 85px);
+`;

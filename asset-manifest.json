@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/wallet-app/static/css/main.0441364d.css",
-    "main.js": "/wallet-app/static/js/main.097ae913.js",
-    "static/css/654.b218893e.chunk.css": "/wallet-app/static/css/654.b218893e.chunk.css",
-    "static/js/654.4b041195.chunk.js": "/wallet-app/static/js/654.4b041195.chunk.js",
+    "main.css": "/wallet-app/static/css/main.00ef9cd8.css",
+    "main.js": "/wallet-app/static/js/main.3dab1cbe.js",
+    "static/css/194.98eec8bf.chunk.css": "/wallet-app/static/css/194.98eec8bf.chunk.css",
+    "static/js/194.bcd3ef8d.chunk.js": "/wallet-app/static/js/194.bcd3ef8d.chunk.js",
     "static/js/3.ad2328bf.chunk.js": "/wallet-app/static/js/3.ad2328bf.chunk.js",
     "static/js/872.d7730db1.chunk.js": "/wallet-app/static/js/872.d7730db1.chunk.js",
     "static/js/145.d1e71cda.chunk.js": "/wallet-app/static/js/145.d1e71cda.chunk.js",
@@ -19,16 +19,16 @@
     "static/media/orangeEllipseDesk@2x.png": "/wallet-app/static/media/orangeEllipseDesk@2x.b9f3dbfdb340b55c30cf.png",
     "static/media/Wallet.svg": "/wallet-app/static/media/Wallet.20a9ce0d1a7ea5660c25f7c6dbab91bf.svg",
     "index.html": "/wallet-app/index.html",
-    "main.0441364d.css.map": "/wallet-app/static/css/main.0441364d.css.map",
-    "main.097ae913.js.map": "/wallet-app/static/js/main.097ae913.js.map",
-    "654.b218893e.chunk.css.map": "/wallet-app/static/css/654.b218893e.chunk.css.map",
-    "654.4b041195.chunk.js.map": "/wallet-app/static/js/654.4b041195.chunk.js.map",
+    "main.00ef9cd8.css.map": "/wallet-app/static/css/main.00ef9cd8.css.map",
+    "main.3dab1cbe.js.map": "/wallet-app/static/js/main.3dab1cbe.js.map",
+    "194.98eec8bf.chunk.css.map": "/wallet-app/static/css/194.98eec8bf.chunk.css.map",
+    "194.bcd3ef8d.chunk.js.map": "/wallet-app/static/js/194.bcd3ef8d.chunk.js.map",
     "3.ad2328bf.chunk.js.map": "/wallet-app/static/js/3.ad2328bf.chunk.js.map",
     "872.d7730db1.chunk.js.map": "/wallet-app/static/js/872.d7730db1.chunk.js.map",
     "145.d1e71cda.chunk.js.map": "/wallet-app/static/js/145.d1e71cda.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0441364d.css",
-    "static/js/main.097ae913.js"
+    "static/css/main.00ef9cd8.css",
+    "static/js/main.3dab1cbe.js"
   ]
 }

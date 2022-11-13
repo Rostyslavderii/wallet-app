@@ -22,22 +22,20 @@ export const Currency = () => {
     });
 
     async function fetchCurrency() {
-      const list = ['USD', 'EUR'];
-      setIsLoading(true);
+      const list = ["USD", "EUR"];
+      setIsLoading(true)
       try {
-        const { data } = await baseRequest.get(
-          '/pubinfo?json&exchange&coursid=5'
-        );
+        const { data } = await baseRequest.get("/pubinfo?json&exchange&coursid=5");
         const result = data.filter(({ ccy }) => list.includes(ccy));
         setDataCurrency(result);
       } catch (error) {
-        setError(error.message);
+        setError(error.message)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
     }
     fetchCurrency();
-  }, []);
+  }, [])
 
   return (
     <Container>

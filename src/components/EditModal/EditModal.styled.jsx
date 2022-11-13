@@ -30,7 +30,8 @@ export const Comment = styled.textarea`
   }
   &:focus {
     outline: 1px solid ${p => p.theme.colors.btBlue};
-    border-radius: 10px;
+    outline-offset: 2px;
+    border-radius: 2px;
     height: 100px;
   }
 `;

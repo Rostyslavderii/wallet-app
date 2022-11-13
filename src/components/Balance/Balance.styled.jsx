@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   margin-top: 12px;
   margin-bottom: 32px;
   @media screen and (max-width: 767px) {
-    margin-top: 68px;
     margin-right: auto;
     margin-left: auto;
   }

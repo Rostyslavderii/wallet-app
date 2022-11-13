@@ -29,7 +29,7 @@ export const CustomizedLoginPage = styled(Page)`
       content: '';
       position: absolute;
       top: 60px;
-      left: 114px;
+      left:   114px;
       z-index: -20;
       display: block;
       width: 260px;

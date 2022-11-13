@@ -7,12 +7,12 @@ import {
   CloseButton,
   ModalForm,
   ModalTitle,
-  Comment,
   Amount,
 } from 'components/ModalAddTransaction/ModalAddTransaction.styled';
 
 import { updateTransaction } from 'redux/transactions/transactionOperation';
 import { selectCategories } from 'redux/categories/categoriesSelectors';
+import { Comment, Category } from './EditModal.styled';
 
 export const EditModal = ({ transaction, close }) => {
   const categories = useSelector(selectCategories);
@@ -42,13 +42,12 @@ export const EditModal = ({ transaction, close }) => {
     <>
       <ModalTitle>Edit transaction</ModalTitle>
       <ModalForm onSubmit={handleSubmit}>
-        <p>
-          Category:{' '}
+        <Category type={transaction.type}>
           {
             categories.find(category => category.id === transaction.categoryId)
               .name
           }
-        </p>
+        </Category>
         <Amount
           type="text"
           placeholder="0.00"
@@ -59,12 +58,13 @@ export const EditModal = ({ transaction, close }) => {
         />
         {errors.amount && <div>{errors.amount}</div>}
         <Comment
-          type="text"
           placeholder="Comment"
           name="comment"
           onChange={handleChange}
-          value={values.comment}
-        />
+          rows="1"
+        >
+          {values.comment}
+        </Comment>
 
         <ADDButton type="submit">Update</ADDButton>
         <CloseButton type="button" onClick={close}>

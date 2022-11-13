@@ -1,15 +1,5 @@
 import styled from 'styled-components';
-
-const switchColor = ({ type, theme: { colors } }) => {
-  switch (type) {
-    case 'INCOME':
-      return colors.btGreen;
-    case 'EXPENSE':
-      return colors.btPink;
-    default:
-      return colors.black;
-  }
-};
+import { switchColor } from 'helpers/transformDate';
 
 export const Wrapper = styled.div`
   width: 100%;

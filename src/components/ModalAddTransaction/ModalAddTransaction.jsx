@@ -31,8 +31,9 @@ import {
   Comment,
   ButtonCard,
   CloseButton,
-  ADDButton,
+  // ADDButton,
 } from './ModalAddTransaction.styled';
+import { FormButton } from 'components/Forms/Forms.styled';
 
 export const ModalAddTransaction = ({ onClose }) => {
   const categories = useSelector(selectCategories);
@@ -155,7 +156,7 @@ export const ModalAddTransaction = ({ onClose }) => {
           onChange={handleChange}
         />
         <ButtonCard>
-          <ADDButton type="submit">ADD</ADDButton>
+          <FormButton type="submit">ADD</FormButton>
           <Button type="button" onClick={onClose}>
             CANCEL
           </Button>

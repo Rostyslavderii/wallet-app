@@ -9,6 +9,8 @@ import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper } from './DashboardPage.styled';
 import { Loader } from 'components/Loader/Loader';
+import { ModalWindowWraper } from 'components/ModalWindowWraper/ModalWindowWraper';
+import { Button } from 'components/Button/Button';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,10 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
+      <ModalWindowWraper>
+        <Button>kflaf</Button>
+      </ModalWindowWraper>
+
       <Container>
         <FlexWrapper>
           <Dashboard />

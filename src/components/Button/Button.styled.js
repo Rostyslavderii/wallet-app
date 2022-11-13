@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   text-transform: uppercase;
   overflow: hidden;
   background-color: transparent;
+  z-index: 10;
 
   &:after {
     content: '';

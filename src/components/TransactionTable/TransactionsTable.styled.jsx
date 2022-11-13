@@ -11,8 +11,6 @@ export const Wrapper = styled.div`
     max-width: 704px;
   }
   @media screen and (min-width: 1280px) {
-    margin-top: 46px;
-    margin-right: 0;
     max-width: 715px;
     max-height: 80vh;
   }

@@ -79,6 +79,7 @@ const theme = {
   CurrencyLinear:
     'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -8.67%, rgba(255, 255, 255, 0) 116.22%)',
   BackdropFilter: 'blur(25px)',
+  transition: '250ms cubic-bezier(0.175, 0.885, 0.32, 1.275)',
 };
 
 export default theme;

@@ -53,7 +53,6 @@ export const StyledUl = styled.ul`
     gap: 17px;
   }
   @media screen and (max-width: 767px) {
-    /* position: fixed; */
     width: 200px;
     margin: 0 auto;
   }
@@ -62,9 +61,11 @@ export const StyledUl = styled.ul`
 export const StyledNav = styled.nav`
   @media screen and (max-width: 767px) {
     position: fixed;
-    background-color: ${p => p.theme.colors.bgGray};
+    backdrop-filter: blur(25px);
     left: 0;
     right: 0;
     z-index: 5;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 `;

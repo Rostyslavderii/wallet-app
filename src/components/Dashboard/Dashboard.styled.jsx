@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  padding-top: 12px;
   @media screen and (min-width: 768px) {
     padding-top: 8px;
   }
@@ -16,7 +15,7 @@ export const FlexWrap = styled.div`
     display: flex;
     gap: 32px;
     padding-top: 32px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
 
   @media screen and (min-width: 1280px) {

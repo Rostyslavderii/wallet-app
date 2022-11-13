@@ -1,3 +1,4 @@
+import { Button } from 'components/Button/Button';
 import { useState } from 'react';
 
 const {
@@ -11,6 +12,8 @@ export const LogoutForm = () => {
       {isOpen && (
         <ModalWindowWraper clickOnBackdrop={() => setIsOpen(false)}>
           logout
+          <Button primary></Button>
+          <Button></Button>
         </ModalWindowWraper>
       )}
     </>

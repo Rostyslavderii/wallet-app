@@ -9,6 +9,7 @@ import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper } from './DashboardPage.styled';
 import { Loader } from 'components/Loader/Loader';
+import { LogoutForm } from 'components/LogoutForm/LogoutForm';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();

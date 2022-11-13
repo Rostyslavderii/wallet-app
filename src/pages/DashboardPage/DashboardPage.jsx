@@ -25,7 +25,6 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-
       {isMobile ? (
         <Container>
           <FlexWrapper>

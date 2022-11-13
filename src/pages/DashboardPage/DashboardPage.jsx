@@ -23,6 +23,7 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
+
       <Container>
         <FlexWrapper>
           <Dashboard />

@@ -33,6 +33,7 @@ const HomePage = () => {
   return (
     <Wrapper>
       {isMobile && <Balance />}
+      {/* <ModalWindowWraper></ModalWindowWraper> */}
       <TransactionTable
         transactions={transactions}
         categories={categories}

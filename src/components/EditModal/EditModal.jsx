@@ -12,6 +12,7 @@ import {
 import { updateTransaction } from 'redux/transactions/transactionOperation';
 import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { Comment, Category } from './EditModal.styled';
+import { FormButton } from 'components/Forms/Forms.styled';
 import { Button } from 'components/Button/Button';
 
 export const EditModal = ({ transaction, close }) => {
@@ -61,19 +62,17 @@ export const EditModal = ({ transaction, close }) => {
           placeholder="Comment"
           name="comment"
           onChange={handleChange}
-          rows="1"
+          rows="3"
           value={values.comment}
         >
           {values.comment}
         </Comment>
 
-        <Button primary type="submit">
-          UPDATE
-        </Button>
+        <FormButton type="submit">UPDATE</FormButton>
         <Button type="button" onClick={close}>
           Cancel
         </Button>
-        <CloseButton type="button" onClick={close}>
+        <CloseButton type="button" onClick={close} aria-label="close">
           <GrClose />
         </CloseButton>
       </ModalForm>

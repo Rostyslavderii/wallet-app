@@ -1,22 +1,12 @@
 import styled from 'styled-components';
-
-const switchColor = ({ type, theme: { colors } }) => {
-  switch (type) {
-    case 'INCOME':
-      return colors.btGreen;
-    case 'EXPENSE':
-      return colors.btPink;
-    default:
-      return colors.black;
-  }
-};
+import { switchColor } from 'helpers/transformDate';
 
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 320px;
-  overflow: hidden scroll;
+  overflow: visible scroll;
   margin: 0 auto;
-  max-height: 60vh;
+
   @media screen and (min-width: 768px) {
     max-width: 704px;
   }
@@ -24,9 +14,10 @@ export const Wrapper = styled.div`
     margin-top: 46px;
     margin-right: 0;
     max-width: 715px;
+    max-height: 80vh;
   }
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
   &::-webkit-scrollbar-track {
     border-radius: 2px;
@@ -59,7 +50,7 @@ export const TableHeading = styled.th`
   background-color: ${p => p.theme.colors.white};
   text-align: ${p => (p.left ? 'left' : 'center')};
 
-  padding: 16px 20px;
+  padding: 16px 10px;
 
   font-weight: 700;
   font-size: 18px;
@@ -106,7 +97,7 @@ export const StyledTd = styled.td`
       border-bottom: 1px solid #dcdcdf;
     }
   }
-  padding: 8px 20px;
+  padding: 8px 10px;
   height: 52px;
   line-height: calc(18 / 16);
   color: ${switchColor};
@@ -124,23 +115,38 @@ export const DataHeading = styled.span`
 export const DataValue = styled.span`
   @media screen and (max-width: 767px) {
     text-align: end;
-    justify-content: end;
   }
-  display: inline-flex;
-  margin-left: auto;
+  display: block;
+  white-space: nowrap;
   width: 130px;
   max-height: 36px;
-  overflow: hidden scroll;
-  &::-webkit-scrollbar {
-    width: ${p => (p.isScrollShown ? '4px' : '0')};
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+const chooseBtnColor = p => {
+  return p.red ? p.theme.colors.btPink : p.theme.colors.btGreen;
+};
+
+export const Button = styled.button`
+  &:not(:last-child) {
+    margin-right: 5px;
   }
-  &::-webkit-scrollbar-track {
-    background-color: ${p => p.theme.colors.bgGrayRight};
-    border-radius: 2px;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: ${chooseBtnColor};
+  transition: box-shadow 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover,
+  &:focus {
+    box-shadow: 0px 3px 10px ${chooseBtnColor};
   }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${p => p.theme.colors.lPurple};
-    border-radius: 2px;
+  svg {
+    width: 24px;
+    height: 24px;
+    @media screen and (min-width: 768px) {
+      width: 18px;
+      height: 18px;
+    }
   }
-  scrollbar-color: ${p => p.theme.colors.lPurple}${p => p.theme.colors.bgGrayRight};
 `;

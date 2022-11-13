@@ -30,7 +30,7 @@ export const FlexWrap = styled.div`
       top: 0;
       right: 0;
       width: 0;
-      height: 100%;
+      height: calc(100vh - 85px);
       border: 1px solid #e7e5f2;
       box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
         1px 0px 0px rgba(255, 255, 255, 0.6);

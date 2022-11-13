@@ -6,3 +6,14 @@ export const transformDate = date => {
 
   return `${day}.${month}.${year}`;
 };
+
+export const switchColor = ({ type, theme: { colors } }) => {
+  switch (type) {
+    case 'INCOME':
+      return colors.btGreen;
+    case 'EXPENSE':
+      return colors.btPink;
+    default:
+      return colors.black;
+  }
+};

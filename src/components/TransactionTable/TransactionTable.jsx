@@ -1,3 +1,6 @@
+import { useMedia } from 'react-use';
+import { useDispatch } from 'react-redux';
+import { MdDelete, MdEdit } from 'react-icons/md';
 import {
   Table,
   TableHeading,
@@ -6,11 +9,17 @@ import {
   DataHeading,
   DataValue,
   Wrapper,
+  Button,
 } from './TransactionsTable.styled';
 import { transformDate } from 'helpers/transformDate';
-import { useMedia } from 'react-use';
+import { deleteTransaction } from 'redux/transactions/transactionOperation';
 
-export const TransactionTable = ({ transactions, categories }) => {
+export const TransactionTable = ({
+  transactions,
+  categories,
+  openEditModal,
+}) => {
+  const dispatch = useDispatch();
   const isShown = transactions.length > 0 && categories.length > 0;
   const isMobile = useMedia('(max-width: 767px)');
   const sortedTransactions = [...transactions].sort(
@@ -31,6 +40,7 @@ export const TransactionTable = ({ transactions, categories }) => {
                 <TableHeading left>Comment</TableHeading>
                 <TableHeading>Sum</TableHeading>
                 <TableHeading>Balance</TableHeading>
+                <TableHeading>Edit</TableHeading>
               </tr>
             </thead>
           )}
@@ -64,9 +74,7 @@ export const TransactionTable = ({ transactions, categories }) => {
                   </StyledTd>
                   <StyledTd left>
                     {isMobile && <DataHeading>Comment</DataHeading>}
-                    <DataValue isScrollShown={comment.length > 30}>
-                      {comment}
-                    </DataValue>
+                    <DataValue>{comment}</DataValue>
                   </StyledTd>
                   <StyledTd type={type}>
                     {isMobile && <DataHeading>Sum</DataHeading>}
@@ -75,6 +83,32 @@ export const TransactionTable = ({ transactions, categories }) => {
                   <StyledTd>
                     {isMobile && <DataHeading>Balance</DataHeading>}
                     {balanceAfter.toFixed(2)}
+                  </StyledTd>
+                  <StyledTd>
+                    <Button
+                      aria-label="Edit"
+                      type="button"
+                      onClick={() =>
+                        openEditModal({
+                          id,
+                          transactionDate,
+                          type,
+                          categoryId,
+                          comment,
+                          amount,
+                        })
+                      }
+                    >
+                      <MdEdit />
+                    </Button>
+                    <Button
+                      aria-label="delete"
+                      type="button"
+                      onClick={() => dispatch(deleteTransaction(id))}
+                      red
+                    >
+                      <MdDelete />
+                    </Button>
                   </StyledTd>
                 </TrData>
               )

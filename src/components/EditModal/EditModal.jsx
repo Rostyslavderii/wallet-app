@@ -3,7 +3,6 @@ import { useFormik } from 'formik';
 import { GrClose } from 'react-icons/gr';
 import * as yup from 'yup';
 import {
-  ADDButton,
   CloseButton,
   ModalForm,
   ModalTitle,
@@ -13,6 +12,7 @@ import {
 import { updateTransaction } from 'redux/transactions/transactionOperation';
 import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { Comment, Category } from './EditModal.styled';
+import { Button } from 'components/Button/Button';
 
 export const EditModal = ({ transaction, close }) => {
   const categories = useSelector(selectCategories);
@@ -62,11 +62,17 @@ export const EditModal = ({ transaction, close }) => {
           name="comment"
           onChange={handleChange}
           rows="1"
+          value={values.comment}
         >
           {values.comment}
         </Comment>
 
-        <ADDButton type="submit">Update</ADDButton>
+        <Button primary type="submit">
+          UPDATE
+        </Button>
+        <Button type="button" onClick={close}>
+          Cancel
+        </Button>
         <CloseButton type="button" onClick={close}>
           <GrClose />
         </CloseButton>

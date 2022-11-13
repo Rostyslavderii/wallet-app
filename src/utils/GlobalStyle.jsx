@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, p{
 
 table {
   text-indent: 0;
-  border-color: inherit; 
+  border-color: inherit;
 }
 
 button,

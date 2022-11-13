@@ -4,35 +4,50 @@ import {
   TrData,
   StyledTd,
   Wrapper,
+  TrSummaryWrap,
+  TrSummaryField,
+  TrSummaryStr,
+  TrSummaryNum,
+  SelectWrap,
+  SelectField,
+  Select,
+  Option,
 } from './StatisticTable.styled';
 
 export const StatisticTabel = ({ handleChange, trSummary }) => {
   return (
     <>
-      <select onChange={handleChange} name="month">
-        <option value="" hidden>
-          Month
-        </option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-      <select onChange={handleChange} name="year">
-        <option value="" hidden>
-          Year
-        </option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-      </select>
+      <SelectWrap>
+        <SelectField>
+          <Select onChange={handleChange} name="month">
+            <Option value="" hidden>
+              Month
+            </Option>
+            <Option value="1">1</Option>
+            <Option value="2">2</Option>
+            <Option value="3">3</Option>
+            <Option value="4">4</Option>
+            <Option value="5">5</Option>
+            <Option value="6">6</Option>
+            <Option value="7">7</Option>
+            <Option value="8">8</Option>
+            <Option value="9">9</Option>
+            <Option value="10">10</Option>
+            <Option value="11">11</Option>
+            <Option value="12">12</Option>
+          </Select>
+        </SelectField>
+
+        <SelectField>
+          <Select onChange={handleChange} name="year">
+            <Option value="" hidden>
+              Year
+            </Option>
+            <Option value="2022">2022</Option>
+            <Option value="2023">2023</Option>
+          </Select>
+        </SelectField>
+      </SelectWrap>
 
       <Wrapper>
         {trSummary ? (
@@ -55,7 +70,7 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
                               <StyledTd left name={name}>
                                 {name}
                               </StyledTd>
-                              <StyledTd type={type}>
+                              <StyledTd leftPosition>
                                 {Math.abs(total).toFixed(2)}
                               </StyledTd>
                             </TrData>
@@ -67,16 +82,20 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
                     )}
                   </tbody>
                 </Table>
-                <div>
-                  <div>
-                    <span>Expanses: </span>
-                    <span>{Math.abs(trSummary.expenseSummary).toFixed(2)}</span>
-                  </div>
-                  <div>
-                    <span>Incomes: </span>
-                    <span>{Math.abs(trSummary.incomeSummary).toFixed(2)}</span>
-                  </div>
-                </div>
+                <TrSummaryWrap>
+                  <TrSummaryField>
+                    <TrSummaryStr>Expanses: </TrSummaryStr>
+                    <TrSummaryNum red>
+                      {Math.abs(trSummary.expenseSummary).toFixed(2)}
+                    </TrSummaryNum>
+                  </TrSummaryField>
+                  <TrSummaryField>
+                    <TrSummaryStr>Incomes: </TrSummaryStr>
+                    <TrSummaryNum>
+                      {Math.abs(trSummary.incomeSummary).toFixed(2)}
+                    </TrSummaryNum>
+                  </TrSummaryField>
+                </TrSummaryWrap>
               </>
             ) : (
               <div>In this period you don't have any expances</div>

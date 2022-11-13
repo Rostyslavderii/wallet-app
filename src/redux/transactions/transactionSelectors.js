@@ -8,7 +8,9 @@ export const selectBalance = createSelector(
   [selectTransaction],
   transactions => {
     const length = transactions.length;
-    const balance = length ? transactions[length - 1].balanceAfter : 0;
+    const balance = length
+      ? transactions.reduce((acc, transaction) => acc + transaction.amount, 0)
+      : 0;
     return balance;
   }
 );

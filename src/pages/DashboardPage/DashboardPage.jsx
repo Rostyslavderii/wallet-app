@@ -4,10 +4,11 @@ import { Dashboard } from 'components/Dashboard/Dashboard';
 import { Header } from 'components/Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from 'redux/transactions/transactionOperation';
+import { getCategories } from 'redux/categories/categoriesOperations';
 import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper } from './DashboardPage.styled';
-import { LogoutForm } from 'components/LogoutForm/LogoutForm';
+import { Loader } from 'components/Loader/Loader';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const DashboardPage = () => {
   useEffect(() => {
     if (isAuth) {
       dispatch(fetchTransactions());
+      dispatch(getCategories());
     }
   }, [dispatch, isAuth]);
 
@@ -25,11 +27,12 @@ export const DashboardPage = () => {
         <FlexWrapper>
           <LogoutForm />
           <Dashboard />
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </FlexWrapper>
       </Container>
+      {/* <Loader /> */}
     </>
   );
 };

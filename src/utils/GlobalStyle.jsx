@@ -1,4 +1,12 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import orangeEllipseTab from '../images/background/orangeEllipseTab.png';
+import orangeEllipseTabLarge from '../images/background/orangeEllipseTab@2x.png';
+import orangeEllipseDesk from '../images/background/orangeEllipseDesk.png';
+import orangeEllipseDeskLarge from '../images/background/orangeEllipseDesk@2x.png';
+import violetEllipseTab from '../images/background/violetEllipseTab.png';
+import violetEllipseTabLarge from '../images/background/violetEllipseTab@2x.png';
+import violetEllipseDesk from '../images/background/violetEllipseDesk.png';
+import violetEllipseDeskLarge from '../images/background/violetEllipseDesk@2x.png';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -20,6 +28,82 @@ html {
 
 body {
   margin: 0;
+
+  @media screen and (min-width: 768px) {
+    ::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -30;
+      display: block;
+      width: 368px;
+      height: 384px;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      background-image: url(${orangeEllipseTab});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${orangeEllipseTabLarge});
+      }
+    }
+
+    ::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -40;
+      display: block;
+      width: 495px;
+      height: 323px;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      background-image: url(${violetEllipseTab});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${violetEllipseTabLarge});
+      }
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    ::before {
+      width: 552px;
+      height: 383px;
+
+      background-image: url(${orangeEllipseDesk});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${orangeEllipseDeskLarge});
+      }
+    }
+
+    ::after {
+      width: 496px;
+      height: 333px;
+
+      background-image: url(${violetEllipseDesk});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${violetEllipseDeskLarge});
+      }
+    }
+  }
 }
 
 body {
@@ -69,6 +153,7 @@ export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;
+
   @media screen and (min-width: 480px) {
     width: 480px;
   }

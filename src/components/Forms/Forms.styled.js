@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import loginBgImgTab from '../../images/background/loginBgImgTab.png';
+import loginBgImgTabLarge from '../../images/background/loginBgImgTab@2x.png';
+import loginBgImgDesk from '../../images/background/loginBgImgDesk.png';
+import loginBgImgDeskLarge from '../../images/background/loginBgImgDesk@2x.png';
+import registerBgImgTab from '../../images/background/registerBgImgTab.png';
+import registerBgImgTabLarge from '../../images/background/registerBgImgTab@2x.png';
+import registerBgImgDesk from '../../images/background/registerBgImgDesk.png';
+import registerBgImgDeskLarge from '../../images/background/registerBgImgDesk@2x.png';
 
 export const Page = styled.div`
-  position: relative;
-
   @media screen and (max-width: 767px) {
     display: flex;
     flex-direction: column;
@@ -12,30 +18,104 @@ export const Page = styled.div`
 
     background-color: ${p => p.theme.colors.white};
   }
+`;
 
-  /* @media screen and (min-width: 768px) {
+export const CustomizedLoginPage = styled(Page)`
+  @media screen and (min-width: 768px) {
     ::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 60px;
+      left: 114px;
+      z-index: -20;
       display: block;
-      width: 400px;
-      height: 360px;
+      width: 260px;
+      height: 250px;
 
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
 
-      background-image: url(../../images/login/orange-ellipse.png);
+      background-image: url(${loginBgImgTab});
       // retina screen
       @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
-        background-image: url(../../images/login/orange-ellipse@2x.png);
+        background-image: url(${loginBgImgTabLarge});
       }
     }
-  } */
+  }
+
+  @media screen and (min-width: 1280px) {
+    ::before {
+      top: 150px;
+      left: 76px;
+      width: 435px;
+      height: 420px;
+
+      background-image: url(${loginBgImgDesk});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${loginBgImgDeskLarge});
+      }
+    }
+  }
+`;
+
+export const CustomizedRegisterPage = styled(CustomizedLoginPage)`
+  @media screen and (min-width: 768px) {
+    ::before {
+      width: 274px;
+
+      background-image: url(${registerBgImgTab});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${registerBgImgTabLarge});
+      }
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    ::before {
+      top: 153px;
+      left: 66px;
+      width: 452px;
+      height: 413px;
+
+      background-image: url(${registerBgImgDesk});
+      // retina screen
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${registerBgImgDeskLarge});
+      }
+    }
+  }
+`;
+
+export const Title = styled.h1`
+  position: absolute;
+  z-index: -10;
+
+  font-weight: 400;
+  font-size: 30px;
+  line-height: calc(45 / 30);
+
+  color: ${p => p.theme.colors.black};
+
+  @media screen and (max-width: 1279px) {
+    top: 163px;
+    right: 153px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 598px;
+    left: 200px;
+  }
 `;
 
 export const HeaderLogo = styled.header`
@@ -47,12 +127,18 @@ export const HeaderLogo = styled.header`
 export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
     width: 533px;
+    margin-top: 360px;
     margin-left: auto;
     margin-right: auto;
     padding: 40px 58.5px 62px 65px;
 
     border-radius: ${p => p.theme.borderRadius.r20};
     background-color: ${p => p.theme.colors.white};
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 136px;
+    margin-right: 91px;
   }
 `;
 
@@ -92,14 +178,11 @@ export const Label = styled.label`
     top: -4px;
     left: -4px;
     display: block;
-    width: ${p => (p.value < 13 ? (p.value / 12) * 104 : 104)}%;
+    width: ${p => (p.value < 13 ? (p.value / 12) * 102 : 102)}%;
     height: 0;
 
     border: 4px solid
-      ${p =>
-        p.value > 5 && p.value < 13
-          ? p.theme.colors.btGreen
-          : p.theme.colors.btPink};
+      ${p => (!p.error ? p.theme.colors.btGreen : p.theme.colors.btPink)};
     border-radius: 8px;
     box-shadow: ${p => p.theme.boxShadow.confirmPassword};
   }

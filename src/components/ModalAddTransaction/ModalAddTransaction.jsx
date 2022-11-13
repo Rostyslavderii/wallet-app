@@ -31,15 +31,17 @@ import {
   Comment,
   ButtonCard,
   CloseButton,
-  // ADDButton,
-} from './ModalAddTransaction.styled';
+  } from './ModalAddTransaction.styled';
 import { FormButton } from 'components/Forms/Forms.styled';
+import { useMedia } from 'react-use';
 
 export const ModalAddTransaction = ({ onClose }) => {
   const categories = useSelector(selectCategories);
   const [transactionDate, setTransactionDate] = useState(new Date());
   const dispatch = useDispatch();
-
+  
+  const isMobile = useMedia('(max-width: 767px)');
+    
   const validationSchema = yup.object({
     amount: yup
       .number('Please, enter only numbers')
@@ -148,8 +150,7 @@ export const ModalAddTransaction = ({ onClose }) => {
             </Calendar>
           </DateInput>
         </DivSumm>
-        <Comment
-          type="text"
+        <Comment          
           placeholder="Comment"
           name="comment"
           value={values.comment}
@@ -161,9 +162,9 @@ export const ModalAddTransaction = ({ onClose }) => {
             CANCEL
           </Button>
         </ButtonCard>
-        <CloseButton type="button" onClick={onClose}>
+        {!isMobile && <CloseButton type="button" onClick={onClose}>
           <GrClose />
-        </CloseButton>
+        </CloseButton>}
       </ModalForm>
     </>
   );

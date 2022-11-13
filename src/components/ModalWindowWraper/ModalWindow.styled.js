@@ -25,6 +25,9 @@ export const Content = styled.div`
     left: calc(50% - 320px / 2);
     height: 100%;
   }
+  @media (max-width: 768px) {
+    height: 100%;
+  }
 
   z-index: 10;
 

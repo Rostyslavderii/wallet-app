@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 export const Head = styled.header`
   background-color: ${p => p.theme.colors.white};
+  @media screen and (max-width: 767px) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 5;
+  }
 `;
 
 export const DivHeader = styled.div`

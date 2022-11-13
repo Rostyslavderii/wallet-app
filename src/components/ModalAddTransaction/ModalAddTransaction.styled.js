@@ -20,6 +20,11 @@ const checkButtonPosition = type => {
 };
 
 export const ModalTitle = styled.h2`
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+
   text-align: center;
   margin-bottom: 40px;
   font-family: ${p => p.theme.ff.familyPoppins};
@@ -113,6 +118,7 @@ export const SpanExpense = styled.span`
 
 export const SelectCategory = styled.select`
   width: 394px;
+  height: 32px;
   border: 0;
   border-bottom: ${p => p.theme.borderColor.comment};
 
@@ -134,6 +140,7 @@ export const DivSumm = styled.div`
 
 export const Amount = styled.input`
   width: 190px;
+  height: 32px;
   border: 0;
   border-bottom: ${p => p.theme.borderColor.comment};
 
@@ -145,6 +152,7 @@ export const Amount = styled.input`
 
 export const DateInput = styled.div`
   width: 181px;
+  height: 32px;
   border: 0;
 
   position: relative;
@@ -152,12 +160,13 @@ export const DateInput = styled.div`
 
 export const Calendar = styled.span`
   position: absolute;
-  top: 12.5%;
+  top: 25%;
   right: 0;
 `;
 
-export const Comment = styled.input`
+export const Comment = styled.textarea`
   width: 394px;
+  height: 32px;
   border: 0;
   border-bottom: ${p => p.theme.borderColor.comment};
 

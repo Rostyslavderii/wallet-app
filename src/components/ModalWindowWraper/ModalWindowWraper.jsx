@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+import { useEffect } from 'react';
 import { Backdrop, Content } from './ModalWindow.styled';
 
 export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
@@ -6,6 +8,19 @@ export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
       clickOnBackdrop();
     }
   };
+  const handleKey = useCallback(
+    e => {
+      if (e.key === 'Escape') {
+        clickOnBackdrop();
+      }
+    },
+    [clickOnBackdrop]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [handleKey]);
 
   return (
     <Backdrop onClick={handleClick}>

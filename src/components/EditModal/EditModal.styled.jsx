@@ -29,8 +29,10 @@ export const Comment = styled.textarea`
     border-radius: 2px;
   }
   &:focus {
-    outline: 1px solid ${p => p.theme.colors.btBlue};
-    border-radius: 10px;
+    outline: 1px solid ${p => p.theme.colors.bgGray};
+    border-bottom: none;
+    outline-offset: 2px;
+    border-radius: 2px;
     height: 100px;
   }
 `;

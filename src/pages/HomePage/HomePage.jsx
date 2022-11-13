@@ -9,6 +9,7 @@ import { Balance } from 'components/Balance/Balance';
 import { AddTransactionBtn } from 'components/AddTransaction/AddTransactionBtn';
 import { ModalWindowWraper } from 'components/ModalWindowWraper/ModalWindowWraper';
 import { EditModal } from 'components/EditModal/EditModal';
+import { Wrapper } from './HomePage.styled';
 
 const HomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -30,8 +31,9 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       {isMobile && <Balance />}
+      {/* <ModalWindowWraper></ModalWindowWraper> */}
       <TransactionTable
         transactions={transactions}
         categories={categories}
@@ -54,7 +56,7 @@ const HomePage = () => {
           )}
         </ModalWindowWraper>
       )}
-    </>
+    </Wrapper>
   );
 };
 

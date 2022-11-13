@@ -17,7 +17,8 @@ const theme = {
     yellow: '#fed057',
     lReddy: '#FFD8D0',
     reddy: '#fd9498',
-    lGreen: '##24CCA7',
+    lGreen: '#24CCA7',
+    green: '#00AD84',
     lBlight: '#81E1FF',
     lBlue: '#6E78E8',
     lPurple: '#C5BAFF',
@@ -79,6 +80,7 @@ const theme = {
   CurrencyLinear:
     'linear-gradient(180deg, rgba(255, 255, 255, 0.2) -8.67%, rgba(255, 255, 255, 0) 116.22%)',
   BackdropFilter: 'blur(25px)',
+  transition: '250ms cubic-bezier(0.175, 0.885, 0.32, 1.275)',
 };
 
 export default theme;

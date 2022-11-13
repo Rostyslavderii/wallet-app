@@ -7,6 +7,7 @@ import { fetchTransactions } from 'redux/transactions/transactionOperation';
 import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper } from './DashboardPage.styled';
+import { LogoutForm } from 'components/LogoutForm/LogoutForm';
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export const DashboardPage = () => {
       <Header />
       <Container>
         <FlexWrapper>
+          <LogoutForm />
           <Dashboard />
           <Suspense fallback={<div>loading...</div>}>
             <Outlet />

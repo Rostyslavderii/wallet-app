@@ -10,18 +10,18 @@ export const Navigation = () => {
     <StyledNav>
       <StyledUl>
         <li>
-          <StyledNavLink to="/">
+          <StyledNavLink to="/" aria-label="home">
             <AiFillHome /> {!isMob && 'Home'}
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="statistic">
+          <StyledNavLink to="statistic" aria-label="statistic">
             <MdTimeline /> {!isMob && 'Statistic'}
           </StyledNavLink>
         </li>
         {isMob && (
           <li>
-            <StyledNavLink to="currency">
+            <StyledNavLink to="currency" aria-label="currency">
               <FaDollarSign />
             </StyledNavLink>
           </li>

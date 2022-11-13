@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding-top: 68px;
+  padding-top: 128px;
   @media screen and (min-width: 768px) {
     padding-top: 10px;
   }

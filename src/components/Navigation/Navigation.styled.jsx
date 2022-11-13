@@ -65,6 +65,7 @@ export const StyledNav = styled.nav`
     left: 0;
     right: 0;
     z-index: 5;
+    top: 60px;
     padding-top: 15px;
     padding-bottom: 15px;
   }

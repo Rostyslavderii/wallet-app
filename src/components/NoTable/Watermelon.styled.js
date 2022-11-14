@@ -39,12 +39,12 @@ export const Watermelon = styled.div`
 
 
 	div:first-of-type {
-		border: 5.9em solid #90B73F;
+		border: 5.9em solid #00AD84;
 		border-top: 5.9em solid transparent;
 	}
 
 	div:nth-of-type(2) {
-		border: 5.7em solid #D9E38F;
+		border: 5.7em solid #24CCA7; //00AD84
 		border-top: 5.7em solid transparent;
 	}
 
@@ -54,7 +54,7 @@ export const Watermelon = styled.div`
 	}
 
 	div:last-of-type {
-		border: 5em solid #FF8FAA;
+		border: 5em solid #ff6596;
 		border-top: 5em solid transparent;
 
 
@@ -165,12 +165,12 @@ export const Slice = styled.div`
 
 	div:first-of-type {
 		border: 5.9em solid transparent;
-		border-top: 5.9em solid #90B73F;
+		border-top: 5.9em solid #00AD84;
 	}
 
 	div:nth-of-type(2) {
 		border: 5.7em solid transparent;
-		border-top: 5.7em solid #D9E38F;
+		border-top: 5.7em solid #24CCA7;
 	}
 
 	div:nth-of-type(3) {
@@ -180,7 +180,7 @@ export const Slice = styled.div`
 
 	div:last-of-type {
 		border: 5em solid transparent;
-		border-top: 5em solid #FF8FAA;
+		border-top: 5em solid #ff6596;
 
 		i:first-of-type {
 			top: -40px;

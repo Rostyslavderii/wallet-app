@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsSummary } from 'redux/transactionsSummary/trSummaryOperations';
 import {
     selectError,
+    selectIsLoading,
     selectTrSummary,
 } from 'redux/transactionsSummary/trSummarySelectors';
 import { ChartBox, Box, Title, Wrapper } from './Diagram.styled';
@@ -14,6 +15,7 @@ export const Diagram = () => {
     const [year, setYear] = useState('');
 
     const trSummary = useSelector(selectTrSummary);
+    const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     const dispatch = useDispatch();
 
@@ -45,7 +47,7 @@ export const Diagram = () => {
         <Wrapper>
             <Title>Statistics</Title>
             <Box>
-                <ChartBox>{trSummary && <Chart trSummary={trSummary} />}</ChartBox>
+                <ChartBox>{!isLoading && trSummary && <Chart trSummary={trSummary} />}</ChartBox>
                 <StatisticTabel handleChange={handleChange} trSummary={trSummary} />
                 {error && <p>{error}</p>}
             </Box>

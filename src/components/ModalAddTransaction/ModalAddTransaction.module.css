@@ -8,6 +8,15 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
+
+  padding-left: 8px;
+  padding-right: 8px;
+  position: absolute;
+
+  background-color: transparent;
+
+  z-index: 12;
+  cursor: pointer;
 }
 
 .dateTime:active,

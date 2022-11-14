@@ -129,6 +129,12 @@ export const SpanExpense = styled.span`
 export const Error = styled.div`
   position: absolute;
   max-width: 190px;
+
+  margin: 0;
+
+  font-size: 15px;
+  line-height: calc(27 / 18);
+  color: ${p => p.theme.colors.btPink};
 `;
 
 export const customStylesSelect = isMobile => ({
@@ -137,7 +143,7 @@ export const customStylesSelect = isMobile => ({
     backgroundColor: 'white',
     width: isMobile ? '280px' : '394px',
     height: '32px',
-    border: '0',
+    border: '1px solid transparent',
     borderRadius: '0',
     borderBottom: '1px solid #E0E0E0',
 
@@ -147,6 +153,10 @@ export const customStylesSelect = isMobile => ({
     fontSize: `18`,
     lineHeight: 1.5,
     boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.1)',
+
+    paddingLeft: '8px',
+    paddingRight: '8px',
+
     ':active': {
       border: '1px solid #e0e0e0',
       borderRadius: '6px',
@@ -224,6 +234,8 @@ export const DivSumm = styled.div`
 `;
 
 export const Amount = styled.input`
+  padding-left: 8px;
+  padding-right: 8px;
   width: 190px;
   height: 32px;
   border: 0;
@@ -234,6 +246,7 @@ export const Amount = styled.input`
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
 
+  text-align: center;
   &:active,
   &:hover,
   &:focus {
@@ -241,8 +254,16 @@ export const Amount = styled.input`
     border-radius: 6px;
   }
 
+  &::placeholder {
+    text-align: center;
+  }
+
   @media screen and (max-width: 767px) {
     width: 280px;
+    text-align: center;
+    &::placeholder {
+      text-align: left;
+    }
   }
 `;
 
@@ -253,18 +274,28 @@ export const DateInput = styled.div`
 
   position: relative;
 
+  svg {
+    position: relative;
+    top: 25%;
+    left: 90%;
+    fill: #000;
+  }
+  &:focus svg {
+    fill: blue;
+  }
+  &:hover svg {
+    fill: blue;
+  }
+
   @media screen and (max-width: 767px) {
     width: 280px;
   }
 `;
 
-export const Calendar = styled.span`
-  position: absolute;
-  top: 25%;
-  right: 0;
-`;
-
 export const Comment = styled.textarea`
+  padding-left: 8px;
+  padding-right: 8px;
+
   width: 394px;
   height: 32px;
   border: 0;

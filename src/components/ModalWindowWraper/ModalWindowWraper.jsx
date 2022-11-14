@@ -10,7 +10,9 @@ export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
   };
   const handleKey = useCallback(
     e => {
-      clickOnBackdrop();
+      if (e.key === 'Escape') {
+        clickOnBackdrop();
+      }
     },
     [clickOnBackdrop]
   );

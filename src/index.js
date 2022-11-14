@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/wallet-app/">
+    <BrowserRouter basename="/wallet-app/" >
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <PersistGate persistor={persistor}>

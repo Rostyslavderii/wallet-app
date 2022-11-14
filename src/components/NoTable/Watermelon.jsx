@@ -1,8 +1,8 @@
 import { Watermelon, Slice, Button } from './Watermelon.styled.js';
 
-export const WatermelonDiv = () => {
+export const WatermelonDiv = ({ openModal }) => {
   return (
-    <Button>
+    <Button type="button" onClick={openModal}>
       <p>YES</p>
       <Watermelon>
         <div></div>

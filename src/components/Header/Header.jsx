@@ -8,15 +8,18 @@ import {
   LogOutButton,
 } from './Header.styled';
 import { useMedia } from 'react-use';
-import { logout } from 'redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'utils/GlobalStyle';
 import { selectName } from 'redux/auth/authSelectors';
+import { useState } from 'react';
+import { LogoutForm } from 'components/LogoutForm/LogoutForm';
+import { logout } from 'redux/auth/authOperations';
 
 export const Header = () => {
+  const [isOpenLogoutModal, setIsOpenLogoutModal] = useState(false);
   const isMobile = useMedia('(max-width: 767px)');
-  const dispatch = useDispatch();
   const name = useSelector(selectName);
+  const dispatch = useDispatch();
 
   return (
     <Head>
@@ -25,9 +28,12 @@ export const Header = () => {
           <Logo />
           <DivHeaderUser>
             <SpanNameHeader>{name}</SpanNameHeader>
+            {isOpenLogoutModal && (
+              <LogoutForm closeModalFunc={() => setIsOpenLogoutModal(false)} />
+            )}
             <LogOutButton
               onClick={() => {
-                dispatch(logout());
+                isMobile ? dispatch(logout()) : setIsOpenLogoutModal(true);
               }}
             >
               <IoLogOutOutline /> {!isMobile && 'Exit'}

@@ -34,9 +34,13 @@ import {
 import Select from 'react-select';
 import { FormButton } from 'components/Forms/Forms.styled';
 import { useMedia } from 'react-use';
+import { selectBalance } from 'redux/transactions/transactionSelectors';
+import { toast } from 'react-toastify';
+import { toastStyled } from 'utils/GlobalStyle';
 
 export const ModalAddTransaction = ({ onClose }) => {
   const categories = useSelector(selectCategories);
+  const balance = useSelector(selectBalance);
   const [transactionDate, setTransactionDate] = useState(new Date());
   const [categoryId, setCategoryId] = useState('');
   const dispatch = useDispatch();
@@ -73,6 +77,13 @@ export const ModalAddTransaction = ({ onClose }) => {
         comment,
         amount: type ? -Number(amount) : Number(amount),
       };
+      if (balance + newTransaction.amount < 0) {
+        toast.warn(
+          'Insufficient balance to complete the transaction!',
+          toastStyled
+        );
+        return;
+      }
       dispatch(addTransaction(newTransaction));
       resetForm();
       onClose();

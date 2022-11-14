@@ -16,7 +16,7 @@ export const NoTable = styled.div`
     background-color: ${p => p.theme.colors.white};
   } */
 font-weight: ${p => p.theme.fontWeight.fw4};
-  padding-top: 10px;
+  padding-bottom: 18px;
   padding-left: 5px;
 
   @media screen and (max-width: 767px) {
@@ -27,7 +27,7 @@ font-weight: ${p => p.theme.fontWeight.fw4};
 export const NoTableSized = styled(NoTable)`
 
   @media screen and (min-width: 768px) {
-    ::before {
+    ::after {
       content: '';
       display: block;
       width: 260px;
@@ -48,7 +48,7 @@ export const NoTableSized = styled(NoTable)`
   }
 
   @media screen and (min-width: 1280px) {
-    ::before {
+    ::after {
       top: 150px;
       left: 76px;
       width: 435px;

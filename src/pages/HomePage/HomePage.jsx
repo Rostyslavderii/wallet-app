@@ -34,7 +34,7 @@ const HomePage = () => {
   return (
     <Wrapper>
       {isMobile && <Balance />}
-      {transactions.length > 0 || <NoTableImg />}
+      {!(transactions.length > 0) && <NoTableImg />}
       <TransactionTable
         transactions={transactions}
         categories={categories}

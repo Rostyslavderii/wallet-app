@@ -116,7 +116,7 @@ export const DataValue = styled.span`
   }
   display: block;
   white-space: nowrap;
-  width: 130px;
+  max-width: 120px;
   max-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;

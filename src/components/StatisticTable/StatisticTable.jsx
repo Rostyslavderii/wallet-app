@@ -16,7 +16,7 @@ import {
 
 export const StatisticTabel = ({ handleChange, trSummary }) => {
   return (
-    <>
+    <div>
       <SelectWrap>
         <SelectField>
           <Select onChange={handleChange} name="month">
@@ -107,6 +107,6 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
           </div>
         )}
       </Wrapper>
-    </>
+    </div>
   );
 };

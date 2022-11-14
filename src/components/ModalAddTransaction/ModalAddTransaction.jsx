@@ -123,6 +123,7 @@ export const ModalAddTransaction = ({ onClose }) => {
               changeCategory(evt);
             }}
             options={selectOption()}
+            required
           ></Select>
         )}
         <DivSumm>

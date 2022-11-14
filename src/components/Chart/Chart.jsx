@@ -42,7 +42,6 @@ export const Chart = ({ trSummary }) => {
                     data.labels.push(name);
 
                     const totalTr = Math.round(amount / expence * 100);
-                    // console.log("totalTr", totalTr);
                     data.datasets[0].data.push(totalTr);
                 })
             }
@@ -55,6 +54,6 @@ export const Chart = ({ trSummary }) => {
 
 
     return (
-        trSummary && <Doughnut redraw={true} options={options} data={data} height="288px" width="288px" />
+        <Doughnut redraw={true} options={options} data={data} height="288px" width="288px" />
     )
 }

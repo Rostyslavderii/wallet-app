@@ -30,6 +30,8 @@ body {
   margin: 0;
 
   @media screen and (min-width: 768px) {
+  position: relative;
+
     ::before {
       content: '';
       position: absolute;
@@ -78,6 +80,8 @@ body {
   }
 
   @media screen and (min-width: 1280px) {
+    position: static;
+    
     ::before {
       width: 552px;
       height: 383px;
@@ -170,3 +174,14 @@ export const Container = styled.div`
     width: 1280px;
   }
 `;
+
+export const toastStyled = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'colored',
+};

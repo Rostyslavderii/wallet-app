@@ -22,11 +22,14 @@ export const Page = styled.div`
 
 export const CustomizedLoginPage = styled(Page)`
   @media screen and (min-width: 768px) {
+    padding-top: 360px;
+    padding-bottom: 196px;
+
     ::before {
       content: '';
       position: absolute;
       top: 60px;
-      left: 114px;
+      left:   114px;
       z-index: -20;
       display: block;
       width: 260px;
@@ -47,6 +50,9 @@ export const CustomizedLoginPage = styled(Page)`
   }
 
   @media screen and (min-width: 1280px) {
+    padding-top: 136px;
+    padding-bottom: 116px;
+
     ::before {
       top: 150px;
       left: 76px;
@@ -61,11 +67,35 @@ export const CustomizedLoginPage = styled(Page)`
         background-image: url(${loginBgImgDeskLarge});
       }
     }
+
+    ::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -25;
+      display: block;
+      width: 57%;
+      height: 100vh;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.4)
+      );
+      backdrop-filter: blur(25px);
+    }
   }
 `;
 
 export const CustomizedRegisterPage = styled(CustomizedLoginPage)`
   @media screen and (min-width: 768px) {
+    padding-bottom: 48px;
+
     ::before {
       width: 274px;
 
@@ -80,6 +110,9 @@ export const CustomizedRegisterPage = styled(CustomizedLoginPage)`
   }
 
   @media screen and (min-width: 1280px) {
+    padding-top: 52px;
+    padding-bottom: 52px;
+
     ::before {
       top: 153px;
       left: 66px;
@@ -127,7 +160,6 @@ export const HeaderLogo = styled.header`
 export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
     width: 533px;
-    margin-top: 360px;
     margin-left: auto;
     margin-right: auto;
     padding: 40px 58.5px 62px 65px;
@@ -137,7 +169,6 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    margin-top: 136px;
     margin-right: 91px;
   }
 `;

@@ -26,9 +26,9 @@ export const StyledNavLink = styled(NavLink)`
     fill: ${p => p.theme.colors.white};
 
     @media screen and (min-width: 768px) {
-      width: 18px;
-      height: 18px;
-      padding: 3px;
+      width: 22px;
+      height: 22px;
+      padding: 5px;
       border-radius: 2px;
     }
   }

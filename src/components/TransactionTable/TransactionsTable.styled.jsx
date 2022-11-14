@@ -4,7 +4,7 @@ import { switchColor } from 'helpers/transformDate';
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 320px;
-  overflow: visible scroll;
+  overflow: hidden scroll;
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
@@ -116,7 +116,7 @@ export const DataValue = styled.span`
   }
   display: block;
   white-space: nowrap;
-  width: 130px;
+  max-width: 120px;
   max-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -132,19 +132,19 @@ export const Button = styled.button`
   padding: 5px 7px;
   border: none;
   border-radius: 6px;
-  color: white;
+  color: ${p => p.theme.colors.white};
   background-color: ${chooseBtnColor};
   transition: box-shadow 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover,
   &:focus {
-    box-shadow: 0px 3px 10px ${chooseBtnColor};
+    box-shadow: 0px 2px 6px ${chooseBtnColor};
   }
   svg {
     width: 24px;
     height: 24px;
     @media screen and (min-width: 768px) {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
   }
 `;

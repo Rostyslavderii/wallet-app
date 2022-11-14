@@ -36,7 +36,7 @@ export const Chart = ({ trSummary }) => {
                     if (type === "INCOME") {
                         return;
                     }
-                    console.log("chart function info");
+                    // console.log("chart function info");
                     const bgColor = switchBgStatistic({ name, theme });
                     const amount = Math.abs(total);
                     const expence = Math.abs(trSummary.expenseSummary);

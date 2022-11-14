@@ -34,7 +34,6 @@ const HomePage = () => {
   return (
     <Wrapper>
       {isMobile && <Balance />}
-      {/* <ModalWindowWraper></ModalWindowWraper> */}
       {!(transactions.length > 0) && <NoTableImg />}
       <TransactionTable
         transactions={transactions}

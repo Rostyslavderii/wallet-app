@@ -13,6 +13,10 @@ export const StyledButton = styled.button`
   transition: all 0.3s;
   z-index: 10;
 
+  &:hover {
+    transform: scale(1.05);
+  }
+
   ${p => {
     if (p.primary) {
       return `

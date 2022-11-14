@@ -10,77 +10,32 @@ export const StyledButton = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   overflow: hidden;
-  background-color: transparent;
+  background-color: #fff;
+  transition: all 0.3s;
   z-index: 10;
 
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    // border-radius: ${p => p.theme.borderRadius.r20};
-    z-index: -2;
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: blue;
-    transition: all 0.5s;
-    // border-radius: ${p => p.theme.borderRadius.r20};
-    z-index: -1;
+  &:hover {
+    transform: scale(1.05);
   }
 
   ${p => {
     if (p.primary) {
       return `
+      background: ${p.theme.colors.btGreen};
       color: ${p.theme.colors.white};
-      &:before{
-        background-color: ${p.theme.colors.white};
-      }
-      &:after{
-        background: ${p.theme.colors.btGreen};
-      }
       &:hover {
-        color: ${p.theme.colors.btBlue};
-        outline: ${p.theme.borderColor.b};
-        &:before {
-          width: 100%;
-        }
+        box-shadow: 0px 6px 15px ${p.theme.colors.btGreen};
       }`;
     }
-    return `
-    //background-color: ${p.theme.colors.white};
-    background-color: transparent;
+    return `    
     outline: ${p.theme.borderColor.b};
     color: ${p.theme.colors.btBlue};
     
-    &:before{
-     background: ${p.theme.colors.btGreen};
-    }
-    &:after{
-       background-color: ${p.theme.colors.white};
-    }
     &:hover {
-      outline: transparent;
-      color: ${p.theme.colors.white};
-      &:before {
-        width: 100%;
-      }
+      box-shadow: 0px 6px 15px ${p.theme.colors.btBlue};
     }`;
   }}
 
-  &:hover {
-    // color: #fff;
-    &:before {
-      width: 100%;
-    }
-  }
   min-height: 50px;
 
   @media screen and (min-width: 768px) {

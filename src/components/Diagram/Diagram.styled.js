@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const Title = styled.h2`
     margin-bottom: 20px;
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 45px;
-    color: #000000;
+    font-family: ${p => p.theme.ff.familyPoppins};
+    font-weight: ${p => p.theme.fontWeight.fw4};
+    font-size: ${p => p.theme.fontSize.fs30};
+    line-height: 1.5;
+    color: ${p => p.theme.colors.black};
 `;
 
 const Wrapper = styled.div`

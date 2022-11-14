@@ -52,7 +52,7 @@ export const LoginForm = () => {
 
         <section>
           <Form onSubmit={handleSubmit}>
-            <Label error={errors.email}>
+            <Label value={values.email} error={errors.email}>
               <IoMdMail />
               <Input
                 type="text"
@@ -70,7 +70,11 @@ export const LoginForm = () => {
               )}
             </Label>
 
-            <Label error={errors.password} value={values.password.length}>
+            <Label
+              value={values.password}
+              error={errors.password}
+              length={values.password.length}
+            >
               <MdLock />
               <Input
                 type="password"

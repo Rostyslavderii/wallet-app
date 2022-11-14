@@ -13,7 +13,8 @@ export const Diagram = () => {
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
 
-    const trSummary = useSelector(selectTrSummary);
+    let trSummary = useSelector(selectTrSummary);
+
     // const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     const dispatch = useDispatch();
@@ -42,12 +43,20 @@ export const Diagram = () => {
         }
     };
 
+    const result = (trSummary) => {
+        if (!month && !year) {
+            return trSummary = null;
+        } else {
+            return trSummary;
+        }
+    }
+
     return (
         <Wrapper>
             <Title>Statistics</Title>
             <Box>
-                <ChartBox>{<Chart trSummary={trSummary} />}</ChartBox>
-                <StatisticTabel handleChange={handleChange} trSummary={trSummary} />
+                <ChartBox><Chart trSummary={result(trSummary)} /></ChartBox>
+                <StatisticTabel handleChange={handleChange} trSummary={result(trSummary)} />
                 {error && <p>{error}</p>}
             </Box>
         </Wrapper>

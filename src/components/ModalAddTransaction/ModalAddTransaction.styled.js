@@ -204,7 +204,7 @@ export const customStylesSelect = isMobile => ({
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(25px)',
     borderRadius: '20px',
-    height: '352px',
+    height: '325px',
     zIndex: '1000000',
   }),
   menuList: styles => ({

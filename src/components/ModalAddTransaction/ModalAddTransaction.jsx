@@ -25,7 +25,6 @@ import {
   DivSumm,
   Amount,
   DateInput,
-  Calendar,
   Comment,
   ButtonCard,
   CloseButton,
@@ -52,7 +51,6 @@ export const ModalAddTransaction = ({ onClose }) => {
     amount: yup
       .number()
       .typeError('Must be a number')
-      .required('Amount is required')
       .moreThan(0, 'Please, enter number more than 0'),
   });
 
@@ -163,13 +161,13 @@ export const ModalAddTransaction = ({ onClose }) => {
               onChange={evt => {
                 changeDate(evt);
               }}
-              inputProps={{ className: styles.dateTime }}
+              inputProps={{
+                className: styles.dateTime,
+              }}
               closeOnSelect={true}
               isValidDate={valid}
             />
-            <Calendar>
-              <BsCalendar4Week />
-            </Calendar>
+            <BsCalendar4Week />
           </DateInput>
         </DivSumm>
         <Comment

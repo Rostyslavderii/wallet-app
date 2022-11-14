@@ -1,6 +1,5 @@
 import { Button } from 'components/Button/Button';
 import { ModalTitle } from 'components/ModalAddTransaction/ModalAddTransaction.styled';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/authOperations';
 import { Wraper } from './Logout.styled';

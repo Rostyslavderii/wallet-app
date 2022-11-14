@@ -3,7 +3,7 @@ import { Watermelon, Slice, Button } from './Watermelon.styled.js';
 export const WatermelonDiv = ({ openModal }) => {
   return (
     <Button type="button" onClick={openModal}>
-      <p>YES</p>
+      <p>Add transaction</p>
       <Watermelon>
         <div></div>
         <div></div>

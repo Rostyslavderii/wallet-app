@@ -10,6 +10,7 @@ import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper, Section } from './DashboardPage.styled';
 import { Loader } from 'components/Loader/Loader';
 import { useMedia } from 'react-use';
+import { Button } from 'components/Button/Button';
 
 export const DashboardPage = () => {
   const isMobile = useMedia('(max-width: 767px)');
@@ -25,6 +26,8 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
+      <Button></Button>
+      <Button primary></Button>
       {isMobile ? (
         <Container>
           <FlexWrapper>

@@ -3,6 +3,7 @@ export const StyledButton = styled.button`
   position: relative;
   padding: 13px;
   border-radius: ${p => p.theme.borderRadius.r20};
+  min-width: 70px;
 
   font-size: 18px;
   line-height: calc(27 / 18);

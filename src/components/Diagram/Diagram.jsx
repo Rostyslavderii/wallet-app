@@ -42,7 +42,7 @@ export const Diagram = () => {
       <Title>Statistics</Title>
       <Box>
         <ChartBox>
-          {!isLoading && trSummary && <Chart trSummary={result(trSummary)} />}
+          <Chart trSummary={result(trSummary)} />
         </ChartBox>
         <StatisticTabel
           setYear={setYear}

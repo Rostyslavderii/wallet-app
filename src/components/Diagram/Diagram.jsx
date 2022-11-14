@@ -47,7 +47,7 @@ export const Diagram = () => {
         <Wrapper>
             <Title>Statistics</Title>
             <Box>
-                <ChartBox>{!isLoading && trSummary && <Chart trSummary={trSummary} />}</ChartBox>
+                <ChartBox>{!isLoading && <Chart trSummary={trSummary} />}</ChartBox>
                 <StatisticTabel handleChange={handleChange} trSummary={trSummary} />
                 {error && <p>{error}</p>}
             </Box>

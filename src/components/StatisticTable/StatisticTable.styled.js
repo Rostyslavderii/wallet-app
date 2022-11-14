@@ -29,6 +29,14 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const NoDataField = styled.div`
+  overflow: hidden;
+`;
+
+export const TextMessage = styled.h2`
+
+`;
+
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
@@ -47,8 +55,12 @@ export const TableHeading = styled.th`
   border: none;
   background-color: ${p => p.theme.colors.white};
   text-align: ${p => (p.left ? 'left' : 'right')};
-  padding: 16px 10px 15px 20px;
+  /* padding: 16px 10px 15px 20px; */
   padding: ${p => p.left ? '16px 10px 15px 20px' : '16px 20px 15px 10px'};
+  @media screen and (min-width: 1280px) {
+    padding: ${p => p.left ? '16px 10px 15px 28px' : '16px 28px 15px 10px'};
+  }
+  
 
   font-weight: 700;
   font-size: 18px;
@@ -56,9 +68,6 @@ export const TableHeading = styled.th`
 `;
 
 export const TrData = styled.tr`
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
     &:not(:last-child) {
       margin-bottom: 8px;
   }
@@ -76,27 +85,35 @@ export const TrData = styled.tr`
         border: 1px solid #dcdcdf;
         box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
       }
-    
-  
 `;
 
 export const StyledTd = styled.td`
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: ${p => (p.leftPosition ? 'end' : 'auto')};
+  position: relative;
+  padding-left: ${p => (p.name ? '58px' : '0')};
+  padding-right: ${p => (p.right ? '20px' : '0')};
 
-  padding: 8px 10px;
-  padding-left: ${p => (p.name ? '40px' : '10px')};
   height: 52px;
   line-height: calc(18 / 16);
   font-weight: ${p => (p.type ? '700' : '400')};
+  text-align: ${p => (p.left ? 'left' : 'right')};
+
+  @media screen and (max-width: 767px) {
+    max-width: 188px;
+  }
+ 
+  @media screen and (min-width: 1280px){
+    padding-left: ${p => (p.name ? '68px' : '0')};
+    padding-right: ${p => (p.right ? '28px' : '0')};
+  }
 
   &::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 18px;
+    @media screen and (min-width: 1280px){
+      left: 28px;
+    }
     transform: translateY(-50%);
     display: ${p => (p.name ? 'block' : 'none')};
     width: 24px;
@@ -118,6 +135,11 @@ export const TrSummaryField = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
+
+  @media screen and (min-width: 1280px){
+    padding: 0 28px;
+  }
 `;
 
 export const TrSummaryStr = styled.span`
@@ -139,7 +161,7 @@ export const SelectWrap = styled.div`
  
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
   margin-bottom: 20px;
 `;
 
@@ -192,3 +214,120 @@ export const Select = styled.select`
 export const Option = styled.option`
   line-height: calc(24 / 16);
 `;
+
+export const customStylesSelect = isMobile => ({
+  control: styles => ({
+    ...styles,
+    backgroundColor: 'inherit',
+    // width: isMobile ? '100%' : '160px',
+    width: '100%',
+    height: '50px',
+    border: '1px solid #000000',
+    borderRadius: '30px',
+    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+    paddingLeft: '10px',
+    paddingRight: '16px',
+    
+    color: '#e0e0e0',
+    fontFamily: 'Exo,  sans-serif',
+    fontWeight: `400`,
+    fontSize: `18`,
+    lineHeight: 1.5,
+    outline: 'none',
+    cursor: 'pointer',
+    marginBottom:  isMobile ? '20px' : '0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    
+    ':hover': {
+      borderColor: '#000000'
+    }
+  }),
+  container: styles => ({
+    ...styles,
+    flexGrow: '1',
+    ':first-child': {
+      marginRight: isMobile ? '0' : '20px',
+      flexGrow: '2',
+      flexShrink: '0',
+    },
+  }),
+  ValueContainer: styles => ({
+    ...styles,
+    paddingRight: '10px',
+  }),
+  indicatorSeparator: styles => ({
+    ...styles,
+    display: 'none',
+  }),
+
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
+    ...styles,
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    verticalAlign: 'center',
+    borderRadius: '15px',
+    padding: '15px',
+    backgroundColor: isDisabled
+      ? undefined
+      : isSelected
+      ? data.color
+      : isFocused
+      ? 'rgba(255, 255, 255, 0.5)'
+      : undefined,
+
+    color: isDisabled
+      ? '#ccc'
+      : isSelected
+      ? data.color
+      : isFocused
+      ? '#ff6596'
+      : undefined,
+
+    cursor: isDisabled ? 'not-allowed' : 'default',
+
+    ':active': {
+      ...styles[':active'],
+      backgroundColor: !isDisabled
+        ? isSelected
+          ? data.color
+          : 'rgba(255, 255, 255, 0.5)'
+        : undefined,
+    },
+    ':hover': {
+      color: '#ff6596',
+      background: 'rgba(255, 255, 255, 0.5)',
+      
+    },
+    ':focus': {
+      color: '#ff6596',
+      background: 'rgba(255, 255, 255, 0.5)',
+    },
+  }),
+  menu: styles => ({
+    ...styles,
+    background: 'rgba(255, 255, 255, 0.8)',
+    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(25px)',
+    borderRadius: '15px',
+    // height: '400px',
+    zIndex: '1000000',
+  }),
+  menuList: styles => ({
+    ...styles,
+    overflow: 'hidden scroll',
+
+    '::-webkit-scrollbar': {
+    width: '4px',
+  },
+  '::-webkit-scrollbar-track': {
+    borderRadius: '2px',
+  },
+  '::-webkit-scrollbar-thumb': {
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    borderRadius:' 2px',
+  }
+  }),
+});

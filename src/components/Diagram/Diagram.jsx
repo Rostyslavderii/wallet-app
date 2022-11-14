@@ -11,38 +11,22 @@ import {
 import { ChartBox, Box, Title, Wrapper } from './Diagram.styled';
 
 export const Diagram = () => {
-    const [month, setMonth] = useState('');
-    const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
 
-    let trSummary = useSelector(selectTrSummary);
+  let trSummary = useSelector(selectTrSummary);
 
-    const isLoading = useSelector(selectIsLoading);
-    const error = useSelector(selectError);
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        const fetchTransactionsSummary = ({ month, year }) => {
-            dispatch(getTransactionsSummary({ month, year }));
-        };
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const dispatch = useDispatch();
 
-        if (month && year) {
-            fetchTransactionsSummary({ month, year });
-        }
 
-    }, [month, year, dispatch]);
-
-    const handleChange = ({ target: { name, value } }) => {
-        switch (name) {
-            case 'month':
-                setMonth(value);
-                break;
-            case 'year':
-                setYear(value);
-                break;
-            default:
-                return;
-        }
+  useEffect(() => {
+    const fetchTransactionsSummary = ({ month, year }) => {
+      dispatch(getTransactionsSummary({ month, year }));
     };
+
 
     const summaryList = (trSummary) => {
         if (!month || !year) {
@@ -52,6 +36,7 @@ export const Diagram = () => {
             return trSummary;
         }
     }
+  }, [month, year, dispatch]);
 
     return (
         <Wrapper>
@@ -61,7 +46,11 @@ export const Diagram = () => {
                     ? <ChartBox><Chart trSummary={summaryList(trSummary)} /></ChartBox>
                     : <ChartBox></ChartBox>
                 }
-                <StatisticTabel handleChange={handleChange} trSummary={summaryList(trSummary)} />
+                <StatisticTabel
+          setYear={setYear}
+          setMonth={setMonth}
+          trSummary={result(trSummary)}
+        />
                 {error && <p>{error}</p>}
             </Box>
         </Wrapper>

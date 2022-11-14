@@ -126,6 +126,11 @@ export const SpanExpense = styled.span`
   color: ${p => p.theme.colors.btPink};
 `;
 
+export const Error = styled.div`
+  position: absolute;
+  max-width: 190px;
+`;
+
 export const customStylesSelect = isMobile => ({
   control: styles => ({
     ...styles,

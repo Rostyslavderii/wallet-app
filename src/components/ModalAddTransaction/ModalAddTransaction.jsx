@@ -30,6 +30,7 @@ import {
   ButtonCard,
   CloseButton,
   customStylesSelect,
+  Error,
 } from './ModalAddTransaction.styled';
 import Select from 'react-select';
 import { FormButton } from 'components/Forms/Forms.styled';
@@ -49,7 +50,8 @@ export const ModalAddTransaction = ({ onClose }) => {
 
   const validationSchema = yup.object({
     amount: yup
-      .number('Please, enter only numbers')
+      .number()
+      .typeError('Must be a number')
       .required('Amount is required')
       .moreThan(0, 'Please, enter number more than 0'),
   });
@@ -144,7 +146,7 @@ export const ModalAddTransaction = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.amount && <div>{errors.amount}</div>}
+            {errors.amount && <Error>{errors.amount}</Error>}
           </div>
 
           <DateInput>

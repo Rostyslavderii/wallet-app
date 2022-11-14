@@ -35,8 +35,7 @@ const HomePage = () => {
     <Wrapper>
       {isMobile && <Balance />}
       {/* <ModalWindowWraper></ModalWindowWraper> */}
-      {transactions.length > 0 || <NoTableImg />}
-      {console.log(transactions.length)}
+      {!(transactions.length > 0) && <NoTableImg />}
       <TransactionTable
         transactions={transactions}
         categories={categories}

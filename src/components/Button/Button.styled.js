@@ -80,7 +80,7 @@ export const StyledButton = styled.button`
       width: 100%;
     }
   }
-  height: 50px;
+  min-height: 50px;
 
   @media screen and (min-width: 768px) {
     width: 300px;

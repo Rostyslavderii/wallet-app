@@ -9,7 +9,6 @@ import { selectIsAuth } from 'redux/auth/authSelectors';
 import { Container } from 'utils/GlobalStyle';
 import { FlexWrapper, Section } from './DashboardPage.styled';
 import { Loader } from 'components/Loader/Loader';
-import { LogoutForm } from 'components/LogoutForm/LogoutForm';
 import { useMedia } from 'react-use';
 
 export const DashboardPage = () => {
@@ -26,7 +25,6 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-      <LogoutForm></LogoutForm>
       {isMobile ? (
         <Container>
           <FlexWrapper>

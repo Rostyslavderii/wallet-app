@@ -1,3 +1,4 @@
+// import { DropdownMonth } from './DropdownMonth';
 import {
   Table,
   TableHeading,
@@ -9,32 +10,94 @@ import {
   TrSummaryStr,
   TrSummaryNum,
   SelectWrap,
-  SelectField,
-  Select,
-  Option,
+  // SelectField,
+  // Select,
+  // Option,
+  NoDataField,
+  TextMessage,
 } from './StatisticTable.styled';
 
-export const StatisticTabel = ({ handleChange, trSummary }) => {
+import { customStylesSelect } from './StatisticTable.styled';
+import { useMedia } from 'react-use';
+
+import Select from 'react-select';
+
+const dataMonth = [
+  { id: 0, label: 'January', value: '1' },
+  { id: 1, label: 'February', value: '2' },
+  { id: 2, label: 'March', value: '3' },
+  { id: 3, label: 'April', value: '4' },
+  { id: 4, label: 'May', value: '5' },
+  { id: 5, label: 'June', value: '6' },
+  { id: 6, label: 'July', value: '7' },
+  { id: 7, label: 'August', value: '8' },
+  { id: 8, label: 'September', value: '9' },
+  { id: 9, label: 'October', value: '10' },
+  { id: 10, label: 'November', value: '11' },
+  { id: 11, label: 'December', value: '12' },
+];
+
+const dataYear = [
+  { id: 0, label: '2022', value: '2022' },
+  { id: 1, label: '2023', value: '2023' },
+];
+
+export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
+  const isMobile = useMedia('(max-width: 767px)');
+
+  const selectOption = data =>
+    data.reduce((acc, item) => {
+      acc.push({
+        value: `${item.value}`,
+        label: `${item.label}`,
+      });
+
+      return acc;
+    }, []);
+
   return (
     <div>
+      {/* <DropdownMonth onChange={handleChange} /> */}
       <SelectWrap>
+        <Select
+          name="month"
+          placeholder="Month"
+          styles={customStylesSelect(isMobile)}
+          onChange={evt => {
+            setMonth(evt.value);
+          }}
+          options={selectOption(dataMonth)}
+        ></Select>
+
+        <Select
+          name="year"
+          placeholder="Year"
+          styles={customStylesSelect(isMobile)}
+          onChange={evt => {
+            setYear(evt.value);
+          }}
+          options={selectOption(dataYear)}
+        ></Select>
+      </SelectWrap>
+
+      {/* <SelectWrap>
         <SelectField>
           <Select onChange={handleChange} name="month">
             <Option value="" hidden>
               Month
             </Option>
-            <Option value="1">1</Option>
-            <Option value="2">2</Option>
-            <Option value="3">3</Option>
-            <Option value="4">4</Option>
-            <Option value="5">5</Option>
-            <Option value="6">6</Option>
-            <Option value="7">7</Option>
-            <Option value="8">8</Option>
-            <Option value="9">9</Option>
-            <Option value="10">10</Option>
-            <Option value="11">11</Option>
-            <Option value="12">12</Option>
+            <Option value="1">January</Option>
+            <Option value="2">February</Option>
+            <Option value="3">March</Option>
+            <Option value="4">April</Option>
+            <Option value="5">May</Option>
+            <Option value="6">June</Option>
+            <Option value="7">July</Option>
+            <Option value="8">August</Option>
+            <Option value="9">September</Option>
+            <Option value="10">October</Option>
+            <Option value="11">November</Option>
+            <Option value="12">December</Option>
           </Select>
         </SelectField>
 
@@ -47,7 +110,7 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
             <Option value="2023">2023</Option>
           </Select>
         </SelectField>
-      </SelectWrap>
+      </SelectWrap> */}
 
       <Wrapper>
         {trSummary ? (
@@ -70,7 +133,7 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
                               <StyledTd left name={name}>
                                 {name}
                               </StyledTd>
-                              <StyledTd leftPosition>
+                              <StyledTd right leftPosition>
                                 {Math.abs(total).toFixed(2)}
                               </StyledTd>
                             </TrData>
@@ -82,6 +145,7 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
                     )}
                   </tbody>
                 </Table>
+
                 <TrSummaryWrap>
                   <TrSummaryField>
                     <TrSummaryStr>Expanses: </TrSummaryStr>
@@ -98,13 +162,20 @@ export const StatisticTabel = ({ handleChange, trSummary }) => {
                 </TrSummaryWrap>
               </>
             ) : (
-              <div>In this period you don't have any expances</div>
+              <NoDataField>
+                <TextMessage>
+                  In this period you don't have any expances
+                </TextMessage>
+              </NoDataField>
             )}
           </>
         ) : (
-          <div>
-            Can you please put a month and year when you did a transactions
-          </div>
+          <NoDataField>
+            <TextMessage>
+              Could you please indicate the month and year when you made any
+              transactions?
+            </TextMessage>
+          </NoDataField>
         )}
       </Wrapper>
     </div>

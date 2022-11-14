@@ -13,8 +13,9 @@ export const Diagram = () => {
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
 
-    const trSummary = useSelector(selectTrSummary);
-    // const isLoading = useSelector(selectIsLoading);
+    let trSummary = useSelector(selectTrSummary);
+
+    // const isLoadingSummary = useSelector(selectIsLoadingSummary);
     const error = useSelector(selectError);
     const dispatch = useDispatch();
 
@@ -29,25 +30,27 @@ export const Diagram = () => {
 
     }, [month, year, dispatch]);
 
-    const handleChange = ({ target: { name, value } }) => {
-        switch (name) {
-            case 'month':
-                setMonth(value);
-                break;
-            case 'year':
-                setYear(value);
-                break;
-            default:
-                return;
+    const summaryList = (trSummary) => {
+        if (!month || !year) {
+            trSummary = null;
+            return trSummary;
+        } else {
+            return trSummary;
         }
-    };
+    }
 
     return (
         <Wrapper>
             <Title>Statistics</Title>
             <Box>
-                <ChartBox>{<Chart trSummary={trSummary} />}</ChartBox>
-                <StatisticTabel handleChange={handleChange} trSummary={trSummary} />
+                <ChartBox>
+                    <Chart trSummary={summaryList(trSummary)} />
+                </ChartBox>
+                <StatisticTabel
+                    setYear={setYear}
+                    setMonth={setMonth}
+                    trSummary={summaryList(trSummary)}
+                />
                 {error && <p>{error}</p>}
             </Box>
         </Wrapper>

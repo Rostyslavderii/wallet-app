@@ -12,6 +12,7 @@ export const fetchTransactions = createAsyncThunk(
       const { data } = await axios('/transactions');
       return data;
     } catch (error) {
+      toast.error('Ooops... Something Went Wrong', toastStyled);
       return rejectWithValue(error.message);
     }
   }
@@ -25,6 +26,7 @@ export const addTransaction = createAsyncThunk(
       toast.success('Transaction successful!', toastStyled);
       return data;
     } catch (error) {
+      toast.error('Ooops... Something Went Wrong', toastStyled);
       return rejectWithValue(error.message);
     }
   }
@@ -38,6 +40,7 @@ export const updateTransaction = createAsyncThunk(
       toast.success('Comment was updated!', toastStyled);
       return data;
     } catch (error) {
+      toast.error('Ooops... Something Went Wrong', toastStyled);
       return rejectWithValue(error.message);
     }
   }
@@ -51,6 +54,7 @@ export const deleteTransaction = createAsyncThunk(
       toast.success('Transaction delete!', toastStyled);
       return id;
     } catch (error) {
+      toast.error('Ooops... Something Went Wrong', toastStyled);
       return rejectWithValue(error.message);
     }
   }

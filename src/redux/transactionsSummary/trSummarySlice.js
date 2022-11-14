@@ -6,22 +6,22 @@ const trSummarySlice = createSlice({
   name: 'transactions',
   initialState: {
     summary: null,
-    isLoading: false,
+    isLoadingSummary: false,
     error: null,
   },
 
   extraReducers: {
     [getTransactionsSummary.pending]: state => {
-      state.isLoading = true;
+      state.isLoadingSummary = true;
       state.error = null;
     },
     [getTransactionsSummary.fulfilled]: (state, { payload }) => {
       state.summary = payload;
-      state.isLoading = false;
+      state.isLoadingSummary = false;
     },
     [getTransactionsSummary.rejected]: (state, { payload }) => {
       state.error = payload;
-      state.isLoading = false;
+      state.isLoadingSummary = false;
     },
   },
 });

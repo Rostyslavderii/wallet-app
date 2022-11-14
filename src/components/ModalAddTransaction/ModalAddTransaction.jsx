@@ -103,6 +103,10 @@ export const ModalAddTransaction = ({ onClose }) => {
       return acc;
     }, []);
 
+  const valid = function (current) {
+    return current.isBefore(new Date());
+  };
+
   return (
     <>
       <ModalTitle>Add transaction</ModalTitle>
@@ -160,6 +164,8 @@ export const ModalAddTransaction = ({ onClose }) => {
                 changeDate(evt);
               }}
               inputProps={{ className: styles.dateTime }}
+              closeOnSelect={true}
+              isValidDate={valid}
             />
             <Calendar>
               <BsCalendar4Week />

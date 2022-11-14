@@ -190,7 +190,13 @@ export const Label = styled.label`
     left: 12.5px;
     width: 24px;
     height: 24px;
-    fill: #e0e0e0;
+    fill: ${p => {
+      if (p.value.length > 0) {
+        return !p.error ? p.theme.colors.btGreen : p.theme.colors.btPink;
+      }
+
+      return '#e0e0e0';
+    }};
   }
 
   div {
@@ -209,7 +215,7 @@ export const Label = styled.label`
     top: -4px;
     left: -4px;
     display: block;
-    width: ${p => (p.value < 13 ? (p.value / 12) * 102 : 102)}%;
+    width: ${p => (p.length < 13 ? (p.length / 12) * 102 : 102)}%;
     height: 0;
 
     border: 4px solid

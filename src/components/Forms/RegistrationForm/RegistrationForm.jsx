@@ -32,8 +32,6 @@ export const RegistrationForm = () => {
       .required('Password is required'),
     confirmPassword: yup
       .string('Please, confirm your password')
-      .min(6, 'Password must contain at least 6 symbols')
-      .max(12, 'Password must contain no more than 12 symbols')
       .oneOf(
         [yup.ref('password')],
         'Entered password doesn`t match the previous one'
@@ -69,7 +67,7 @@ export const RegistrationForm = () => {
 
         <section>
           <Form onSubmit={handleSubmit}>
-            <Label error={errors.email}>
+            <Label value={values.email} error={errors.email}>
               <IoMdMail />
               <Input
                 type="text"
@@ -87,7 +85,11 @@ export const RegistrationForm = () => {
               )}
             </Label>
 
-            <Label error={errors.password} value={values.password.length}>
+            <Label
+              value={values.password}
+              error={errors.password}
+              length={values.password.length}
+            >
               <MdLock />
               <Input
                 type="password"
@@ -106,8 +108,9 @@ export const RegistrationForm = () => {
             </Label>
 
             <Label
+              value={values.confirmPassword}
               error={errors.confirmPassword}
-              value={values.confirmPassword.length}
+              length={values.confirmPassword.length}
             >
               <MdLock />
               <Input
@@ -126,7 +129,7 @@ export const RegistrationForm = () => {
               )}
             </Label>
 
-            <Label error={errors.username}>
+            <Label value={values.username} error={errors.username}>
               <IoPersonSharp />
               <Input
                 type="text"

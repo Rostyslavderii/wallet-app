@@ -29,7 +29,7 @@ export const CustomizedLoginPage = styled(Page)`
       content: '';
       position: absolute;
       top: 60px;
-      left:   114px;
+      left: 114px;
       z-index: -20;
       display: block;
       width: 260px;
@@ -276,6 +276,12 @@ export const FormLink = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   color: ${p => p.theme.colors.btBlue};
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px ${p => p.theme.colors.btBlue};
+  }
 
   @media screen and (min-width: 768px) {
     width: 300px;

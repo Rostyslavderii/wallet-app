@@ -6,7 +6,6 @@ import { Container } from 'utils/GlobalStyle';
 import { Logo } from 'components/Logo/Logo';
 import {
   Form,
-  FormButton,
   FormLink,
   HeaderLogo,
   Input,
@@ -16,6 +15,7 @@ import {
 import { IoMdMail } from 'react-icons/io';
 import { MdLock } from 'react-icons/md';
 import { IoPersonSharp } from 'react-icons/io5';
+import { Button } from 'components/Button/Button';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -143,8 +143,9 @@ export const RegistrationForm = () => {
                 </div>
               )}
             </Label>
-
-            <FormButton type="submit">Register</FormButton>
+            <Button primary type="submit">
+              Register
+            </Button>
           </Form>
 
           <FormLink to="/login">Log in</FormLink>

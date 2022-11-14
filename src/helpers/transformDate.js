@@ -17,3 +17,14 @@ export const switchColor = ({ type, theme: { colors } }) => {
       return colors.black;
   }
 };
+
+export const chooseTextAlign = ({ textAlign }) => {
+  switch (textAlign) {
+    case 'left':
+      return 'left';
+    case 'right':
+      return 'right';
+    default:
+      return 'center';
+  }
+};

@@ -5,28 +5,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsSummary } from 'redux/transactionsSummary/trSummaryOperations';
 import {
     selectError,
-    selectIsLoading,
     selectTrSummary,
 } from 'redux/transactionsSummary/trSummarySelectors';
 import { ChartBox, Box, Title, Wrapper } from './Diagram.styled';
 
 export const Diagram = () => {
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
 
-  let trSummary = useSelector(selectTrSummary);
+    let trSummary = useSelector(selectTrSummary);
 
+    // const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
+    const dispatch = useDispatch();
 
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const dispatch = useDispatch();
+    useEffect(() => {
+        const fetchTransactionsSummary = ({ month, year }) => {
+            dispatch(getTransactionsSummary({ month, year }));
+        };
 
+        if (month && year) {
+            fetchTransactionsSummary({ month, year });
+        }
 
-  useEffect(() => {
-    const fetchTransactionsSummary = ({ month, year }) => {
-      dispatch(getTransactionsSummary({ month, year }));
-    };
-
+    }, [month, year, dispatch]);
 
     const summaryList = (trSummary) => {
         if (!month || !year) {
@@ -36,21 +38,17 @@ export const Diagram = () => {
             return trSummary;
         }
     }
-  }, [month, year, dispatch]);
 
     return (
         <Wrapper>
             <Title>Statistics</Title>
             <Box>
-                {!isLoading
-                    ? <ChartBox><Chart trSummary={summaryList(trSummary)} /></ChartBox>
-                    : <ChartBox></ChartBox>
-                }
+                <ChartBox><Chart trSummary={summaryList(trSummary)} /></ChartBox>
                 <StatisticTabel
-          setYear={setYear}
-          setMonth={setMonth}
-          trSummary={result(trSummary)}
-        />
+                    setYear={setYear}
+                    setMonth={setMonth}
+                    trSummary={summaryList(trSummary)}
+                />
                 {error && <p>{error}</p>}
             </Box>
         </Wrapper>

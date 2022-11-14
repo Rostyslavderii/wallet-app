@@ -21,6 +21,16 @@ export const addTransaction = createAsyncThunk(
   async (transaction, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/transactions', transaction);
+      toast.success('Transaction was updated!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

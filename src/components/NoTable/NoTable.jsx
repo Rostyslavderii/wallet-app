@@ -1,9 +1,13 @@
-import { NoTable, NoTableSized } from './NoTable.styled';
+import { WatermelonDiv } from './Watermelon.jsx';
+import { NoTable, Div } from './NoTable.styled';
 
-export const NoTableImg = () => {
+export const NoTableImg = ({ openModal }) => {
   return (
-    <NoTableSized>
-      <NoTable>Welcome in Wallet. Enjoyed it.</NoTable>
-    </NoTableSized>
+    <Div>
+      <WatermelonDiv openModal={openModal} />
+      <NoTable>
+        <p>Have you already bought Kherson`s watermelon?</p>
+      </NoTable>
+    </Div>
   );
 };

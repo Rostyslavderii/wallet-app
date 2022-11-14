@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { AiOutlineMinus } from 'react-icons/ai';
 
-const checkButtonColor = (p) => {
+const checkButtonColor = p => {
   let backgroundColor;
   if (!p.props) {
     backgroundColor = p.theme.colors.btGreen;
@@ -91,6 +91,7 @@ export const CheckButton = styled.div`
   left: ${checkButtonPosition}%;
   background-color: ${checkButtonColor};
   box-shadow: 0px 3px 10px ${checkButtonColor};
+  transition: all 0.5s;
 `;
 
 export const Span = styled.span`
@@ -117,26 +118,74 @@ export const SpanExpense = styled.span`
   color: ${p => p.theme.colors.btPink};
 `;
 
-export const SelectCategory = styled.select`
-  width: 394px;
-  height: 32px;
-  border: 0;
-  border-bottom: ${p => p.theme.borderColor.comment};
+export const customStylesSelect = isMobile => ({
+  control: styles => ({
+    ...styles,
+    backgroundColor: 'white',
+    width: isMobile ? '280px' : '394px',
+    height: '32px',
+    border: '0',
+    borderRadius: '0',
+    borderBottom: '1px solid #E0E0E0',
 
-  color: #e0e0e0;
-  font-family: ${p => p.theme.ff.familyExo};
-  font-weight: ${p => p.theme.fontWeight.fw4};
-  font-size: ${p => p.theme.fontSize.fs18};
-  line-height: 1.5;
+    color: '#e0e0e0',
+    fontFamily: 'Exo,  sans-serif',
+    fontWeight: `400`,
+    fontSize: `18`,
+    lineHeight: 1.5,
+  }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
+    ...styles,
+    height: '32px',
+    backgroundColor: isDisabled
+      ? undefined
+      : isSelected
+      ? data.color
+      : isFocused
+      ? 'rgba(255, 255, 255, 0.5)'
+      : undefined,
 
-  @media screen and (max-width: 767px) {
-    width: 280px;
-  }
-`;
+    color: isDisabled
+      ? '#ccc'
+      : isSelected
+      ? data.color
+      : isFocused
+      ? '#ff6596'
+      : undefined,
 
-export const OptionCategory = styled.option`
-  color: ${p => p.theme.colors.black};
-`;
+    cursor: isDisabled ? 'not-allowed' : 'default',
+
+    ':active': {
+      ...styles[':active'],
+      backgroundColor: !isDisabled
+        ? isSelected
+          ? data.color
+          : 'rgba(255, 255, 255, 0.5)'
+        : undefined,
+    },
+    ':hover': {
+      color: '#ff6596',
+      background: 'rgba(255, 255, 255, 0.5)',
+    },
+    ':focus': {
+      color: '#ff6596',
+      background: 'rgba(255, 255, 255, 0.5)',
+    },
+  }),
+  menu: styles => ({
+    ...styles,
+    background: 'rgba(255, 255, 255, 0.5)',
+    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(25px)',
+    borderRadius: '20px',
+    height: '352px',
+    zIndex: '1000000',
+  }),
+  menuList: styles => ({
+    ...styles,
+    overflow: 'visible',
+  }),
+});
 
 export const DivSumm = styled.div`
   display: flex;
@@ -195,7 +244,7 @@ export const Comment = styled.textarea`
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
 
-   @media screen and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     width: 280px;
     height: 84px;
   }
@@ -241,4 +290,10 @@ export const ADDButton = styled.button`
     scale: 1.01;
     box-shadow: 0px 3px 10px ${p => p.theme.colors.btGreen};
   }
+`;
+
+export const Datalist = styled.datalist`
+  background-color: red;
+  color: red;
+  font-size: 80px;
 `;

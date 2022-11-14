@@ -3,6 +3,7 @@ export const StyledButton = styled.button`
   position: relative;
   padding: 13px;
   border-radius: ${p => p.theme.borderRadius.r20};
+  min-width: 300px;
 
   font-size: 18px;
   line-height: calc(27 / 18);
@@ -80,7 +81,7 @@ export const StyledButton = styled.button`
       width: 100%;
     }
   }
-  height: 50px;
+  min-height: 50px;
 
   @media screen and (min-width: 768px) {
     width: 300px;

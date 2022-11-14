@@ -7,27 +7,35 @@ import loginBgImgDeskLarge from '../../images/background/loginBgImgDesk@2x.png';
 
 export const NoTable = styled.div`
 
-  /* @media screen and (max-width: 767px) {
+p {
+    padding-left: 30px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
 
-    background-color: ${p => p.theme.colors.white};
-  } */
+  }
 font-weight: ${p => p.theme.fontWeight.fw4};
-  padding-top: 10px;
-  padding-left: 5px;
+
 
   @media screen and (max-width: 767px) {
-    display: none;
+
     }
 `;
+
+export const Div = styled.div`
+  position: relative;
+
+width: 700px;
+height: 250px;
+
+
+`;
+
 
 export const NoTableSized = styled(NoTable)`
 
   @media screen and (min-width: 768px) {
-    ::before {
+    ::after {
       content: '';
       display: block;
       width: 260px;
@@ -48,7 +56,7 @@ export const NoTableSized = styled(NoTable)`
   }
 
   @media screen and (min-width: 1280px) {
-    ::before {
+    ::after {
       top: 150px;
       left: 76px;
       width: 435px;

@@ -29,7 +29,7 @@ export const CustomizedLoginPage = styled(Page)`
       content: '';
       position: absolute;
       top: 60px;
-      left:   114px;
+      left: 114px;
       z-index: -20;
       display: block;
       width: 260px;
@@ -190,7 +190,13 @@ export const Label = styled.label`
     left: 12.5px;
     width: 24px;
     height: 24px;
-    fill: #e0e0e0;
+    fill: ${p => {
+      if (p.value.length > 0) {
+        return !p.error ? p.theme.colors.btGreen : p.theme.colors.btPink;
+      }
+
+      return '#e0e0e0';
+    }};
   }
 
   div {
@@ -209,7 +215,7 @@ export const Label = styled.label`
     top: -4px;
     left: -4px;
     display: block;
-    width: ${p => (p.value < 13 ? (p.value / 12) * 102 : 102)}%;
+    width: ${p => (p.length < 13 ? (p.length / 12) * 102 : 102)}%;
     height: 0;
 
     border: 4px solid
@@ -276,6 +282,12 @@ export const FormLink = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   color: ${p => p.theme.colors.btBlue};
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px ${p => p.theme.colors.btBlue};
+  }
 
   @media screen and (min-width: 768px) {
     width: 300px;

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+import { toastStyled } from 'utils/GlobalStyle';
 
 axios.defaults.baseURL = 'https://wallet.goit.ua/api';
 
@@ -20,6 +22,12 @@ export const register = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      if (error.response.status === 409) {
+        toast.error('User with such email already exists!', toastStyled);
+      } else {
+        toast.error('Validation error.', toastStyled);
+      }
+
       return rejectWithValue(error.message);
     }
   }
@@ -33,6 +41,14 @@ export const login = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      if (error.response.status === 404) {
+        toast.error('User with such email not found!', toastStyled);
+      } else if (error.response.status === 403) {
+        toast.error('Provided password is incorrect!', toastStyled);
+      } else {
+        toast.error('Validation error.', toastStyled);
+      }
+
       return rejectWithValue(error.message);
     }
   }

@@ -65,4 +65,31 @@ export const LogOutButton = styled('button')`
   line-height: 1.5;
 
   color: ${p => p.theme.colors.inputGray};
+
+  transition: all 0.3s;
+
+  @keyframes exitIcon {
+    0% {
+      transform: translateX(1px);
+    }
+    25% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-1px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  &:hover {
+    & svg {
+      transform: scale(1.2);
+      animation-duration: 0.75s;
+      animation-name: exitIcon;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    transform: scale(1.2);
+  }
 `;

@@ -30,13 +30,18 @@ import {
   ButtonCard,
   CloseButton,
   customStylesSelect,
+  Error,
 } from './ModalAddTransaction.styled';
 import Select from 'react-select';
 import { FormButton } from 'components/Forms/Forms.styled';
 import { useMedia } from 'react-use';
+import { selectBalance } from 'redux/transactions/transactionSelectors';
+import { toast } from 'react-toastify';
+import { toastStyled } from 'utils/GlobalStyle';
 
 export const ModalAddTransaction = ({ onClose }) => {
   const categories = useSelector(selectCategories);
+  const balance = useSelector(selectBalance);
   const [transactionDate, setTransactionDate] = useState(new Date());
   const [categoryId, setCategoryId] = useState('');
   const dispatch = useDispatch();
@@ -45,7 +50,8 @@ export const ModalAddTransaction = ({ onClose }) => {
 
   const validationSchema = yup.object({
     amount: yup
-      .number('Please, enter only numbers')
+      .number()
+      .typeError('Must be a number')
       .required('Amount is required')
       .moreThan(0, 'Please, enter number more than 0'),
   });
@@ -73,6 +79,13 @@ export const ModalAddTransaction = ({ onClose }) => {
         comment,
         amount: type ? -Number(amount) : Number(amount),
       };
+      if (balance + newTransaction.amount < 0) {
+        toast.warn(
+          'Insufficient balance to complete the transaction!',
+          toastStyled
+        );
+        return;
+      }
       dispatch(addTransaction(newTransaction));
       resetForm();
       onClose();
@@ -121,6 +134,7 @@ export const ModalAddTransaction = ({ onClose }) => {
               changeCategory(evt);
             }}
             options={selectOption()}
+            required
           ></Select>
         )}
         <DivSumm>
@@ -133,7 +147,7 @@ export const ModalAddTransaction = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.amount && <div>{errors.amount}</div>}
+            {errors.amount && <Error>{errors.amount}</Error>}
           </div>
 
           <DateInput>

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import { switchColor } from 'helpers/transformDate';
+import { chooseTextAlign, switchColor } from 'helpers/transformDate';
+
+export const FixedHeadWrapper = styled.div`
+  position: relative;
+  @media screen and (min-width: 768px) {
+    padding-top: 58px;
+  }
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -15,13 +22,13 @@ export const Wrapper = styled.div`
     max-height: 80vh;
   }
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
   }
   &::-webkit-scrollbar-track {
     border-radius: 2px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${p => p.theme.colors.bgGrayRight};
+    background-color: rgba(36, 204, 167, 0.3);
     border-radius: 2px;
   }
 `;
@@ -37,15 +44,19 @@ export const Table = styled.table`
   }
 `;
 
-export const TableHeading = styled.th`
-  &:first-child {
-    border-radius: 30px 0 0 30px;
-  }
-  &:last-child {
-    border-radius: 0 30px 30px 0;
-  }
-  border: none;
+export const TableHead = styled.ul`
+  display: flex;
+  position: absolute;
+  width: calc(100% + 10px);
+  top: 0;
+  left: -5px;
+  border-radius: 30px;
   background-color: ${p => p.theme.colors.white};
+`;
+
+export const TableHeading = styled.li`
+  border: none;
+
   text-align: ${p => (p.left ? 'left' : 'center')};
 
   padding: 16px 10px;
@@ -53,6 +64,26 @@ export const TableHeading = styled.th`
   font-weight: 700;
   font-size: 18px;
   line-height: 1.5;
+  &:nth-child(1) {
+    width: 80px;
+  }
+  &:nth-child(2) {
+    width: 70px;
+  }
+  &:nth-child(3) {
+    width: 135px;
+  }
+  &:nth-child(4) {
+    width: 130px;
+  }
+  &:nth-child(5),
+  &:nth-child(6) {
+    width: calc((100% - 510px) / 2);
+  }
+  &:last-child {
+    width: 95px;
+    padding-right: 20px;
+  }
 `;
 
 export const TrData = styled.tr`
@@ -95,12 +126,31 @@ export const StyledTd = styled.td`
       border-bottom: 1px solid #dcdcdf;
     }
   }
+
   padding: 8px 10px;
   height: 52px;
   line-height: calc(18 / 16);
   color: ${switchColor};
   font-weight: ${p => (p.type ? '700' : '400')};
-  text-align: ${p => (p.left ? 'left' : 'center')};
+  text-align: ${chooseTextAlign};
+  @media screen and (min-width: 768px) {
+    &:nth-child(1) {
+      width: 75px;
+    }
+    &:nth-child(2) {
+      width: 70px;
+    }
+    &:nth-child(3) {
+      width: 135px;
+    }
+    &:nth-child(4) {
+      width: 130px;
+    }
+    &:last-child {
+      width: 90px;
+      padding-right: 5px;
+    }
+  }
 `;
 
 export const DataHeading = styled.span`
@@ -116,7 +166,7 @@ export const DataValue = styled.span`
   }
   display: block;
   white-space: nowrap;
-  width: 130px;
+  max-width: 110px;
   max-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;

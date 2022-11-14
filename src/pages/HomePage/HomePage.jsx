@@ -15,7 +15,9 @@ import { NoTableImg } from 'components/NoTable/NoTable';
 const HomePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [transactionToEdit, setTransactionToEdit] = useState(null);
-
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
   const isMobile = useMedia('(max-width: 767px)');
   const transactions = useSelector(selectTransaction);
   const categories = useSelector(selectCategories);
@@ -34,20 +36,13 @@ const HomePage = () => {
   return (
     <Wrapper>
       {isMobile && <Balance />}
-      {/* <ModalWindowWraper></ModalWindowWraper> */}
-      {transactions.length > 0 || <NoTableImg />}
-      {console.log(transactions.length)}
+      {!(transactions.length > 0) && <NoTableImg openModal={openModal} />}
       <TransactionTable
         transactions={transactions}
         categories={categories}
         openEditModal={openEditModal}
       />
-      <AddTransactionBtn
-        type="button"
-        onClick={() => {
-          setModalIsOpen(true);
-        }}
-      >
+      <AddTransactionBtn type="button" onClick={openModal}>
         add transaction
       </AddTransactionBtn>
       {(modalIsOpen || transactionToEdit) && (

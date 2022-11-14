@@ -9,12 +9,12 @@ export const StyledNavLink = styled(NavLink)`
     display: flex;
     align-items: center;
     gap: 23px;
+    font-size: 18px;
+    line-height: 1.5;
   }
 
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
   color: ${p => p.theme.colors.black};
 
   svg {
@@ -28,8 +28,8 @@ export const StyledNavLink = styled(NavLink)`
     fill: ${p => p.theme.colors.white};
 
     @media screen and (min-width: 768px) {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       padding: 5px;
       border-radius: 2px;
     }
@@ -75,7 +75,5 @@ export const StyledNav = styled.nav`
     right: 0;
     z-index: 5;
     top: 60px;
-    padding-top: 15px;
-    padding-bottom: 15px;
   }
 `;

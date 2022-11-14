@@ -24,6 +24,7 @@ export const TransactionTable = ({
   const dispatch = useDispatch();
   const isShown = transactions.length > 0 && categories.length > 0;
   const isMobile = useMedia('(max-width: 767px)');
+  const isNoMobile = useMedia('(min-width: 768px)');
   const sortedTransactions = [...transactions].sort(
     (prevTr, nextTr) =>
       Date.parse(nextTr.transactionDate) - Date.parse(prevTr.transactionDate)
@@ -40,7 +41,7 @@ export const TransactionTable = ({
             <TableHeading left>Comment</TableHeading>
             <TableHeading>Sum</TableHeading>
             <TableHeading>Balance</TableHeading>
-            <TableHeading>Edit</TableHeading>
+            <TableHeading></TableHeading>
           </TableHead>
         )}
         <Wrapper>
@@ -72,9 +73,35 @@ export const TransactionTable = ({
                           .name
                       }
                     </StyledTd>
-                    <StyledTd textAlign="left">
+                    <StyledTd
+                      textAlign="left"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                      }}
+                    >
                       {isMobile && <DataHeading>Comment</DataHeading>}
                       <DataValue>{comment}</DataValue>
+                      {isNoMobile && (
+                        <Button
+                          aria-label="Edit"
+                          type="button"
+                          onClick={() =>
+                            openEditModal({
+                              id,
+                              transactionDate,
+                              type,
+                              categoryId,
+                              comment,
+                              amount,
+                            })
+                          }
+                          edit
+                        >
+                          <MdEdit />
+                        </Button>
+                      )}
                     </StyledTd>
                     <StyledTd type={type} textAlign="right">
                       {isMobile && <DataHeading>Sum</DataHeading>}
@@ -85,22 +112,24 @@ export const TransactionTable = ({
                       {balanceAfter.toFixed(2)}
                     </StyledTd>
                     <StyledTd>
-                      <Button
-                        aria-label="Edit"
-                        type="button"
-                        onClick={() =>
-                          openEditModal({
-                            id,
-                            transactionDate,
-                            type,
-                            categoryId,
-                            comment,
-                            amount,
-                          })
-                        }
-                      >
-                        <MdEdit />
-                      </Button>
+                      {isMobile && (
+                        <Button
+                          aria-label="Edit"
+                          type="button"
+                          onClick={() =>
+                            openEditModal({
+                              id,
+                              transactionDate,
+                              type,
+                              categoryId,
+                              comment,
+                              amount,
+                            })
+                          }
+                        >
+                          <MdEdit />
+                        </Button>
+                      )}
                       <Button
                         aria-label="delete"
                         type="button"

@@ -1,12 +1,7 @@
 import { Diagram } from 'components/Diagram/Diagram';
 
 const StatisticPage = () => {
-  return (
-    <>
-      <div>Statistic</div>
-      <Diagram />
-    </>
-  );
+  return <Diagram />
 };
 
 export default StatisticPage;

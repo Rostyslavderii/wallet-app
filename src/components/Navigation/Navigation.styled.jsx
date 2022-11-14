@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
+  border: solid 1px transparent;
+  transition: all 0.3s;
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
@@ -36,6 +38,13 @@ export const StyledNavLink = styled(NavLink)`
     font-weight: 700;
     & svg {
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+      background-color: ${p => p.theme.colors.lBlue};
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    & svg {
       background-color: ${p => p.theme.colors.lBlue};
     }
   }

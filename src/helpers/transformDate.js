@@ -18,6 +18,13 @@ export const switchColor = ({ type, theme: { colors } }) => {
   }
 };
 
+export const chooseBtnColor = p => {
+  if (p.edit) {
+    return 'transparent';
+  }
+  return p.red ? p.theme.colors.btPink : p.theme.colors.btGreen;
+};
+
 export const chooseTextAlign = ({ textAlign }) => {
   switch (textAlign) {
     case 'left':

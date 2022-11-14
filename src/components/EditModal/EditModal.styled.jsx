@@ -3,8 +3,15 @@ import { switchColor } from 'helpers/transformDate';
 
 export const Category = styled.p`
   color: ${switchColor};
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+export const TransactionData = styled.p`
   font-size: 18px;
-  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
 `;
 
 export const Comment = styled.textarea`
@@ -31,10 +38,10 @@ export const Comment = styled.textarea`
     background-color: ${p => p.theme.colors.bgGray};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${p => p.theme.colors.lGreen};
+    background-color: ${p => p.theme.colors.lBlue};
     border-radius: 2px;
   }
   &:focus {
-    outline-color: ${p => p.theme.colors.lGreen};
+    outline-color: ${p => p.theme.colors.lBlue};
   }
 `;

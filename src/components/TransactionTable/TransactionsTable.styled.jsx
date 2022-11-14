@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { chooseTextAlign, switchColor } from 'helpers/transformDate';
+import {
+  chooseTextAlign,
+  switchColor,
+  chooseBtnColor,
+} from 'helpers/transformDate';
 
 export const FixedHeadWrapper = styled.div`
   position: relative;
@@ -19,7 +23,7 @@ export const Wrapper = styled.div`
   }
   @media screen and (min-width: 1280px) {
     max-width: 715px;
-    max-height: 80vh;
+    max-height: 65vh;
   }
   &::-webkit-scrollbar {
     width: 8px;
@@ -28,7 +32,7 @@ export const Wrapper = styled.div`
     border-radius: 2px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(36, 204, 167, 0.3);
+    background-color: ${p => p.theme.colors.bgGrayRight};
     border-radius: 2px;
   }
 `;
@@ -78,10 +82,10 @@ export const TableHeading = styled.li`
   }
   &:nth-child(5),
   &:nth-child(6) {
-    width: calc((100% - 510px) / 2);
+    width: calc((100% - 460px) / 2);
   }
   &:last-child {
-    width: 95px;
+    width: 40px;
     padding-right: 20px;
   }
 `;
@@ -99,7 +103,6 @@ export const TrData = styled.tr`
   }
 
   position: relative;
-  font-size: 16px;
   @media screen and (min-width: 768px) {
     &:not(:last-child) {
       &::after {
@@ -118,7 +121,6 @@ export const TrData = styled.tr`
 export const StyledTd = styled.td`
   @media screen and (max-width: 767px) {
     display: flex;
-    justify-content: space-between;
     flex-grow: 1;
     width: 100%;
     align-items: center;
@@ -126,6 +128,7 @@ export const StyledTd = styled.td`
       border-bottom: 1px solid #dcdcdf;
     }
   }
+  justify-content: space-between;
 
   padding: 8px 10px;
   height: 52px;
@@ -133,6 +136,7 @@ export const StyledTd = styled.td`
   color: ${switchColor};
   font-weight: ${p => (p.type ? '700' : '400')};
   text-align: ${chooseTextAlign};
+  font-size: 16px;
   @media screen and (min-width: 768px) {
     &:nth-child(1) {
       width: 75px;
@@ -147,7 +151,7 @@ export const StyledTd = styled.td`
       width: 130px;
     }
     &:last-child {
-      width: 90px;
+      width: 40px;
       padding-right: 5px;
     }
   }
@@ -171,18 +175,15 @@ export const DataValue = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-const chooseBtnColor = p => {
-  return p.red ? p.theme.colors.btPink : p.theme.colors.btGreen;
-};
 
 export const Button = styled.button`
   &:not(:last-child) {
     margin-right: 5px;
   }
-  padding: 5px 7px;
+  padding: 3px 5px;
   border: none;
   border-radius: 6px;
-  color: ${p => p.theme.colors.white};
+  color: ${p => (p.edit ? 'gray' : p.theme.colors.white)};
   background-color: ${chooseBtnColor};
   transition: box-shadow 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover,

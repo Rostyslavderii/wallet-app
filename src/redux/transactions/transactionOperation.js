@@ -35,7 +35,7 @@ export const updateTransaction = createAsyncThunk(
   async ({ id, ...transaction }, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch(`/transactions/${id}`, transaction);
-      toast.success('Transaction was updated!', toastStyled);
+      toast.success('Comment was updated!', toastStyled);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

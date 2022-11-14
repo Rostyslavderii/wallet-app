@@ -22,8 +22,6 @@ import {
   Span,
   SpanIncome,
   SpanExpense,
-  SelectCategory,
-  OptionCategory,
   DivSumm,
   Amount,
   DateInput,
@@ -31,35 +29,41 @@ import {
   Comment,
   ButtonCard,
   CloseButton,
-  } from './ModalAddTransaction.styled';
+  customStylesSelect,
+} from './ModalAddTransaction.styled';
+import Select from 'react-select';
 import { FormButton } from 'components/Forms/Forms.styled';
 import { useMedia } from 'react-use';
 
 export const ModalAddTransaction = ({ onClose }) => {
   const categories = useSelector(selectCategories);
   const [transactionDate, setTransactionDate] = useState(new Date());
+  const [categoryId, setCategoryId] = useState('');
   const dispatch = useDispatch();
-  
+
   const isMobile = useMedia('(max-width: 767px)');
-    
+
   const validationSchema = yup.object({
     amount: yup
       .number('Please, enter only numbers')
-      .required('Amount is required'),
+      .required('Amount is required')
+      .moreThan(0, 'Please, enter number more than 0'),
   });
 
   const changeDate = date => {
     setTransactionDate(date._d);
   };
+  const changeCategory = categoryId => {
+    setCategoryId(categoryId.value);
+  };
   const { handleSubmit, values, handleChange, errors, resetForm } = useFormik({
     initialValues: {
       type: false,
-      categoryId: '',
       comment: '',
       amount: '',
     },
     validationSchema,
-    onSubmit: ({ type, categoryId, comment, amount }) => {
+    onSubmit: ({ type, comment, amount }) => {
       const newTransaction = {
         transactionDate,
         type: type ? 'EXPENSE' : 'INCOME',
@@ -71,8 +75,20 @@ export const ModalAddTransaction = ({ onClose }) => {
       };
       dispatch(addTransaction(newTransaction));
       resetForm();
+      onClose();
     },
   });
+
+  const selectOption = () =>
+    categories.reduce((acc, categori) => {
+      if (categori.type !== 'INCOME') {
+        acc.push({
+          value: `${categori.id}`,
+          label: `${categori.name}`,
+        });
+      }
+      return acc;
+    }, []);
 
   return (
     <>
@@ -98,29 +114,15 @@ export const ModalAddTransaction = ({ onClose }) => {
           )}
         </TypeLabel>
         {values.type && (
-          <>
-            <SelectCategory name="categoryId" onChange={handleChange} required>
-              {categories.reduce(
-                (acc, categori) => {
-                  if (categori.type !== 'INCOME') {
-                    acc.push(
-                      <OptionCategory key={categori.id} value={categori.id}>
-                        {categori.name}
-                      </OptionCategory>
-                    );
-                  }
-                  return acc;
-                },
-                [
-                  <option key="1" value="">
-                    Select Category
-                  </option>,
-                ]
-              )}
-            </SelectCategory>
-          </>
+          <Select
+            name="categoryId"
+            styles={customStylesSelect(isMobile)}
+            onChange={evt => {
+              changeCategory(evt);
+            }}
+            options={selectOption()}
+          ></Select>
         )}
-
         <DivSumm>
           <div>
             <Amount
@@ -150,7 +152,7 @@ export const ModalAddTransaction = ({ onClose }) => {
             </Calendar>
           </DateInput>
         </DivSumm>
-        <Comment          
+        <Comment
           placeholder="Comment"
           name="comment"
           value={values.comment}
@@ -162,9 +164,11 @@ export const ModalAddTransaction = ({ onClose }) => {
             CANCEL
           </Button>
         </ButtonCard>
-        {!isMobile && <CloseButton type="button" onClick={onClose}>
-          <GrClose />
-        </CloseButton>}
+        {!isMobile && (
+          <CloseButton type="button" onClick={onClose}>
+            <GrClose />
+          </CloseButton>
+        )}
       </ModalForm>
     </>
   );

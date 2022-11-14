@@ -10,7 +10,7 @@ const Title = styled.h2`
 `;
 
 const Wrapper = styled.div`
-    padding: 32px 0 0 68px;
+    padding: 31px 0 0 68px;
 `;
 
 const Box = styled.div`

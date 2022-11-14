@@ -13,9 +13,9 @@ const checkButtonColor = p => {
 };
 const checkButtonPosition = p => {
   if (!p.props) {
-    return 0;
+    return -4;
   } else {
-    return 50;
+    return 47;
   }
 };
 
@@ -90,8 +90,16 @@ export const CheckButton = styled.div`
   position: absolute;
   left: ${checkButtonPosition}%;
   background-color: ${checkButtonColor};
-  box-shadow: 0px 3px 10px ${checkButtonColor};
   transition: all 0.5s;
+  scale: 1;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 3px 10px ${checkButtonColor};
+    transition: all 0.5s;
+    cursor: pointer;
+    scale: 1.05;
+  }
 `;
 
 export const Span = styled.span`
@@ -118,6 +126,11 @@ export const SpanExpense = styled.span`
   color: ${p => p.theme.colors.btPink};
 `;
 
+export const Error = styled.div`
+  position: absolute;
+  max-width: 190px;
+`;
+
 export const customStylesSelect = isMobile => ({
   control: styles => ({
     ...styles,
@@ -133,6 +146,19 @@ export const customStylesSelect = isMobile => ({
     fontWeight: `400`,
     fontSize: `18`,
     lineHeight: 1.5,
+    boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.1)',
+    ':active': {
+      border: '1px solid #e0e0e0',
+      borderRadius: '6px',
+    },
+    ':hover': {
+      borderRadius: '6px',
+      border: '1px solid #e0e0e0',
+    },
+    ':focus': {
+      borderRadius: '6px',
+      border: '1px solid #e0e0e0',
+    },
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
     ...styles,
@@ -148,7 +174,7 @@ export const customStylesSelect = isMobile => ({
     color: isDisabled
       ? '#ccc'
       : isSelected
-      ? data.color
+      ? '#ff6596'
       : isFocused
       ? '#ff6596'
       : undefined,
@@ -208,6 +234,13 @@ export const Amount = styled.input`
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
 
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 1px solid #e0e0e0;
+    border-radius: 6px;
+  }
+
   @media screen and (max-width: 767px) {
     width: 280px;
   }
@@ -243,6 +276,13 @@ export const Comment = styled.textarea`
   font-weight: ${p => p.theme.fontWeight.fw4};
   font-size: ${p => p.theme.fontSize.fs18};
   line-height: 1.5;
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 1px solid #e0e0e0;
+    border-radius: 6px;
+  }
 
   @media screen and (max-width: 767px) {
     width: 280px;

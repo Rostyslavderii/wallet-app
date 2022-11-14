@@ -10,11 +10,11 @@ import {
   Form,
   Label,
   Input,
-  FormButton,
   FormLink,
 } from '../Forms.styled';
 import { IoMdMail } from 'react-icons/io';
 import { MdLock } from 'react-icons/md';
+import { Button } from 'components/Button/Button';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -52,7 +52,7 @@ export const LoginForm = () => {
 
         <section>
           <Form onSubmit={handleSubmit}>
-            <Label error={errors.email}>
+            <Label value={values.email} error={errors.email}>
               <IoMdMail />
               <Input
                 type="text"
@@ -70,7 +70,11 @@ export const LoginForm = () => {
               )}
             </Label>
 
-            <Label error={errors.password} value={values.password.length}>
+            <Label
+              value={values.password}
+              error={errors.password}
+              length={values.password.length}
+            >
               <MdLock />
               <Input
                 type="password"
@@ -87,8 +91,9 @@ export const LoginForm = () => {
                 </div>
               )}
             </Label>
-
-            <FormButton type="submit">Log in</FormButton>
+            <Button primary type="submit">
+              Log in
+            </Button>
           </Form>
 
           <FormLink to="/register">Register</FormLink>

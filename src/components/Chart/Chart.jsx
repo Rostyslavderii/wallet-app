@@ -9,6 +9,7 @@ import theme from 'utils/theme';
 ChartJS.register(ArcElement, Tooltip);
 
 export const Chart = ({ trSummary }) => {
+    console.log("chart component")
     // const balance = useSelector(selectBalance);
     const options = {
         cutout: "65%"
@@ -35,6 +36,7 @@ export const Chart = ({ trSummary }) => {
                     if (type === "INCOME") {
                         return;
                     }
+                    console.log("chart function info");
                     const bgColor = switchBgStatistic({ name, theme });
                     const amount = Math.abs(total);
                     const expence = Math.abs(trSummary.expenseSummary);

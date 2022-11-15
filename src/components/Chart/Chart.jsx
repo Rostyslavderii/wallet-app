@@ -12,7 +12,7 @@ export const Chart = ({ trSummary }) => {
     console.log("chart component")
     // const balance = useSelector(selectBalance);
     const options = {
-        cutout: "65%"
+        cutout: "70%"
     }
     const data = {
         labels: [],
@@ -56,6 +56,6 @@ export const Chart = ({ trSummary }) => {
 
 
     return (
-        <Doughnut redraw={true} options={options} data={data} height="288px" width="288px" />
+        <Doughnut redraw={true} options={options} data={data} />
     )
 }

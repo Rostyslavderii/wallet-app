@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsSummary } from 'redux/transactionsSummary/trSummaryOperations';
 import {
     selectError,
-    selectIsLoadingSummary,
+    // selectIsLoadingSummary,
     selectTrSummary,
 } from 'redux/transactionsSummary/trSummarySelectors';
 import { ChartBox, Box, Title, Wrapper } from './Diagram.styled';
@@ -16,7 +16,7 @@ export const Diagram = () => {
 
     let trSummary = useSelector(selectTrSummary);
 
-    const isLoadingSummary = useSelector(selectIsLoadingSummary);
+    // const isLoadingSummary = useSelector(selectIsLoadingSummary);
     const error = useSelector(selectError);
     const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ export const Diagram = () => {
 
     }, [month, year, dispatch]);
 
-    const summaryList = (trSummary) => {
+    const summaryData = () => {
         if (!month || !year) {
             trSummary = null;
             return trSummary;
@@ -45,12 +45,12 @@ export const Diagram = () => {
             <Title>Statistics</Title>
             <Box>
                 <ChartBox>
-                    <Chart trSummary={summaryList(trSummary)} isLoading={isLoadingSummary} />
+                    <Chart trSummary={summaryData()} />
                 </ChartBox>
                 <StatisticTabel
                     setYear={setYear}
                     setMonth={setMonth}
-                    trSummary={summaryList(trSummary)}
+                    trSummary={summaryData()}
                 />
                 {error && <p>{error}</p>}
             </Box>

@@ -22,7 +22,10 @@ export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    return () => {
+      window.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = 'scroll';
+    };
   }, [handleKey]);
 
   return (

@@ -9,7 +9,7 @@ import theme from 'utils/theme';
 ChartJS.register(ArcElement, Tooltip);
 
 export const Chart = ({ trSummary }) => {
-    console.log("chart component")
+    // console.log("chart component")
     // const balance = useSelector(selectBalance);
     const options = {
         cutout: "70%"

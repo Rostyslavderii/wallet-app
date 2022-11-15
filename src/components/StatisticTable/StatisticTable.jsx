@@ -37,10 +37,19 @@ const dataMonth = [
   { id: 11, label: 'December', value: '12' },
 ];
 
-const dataYear = [
-  { id: 0, label: '2022', value: '2022' },
-  { id: 1, label: '2023', value: '2023' },
-];
+function generateArrayOfYears() {
+  var max = new Date().getFullYear();
+  var min = max - 4;
+  var years = [];
+
+  for (var i = max; i >= min; i--) {
+    years.push({
+      value: i,
+      label: i.toString(),
+    });
+  }
+  return years;
+}
 
 export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
   const isMobile = useMedia('(max-width: 767px)');
@@ -76,7 +85,7 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
           onChange={evt => {
             setYear(evt.value);
           }}
-          options={selectOption(dataYear)}
+          options={selectOption(generateArrayOfYears())}
         ></Select>
       </SelectWrap>
 

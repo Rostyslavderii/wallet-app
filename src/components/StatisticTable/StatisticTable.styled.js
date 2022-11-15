@@ -219,7 +219,6 @@ export const customStylesSelect = isMobile => ({
   control: styles => ({
     ...styles,
     backgroundColor: 'inherit',
-    // width: isMobile ? '100%' : '160px',
     width: '100%',
     height: '50px',
     border: '1px solid #000000',
@@ -312,7 +311,6 @@ export const customStylesSelect = isMobile => ({
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(25px)',
     borderRadius: '15px',
-    // height: '400px',
     zIndex: '1000000',
   }),
   menuList: styles => ({

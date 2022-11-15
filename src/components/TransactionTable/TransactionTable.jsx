@@ -1,5 +1,5 @@
 import { useMedia } from 'react-use';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import {
   Table,
@@ -15,6 +15,8 @@ import {
 } from './TransactionsTable.styled';
 import { transformDate } from 'helpers/transformDate';
 import { deleteTransaction } from 'redux/transactions/transactionOperation';
+import { toast } from 'react-toastify';
+import { selectBalance } from 'redux/transactions/transactionSelectors';
 
 export const TransactionTable = ({
   transactions,
@@ -23,13 +25,23 @@ export const TransactionTable = ({
 }) => {
   const dispatch = useDispatch();
   const isShown = transactions.length > 0 && categories.length > 0;
+  const currentBalance = useSelector(selectBalance);
   const isMobile = useMedia('(max-width: 767px)');
   const isNoMobile = useMedia('(min-width: 768px)');
   const sortedTransactions = [...transactions].sort(
     (prevTr, nextTr) =>
       Date.parse(nextTr.transactionDate) - Date.parse(prevTr.transactionDate)
   );
-
+  const deleteData = (id, amount) => {
+    console.log(amount);
+    if (currentBalance - amount < 0) {
+      toast.error(
+        'Sorry, balance can`t be negative. You should delete expense transactions to delete this income'
+      );
+      return;
+    }
+    dispatch(deleteTransaction(id));
+  };
   return (
     isShown && (
       <FixedHeadWrapper>
@@ -133,7 +145,7 @@ export const TransactionTable = ({
                       <Button
                         aria-label="delete"
                         type="button"
-                        onClick={() => dispatch(deleteTransaction(id))}
+                        onClick={() => deleteData(id, amount)}
                         red
                       >
                         <MdDelete />

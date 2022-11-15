@@ -2,29 +2,34 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
 
-  /* display: flex;
-  flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 p {
   position: absolute;
   top: 125%;
-  left:42%;
+  left:30%;
   color: #24cca7;
+
+  @media screen and (min-width: 768px) {
+    left:43%;
+
+  }
 }
 
 `
 
 
 export const Watermelon = styled.div`
+  display: block;
 	position: absolute;
 	width: 100px;
 	height: 100px;
-    /* top: 230px;
-    right: 550px; */
     top: 60%;
-    left:45%;
+    left:35%;
     text-align: center;
+
+@media screen and (min-width: 768px) {
+    left:45%;
+
+  }
 
 
 
@@ -140,7 +145,12 @@ export const Slice = styled.div`
 	width: 100px;
 	height: 100px;
     top: 60%;
+    left: 35%;
+
+@media screen and (min-width: 768px) {
     left:45%;
+
+  }
 
 	transform: translateY(-25px);
 	animation: gimme 2s ease-in-out infinite alternate;

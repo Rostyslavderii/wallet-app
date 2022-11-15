@@ -62,7 +62,7 @@ const BalanceText = styled.p`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Circe';
+    font-family: ${p => p.theme.ff.familyExo};
     font-weight: 700;
     font-size: 18px;
     line-height: 27px;

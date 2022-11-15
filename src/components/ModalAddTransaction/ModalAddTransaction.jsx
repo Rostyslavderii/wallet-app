@@ -32,7 +32,6 @@ import {
   Error,
 } from './ModalAddTransaction.styled';
 import Select from 'react-select';
-import { FormButton } from 'components/Forms/Forms.styled';
 import { useMedia } from 'react-use';
 import { selectBalance } from 'redux/transactions/transactionSelectors';
 import { toast } from 'react-toastify';
@@ -51,7 +50,8 @@ export const ModalAddTransaction = ({ onClose }) => {
     amount: yup
       .number()
       .typeError('Must be a number')
-      .moreThan(0, 'Please, enter number more than 0'),
+      .moreThan(0, 'Please, enter number more than 0')
+      .required(''),
   });
 
   const changeDate = date => {
@@ -177,7 +177,9 @@ export const ModalAddTransaction = ({ onClose }) => {
           onChange={handleChange}
         />
         <ButtonCard>
-          <FormButton type="submit">ADD</FormButton>
+          <Button primary type="submit">
+            ADD
+          </Button>
           <Button type="button" onClick={onClose}>
             CANCEL
           </Button>

@@ -36,7 +36,6 @@ export const StyledBtn = styled.button`
     left: 100vw;
     bottom: 20px;
   }
-
   &:hover,
   &:focus {
     transform: scale(1.3);

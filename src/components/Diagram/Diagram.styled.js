@@ -7,6 +7,9 @@ const Title = styled.h2`
     font-size: ${p => p.theme.fontSize.fs30};
     line-height: 1.5;
     color: ${p => p.theme.colors.black};
+    @media screen and (max-width: 767px) {
+        margin-top: 28px;
+    }
     @media screen and (min-width: 768px) {
         margin-bottom: 20px;
     }
@@ -14,6 +17,11 @@ const Title = styled.h2`
 
 const Wrapper = styled.div`
     padding-top: 128px;
+
+     @media screen and (max-width: 767px) {
+        margin: 0 auto;
+        max-width: 300px;
+    }
      @media screen and (min-width: 768px) {
         padding: 10px 0 10px;
     }
@@ -36,14 +44,29 @@ const ChartBox = styled.div`
     width: 100%;
     min-height: 200px;
     flex-shrink: 0;
+    @media screen and (max-width: 767px) {
+        position: relative;
+    }
     @media screen and (min-width: 768px) {
-     width: 336px;
-    min-height: 200px;
-    flex-shrink: 0;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 288px;
-  }
+        width: 336px;
+        min-height: 200px;
+        flex-shrink: 0;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 288px;
+    }
 `;
 
-export { Title, Wrapper, Box, ChartBox };
+const BalanceText = styled.p`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: ${p => p.theme.ff.familyPoppins};
+    font-weight: ${p => p.theme.fontWeight.fw7};
+    font-size: ${p => p.theme.fontSize.fs18};
+    line-height: 1.5;
+    color: ${p => p.theme.colors.black};
+`;
+
+export { Title, Wrapper, Box, ChartBox, BalanceText };

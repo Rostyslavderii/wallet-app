@@ -31,7 +31,11 @@ export const StyledBtn = styled.button`
     right: 20px;
     bottom: 20px;
   }
-
+  @media (max-width: 1280px) {
+    position: sticky;
+    left: 100vw;
+    bottom: 20px;
+  }
   &:hover,
   &:focus {
     transform: scale(1.3);

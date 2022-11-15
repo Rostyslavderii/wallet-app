@@ -6,7 +6,7 @@ export const Head = styled.header`
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 15;
   }
 `;
 

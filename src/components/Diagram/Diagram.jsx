@@ -2,12 +2,15 @@ import { Chart } from 'components/Chart/Chart';
 import { StatisticTabel } from 'components/StatisticTable/StatisticTable';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMedia } from 'react-use';
+import { selectBalance } from 'redux/transactions/transactionSelectors';
 import { getTransactionsSummary } from 'redux/transactionsSummary/trSummaryOperations';
 import {
     selectError,
+    // selectIsLoadingSummary,
     selectTrSummary,
 } from 'redux/transactionsSummary/trSummarySelectors';
-import { ChartBox, Box, Title, Wrapper } from './Diagram.styled';
+import { ChartBox, Box, Title, Wrapper, BalanceText } from './Diagram.styled';
 
 export const Diagram = () => {
     const [month, setMonth] = useState('');
@@ -16,8 +19,10 @@ export const Diagram = () => {
     let trSummary = useSelector(selectTrSummary);
 
     // const isLoadingSummary = useSelector(selectIsLoadingSummary);
+    const balance = useSelector(selectBalance);
     const error = useSelector(selectError);
     const dispatch = useDispatch();
+    const isMobile = useMedia('(max-width: 768px)');
 
     useEffect(() => {
         const fetchTransactionsSummary = ({ month, year }) => {
@@ -30,7 +35,7 @@ export const Diagram = () => {
 
     }, [month, year, dispatch]);
 
-    const summaryList = (trSummary) => {
+    const summaryData = () => {
         if (!month || !year) {
             trSummary = null;
             return trSummary;
@@ -44,12 +49,13 @@ export const Diagram = () => {
             <Title>Statistics</Title>
             <Box>
                 <ChartBox>
-                    <Chart trSummary={summaryList(trSummary)} />
+                    <Chart trSummary={summaryData()} />
+                    {isMobile && <BalanceText>&#8372; {balance.toFixed(2)}</BalanceText>}
                 </ChartBox>
                 <StatisticTabel
                     setYear={setYear}
                     setMonth={setMonth}
-                    trSummary={summaryList(trSummary)}
+                    trSummary={summaryData()}
                 />
                 {error && <p>{error}</p>}
             </Box>

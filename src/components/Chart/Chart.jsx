@@ -3,14 +3,9 @@ import { switchBgStatistic } from 'helpers/switchBgStatistic';
 import { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import theme from 'utils/theme';
-// import { useSelector } from 'react-redux';
-// import { selectBalance } from 'redux/transactions/transactionSelectors';
-
-ChartJS.register(ArcElement, Tooltip);
 
 export const Chart = ({ trSummary }) => {
-    // console.log("chart component")
-    // const balance = useSelector(selectBalance);
+    ChartJS.register(ArcElement, Tooltip);
     const options = {
         cutout: "70%"
     }
@@ -19,14 +14,16 @@ export const Chart = ({ trSummary }) => {
         datasets: [
             {
                 label: '# of Votes',
-                data: [],
-                backgroundColor: [],
+                data: trSummary ? [] : [100],
+                backgroundColor: trSummary ? [] : ['#BDBDBD'],
                 borderColor: [
                     'transparent',
                 ],
             },
         ],
     };
+
+    let redraw = false;
 
     useEffect(() => {
         const chartInfoList = () => {
@@ -36,7 +33,6 @@ export const Chart = ({ trSummary }) => {
                     if (type === "INCOME") {
                         return;
                     }
-                    // console.log("chart function info");
                     const bgColor = switchBgStatistic({ name, theme });
                     const amount = Math.abs(total);
                     const expence = Math.abs(trSummary.expenseSummary);
@@ -54,8 +50,16 @@ export const Chart = ({ trSummary }) => {
         }
     }, [trSummary, data.datasets, data.labels])
 
+    const redrawValue = () => {
+        if (trSummary) {
+            redraw = true;
+            return redraw;
+        } else {
+            return redraw;
+        }
+    }
 
     return (
-        <Doughnut redraw={true} options={options} data={data} />
+        <Doughnut redraw={redrawValue()} options={options} data={data} />
     )
 }

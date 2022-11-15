@@ -261,6 +261,12 @@ export const FormButton = styled.button`
   text-transform: uppercase;
   color: ${p => p.theme.colors.white};
 
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px ${p => p.theme.colors.btGreen};
+  }
+
   @media screen and (min-width: 768px) {
     width: 300px;
     margin-left: auto;
@@ -284,7 +290,8 @@ export const FormLink = styled(Link)`
   color: ${p => p.theme.colors.btBlue};
   transition: all 0.3s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.05);
     box-shadow: 0px 6px 15px ${p => p.theme.colors.btBlue};
   }

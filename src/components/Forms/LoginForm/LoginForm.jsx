@@ -10,11 +10,11 @@ import {
   Form,
   Label,
   Input,
+  FormButton,
   FormLink,
 } from '../Forms.styled';
 import { IoMdMail } from 'react-icons/io';
 import { MdLock } from 'react-icons/md';
-import { Button } from 'components/Button/Button';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -91,9 +91,7 @@ export const LoginForm = () => {
                 </div>
               )}
             </Label>
-            <Button primary type="submit">
-              Log in
-            </Button>
+            <FormButton type="submit">Log in</FormButton>
           </Form>
 
           <FormLink to="/register">Register</FormLink>

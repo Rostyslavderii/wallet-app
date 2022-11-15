@@ -68,6 +68,10 @@ export const LogOutButton = styled('button')`
 
   transition: all 0.3s;
 
+  svg {
+    font-size: 24px;
+  }
+
   @keyframes exitIcon {
     0% {
       transform: translateX(1px);

@@ -2,15 +2,22 @@ import styled from 'styled-components';
 
 export const Backdrop = styled.div`
   background: rgba(0, 0, 0, 0.25);
-  position: absolute;
+  position: fixed;
+  min-height:100%
 
-  top: 0px;
+  bottom: 0px;
   left: 0px;
-  z-index: 10;
+  top: 0px;
+  z-index: 100;
   width: 100%;
   height: 100%;
 
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    z-index: 10;
+    padding-top: 50px;
+  }
 `;
 
 export const Content = styled.div`

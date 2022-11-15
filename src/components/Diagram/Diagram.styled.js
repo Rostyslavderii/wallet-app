@@ -62,11 +62,11 @@ const BalanceText = styled.p`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Circe';
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    color: #000000;
+    font-family: ${p => p.theme.ff.familyPoppins};
+    font-weight: ${p => p.theme.fontWeight.fw7};
+    font-size: ${p => p.theme.fontSize.fs18};
+    line-height: 1.5;
+    color: ${p => p.theme.colors.black};
 `;
 
 export { Title, Wrapper, Box, ChartBox, BalanceText };

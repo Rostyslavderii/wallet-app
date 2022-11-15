@@ -33,7 +33,6 @@ export const TransactionTable = ({
       Date.parse(nextTr.transactionDate) - Date.parse(prevTr.transactionDate)
   );
   const deleteData = (id, amount) => {
-    console.log(amount);
     if (currentBalance - amount < 0) {
       toast.error(
         'Sorry, balance can`t be negative. You should delete expense transactions to delete this income'

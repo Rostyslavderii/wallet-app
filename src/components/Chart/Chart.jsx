@@ -8,9 +8,10 @@ import theme from 'utils/theme';
 
 ChartJS.register(ArcElement, Tooltip);
 
-export const Chart = ({ trSummary }) => {
+export const Chart = ({ trSummary, isLoading }) => {
     // console.log("chart component")
     // const balance = useSelector(selectBalance);
+
     const options = {
         cutout: "70%"
     }
@@ -19,8 +20,8 @@ export const Chart = ({ trSummary }) => {
         datasets: [
             {
                 label: '# of Votes',
-                data: [],
-                backgroundColor: [],
+                data: trSummary ? [] : [100],
+                backgroundColor: trSummary ? [] : ['#BDBDBD'],
                 borderColor: [
                     'transparent',
                 ],
@@ -56,6 +57,6 @@ export const Chart = ({ trSummary }) => {
 
 
     return (
-        <Doughnut redraw={true} options={options} data={data} />
+        !isLoading && <Doughnut redraw={true} options={options} data={data} />
     )
 }

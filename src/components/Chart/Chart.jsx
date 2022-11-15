@@ -1,6 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { switchBgStatistic } from 'helpers/switchBgStatistic';
-import { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import theme from 'utils/theme';
 
@@ -14,8 +13,8 @@ export const Chart = ({ trSummary }) => {
         datasets: [
             {
                 label: '# of Votes',
-                data: trSummary ? [] : [100],
-                backgroundColor: trSummary ? [] : ['#BDBDBD'],
+                data: trSummary && trSummary?.categoriesSummary.length > 0 ? [] : [100],
+                backgroundColor: trSummary && trSummary?.categoriesSummary.length > 0 ? [] : ['#BDBDBD'],
                 borderColor: [
                     'transparent',
                 ],
@@ -25,33 +24,31 @@ export const Chart = ({ trSummary }) => {
 
     let redraw = false;
 
-    useEffect(() => {
-        const chartInfoList = () => {
-            if (trSummary.categoriesSummary.length > 0) {
+    const chartInfoList = () => {
+        if (trSummary.categoriesSummary.length > 0) {
 
-                trSummary.categoriesSummary.forEach(({ name, type, total }) => {
-                    if (type === "INCOME") {
-                        return;
-                    }
-                    const bgColor = switchBgStatistic({ name, theme });
-                    const amount = Math.abs(total);
-                    const expence = Math.abs(trSummary.expenseSummary);
-                    data.datasets[0].backgroundColor.push(bgColor);
-                    data.labels.push(name);
+            trSummary.categoriesSummary.forEach(({ name, type, total }) => {
+                if (type === "INCOME") {
+                    return;
+                }
+                const bgColor = switchBgStatistic({ name, theme });
+                const amount = Math.abs(total);
+                const expence = Math.abs(trSummary.expenseSummary);
+                data.datasets[0].backgroundColor.push(bgColor);
+                data.labels.push(name);
 
-                    const totalTr = Math.round(amount / expence * 100);
-                    data.datasets[0].data.push(totalTr);
-                })
-            }
+                const totalTr = Math.round(amount / expence * 100);
+                data.datasets[0].data.push(totalTr);
+            })
         }
+    }
 
-        if (trSummary) {
-            chartInfoList()
-        }
-    }, [trSummary, data.datasets, data.labels])
+    if (trSummary) {
+        chartInfoList()
+    }
 
     const redrawValue = () => {
-        if (trSummary) {
+        if (trSummary || trSummary?.categoriesSummary.length === 0) {
             redraw = true;
             return redraw;
         } else {

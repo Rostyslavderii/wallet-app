@@ -62,7 +62,7 @@ export const ModalAddTransaction = ({ onClose }) => {
   };
   const { handleSubmit, values, handleChange, errors, resetForm } = useFormik({
     initialValues: {
-      type: false,
+      type: true,
       comment: '',
       amount: '',
     },
@@ -117,6 +117,7 @@ export const ModalAddTransaction = ({ onClose }) => {
             name="type"
             value={values.type}
             onChange={handleChange}
+            checked={values.type}
           />
           <CheckBox>
             <CheckButton props={values.type}>

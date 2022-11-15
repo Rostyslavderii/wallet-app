@@ -36,15 +36,21 @@ const HomePage = () => {
   return (
     <Wrapper>
       {isMobile && <Balance />}
-      {!(transactions.length > 0) && <NoTableImg openModal={openModal} />}
-      <TransactionTable
-        transactions={transactions}
-        categories={categories}
-        openEditModal={openEditModal}
-      />
-      <AddTransactionBtn type="button" onClick={openModal}>
-        add transaction
-      </AddTransactionBtn>
+      {transactions.length > 0 ? (
+        <>
+          <TransactionTable
+            transactions={transactions}
+            categories={categories}
+            openEditModal={openEditModal}
+          />
+          <AddTransactionBtn type="button" onClick={openModal}>
+            add transaction
+          </AddTransactionBtn>
+        </>
+      ) : (
+        <NoTableImg openModal={openModal} />
+      )}
+
       {(modalIsOpen || transactionToEdit) && (
         <ModalWindowWraper clickOnBackdrop={onClose}>
           {modalIsOpen ? (

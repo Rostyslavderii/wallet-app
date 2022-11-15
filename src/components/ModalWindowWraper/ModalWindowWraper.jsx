@@ -3,17 +3,14 @@ import { useEffect } from 'react';
 import { Backdrop, Content } from './ModalWindow.styled';
 
 export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
-  document.body.style.overflow = 'hidden';
   const handleClick = evt => {
     if (evt.target === evt.currentTarget) {
-      document.body.style.overflow = 'scroll';
       clickOnBackdrop();
     }
   };
   const handleKey = useCallback(
     e => {
       if (e.key === 'Escape') {
-        document.body.style.overflow = 'scroll';
         clickOnBackdrop();
       }
     },
@@ -21,8 +18,12 @@ export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
   );
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    return () => {
+      window.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = 'auto';
+    };
   }, [handleKey]);
 
   return (

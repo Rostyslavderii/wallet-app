@@ -6,7 +6,9 @@ export const NoTableImg = ({ openModal }) => {
     <Div>
       <WatermelonDiv openModal={openModal} />
       <NoTable>
-        <p>Have you already bought Kherson`s watermelon?</p>
+        <p>
+          Have you already bought <i> Kherson`s watermelon</i> <b>?</b>
+        </p>
       </NoTable>
     </Div>
   );

@@ -69,7 +69,16 @@ export const App = () => {
             </PrivateRoute>
           }
         />
-        {isMobile && <Route path="currency" element={<CurrencyPage />} />}
+        {isMobile && (
+          <Route
+            path="currency"
+            element={
+              <PrivateRoute>
+                <CurrencyPage />
+              </PrivateRoute>
+            }
+          />
+        )}
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>

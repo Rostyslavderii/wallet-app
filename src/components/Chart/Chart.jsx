@@ -3,13 +3,9 @@ import { switchBgStatistic } from 'helpers/switchBgStatistic';
 import { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import theme from 'utils/theme';
-// import { useSelector } from 'react-redux';
-// import { selectBalance } from 'redux/transactions/transactionSelectors';
 
 export const Chart = ({ trSummary }) => {
     ChartJS.register(ArcElement, Tooltip);
-    // console.log("chart component")
-    // const balance = useSelector(selectBalance);
     const options = {
         cutout: "70%"
     }
@@ -37,7 +33,6 @@ export const Chart = ({ trSummary }) => {
                     if (type === "INCOME") {
                         return;
                     }
-                    // console.log("chart function info");
                     const bgColor = switchBgStatistic({ name, theme });
                     const amount = Math.abs(total);
                     const expence = Math.abs(trSummary.expenseSummary);

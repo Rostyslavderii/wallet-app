@@ -3,14 +3,16 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { toastStyled } from 'utils/GlobalStyle';
 
-axios.defaults.baseURL = 'https://wallet.goit.ua/api';
+export const baseAPI = axios.create({
+  baseURL: 'https://wallet.goit.ua/api',
+});
 
 const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    baseAPI.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    baseAPI.defaults.headers.common['Authorization'] = '';
   },
 };
 
@@ -18,7 +20,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (userData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/auth/sign-up', userData);
+      const { data } = await baseAPI.post('/auth/sign-up', userData);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -37,7 +39,7 @@ export const login = createAsyncThunk(
   'auth/login',
   async (userData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/auth/sign-in', userData);
+      const { data } = await baseAPI.post('/auth/sign-in', userData);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -58,7 +60,7 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.delete('/auth/sign-out');
+      await baseAPI.delete('/auth/sign-out');
       token.unset();
     } catch (error) {
       return rejectWithValue(error.message);
@@ -75,7 +77,7 @@ export const fetchCurrentUser = createAsyncThunk(
     }
     token.set(tokenCurrent);
     try {
-      const { data } = await axios('/users/current');
+      const { data } = await baseAPI.get('/users/current');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

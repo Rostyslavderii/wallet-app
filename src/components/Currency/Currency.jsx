@@ -16,26 +16,25 @@ export const Currency = () => {
   useEffect(() => {
     const baseRequest = axios.create({
       baseURL: 'https://api.privatbank.ua/p24api',
-      headers: {
-        Authorization: null,
-      },
     });
 
     async function fetchCurrency() {
-      const list = ["USD", "EUR"];
-      setIsLoading(true)
+      const list = ['USD', 'EUR'];
+      setIsLoading(true);
       try {
-        const { data } = await baseRequest.get("/pubinfo?json&exchange&coursid=5");
+        const { data } = await baseRequest.get(
+          '/pubinfo?json&exchange&coursid=5'
+        );
         const result = data.filter(({ ccy }) => list.includes(ccy));
         setDataCurrency(result);
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }
     fetchCurrency();
-  }, [])
+  }, []);
 
   return (
     <Container>
@@ -59,10 +58,23 @@ export const Currency = () => {
                   <ItemBody>{sale.slice(0, 5)}</ItemBody>
                 </tr>
               ))}
+            {error && (
+              <>
+                <tr>
+                  <ItemBody>USD</ItemBody>
+                  <ItemBody>0.00</ItemBody>
+                  <ItemBody>0.00</ItemBody>
+                </tr>
+                <tr>
+                  <ItemBody>EUR</ItemBody>
+                  <ItemBody>0.00</ItemBody>
+                  <ItemBody>0.00</ItemBody>
+                </tr>
+              </>
+            )}
           </tbody>
         </TableCurrency>
       )}
-      {error && <p>Information not found, an error occurred!</p>}
     </Container>
   );
 };

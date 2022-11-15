@@ -9,8 +9,8 @@ export const Button = styled.button`
 p {
   position: absolute;
   top: 125%;
-  left:51%;
-
+  left:42%;
+  color: #24cca7;
 }
 
 `
@@ -24,7 +24,7 @@ export const Watermelon = styled.div`
     right: 550px; */
     top: 60%;
     left:45%;
-
+    text-align: center;
 
 
 

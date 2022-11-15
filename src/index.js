@@ -13,8 +13,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode basename="/wallet-app/">
-    <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter basename="/wallet-app/">
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <PersistGate persistor={persistor}>
@@ -38,5 +38,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-//basename="/wallet-app/"

@@ -6,7 +6,7 @@ import theme from 'utils/theme';
 // import { useSelector } from 'react-redux';
 // import { selectBalance } from 'redux/transactions/transactionSelectors';
 
-export const Chart = ({ trSummary, isLoading }) => {
+export const Chart = ({ trSummary }) => {
     ChartJS.register(ArcElement, Tooltip);
     // console.log("chart component")
     // const balance = useSelector(selectBalance);
@@ -55,6 +55,6 @@ export const Chart = ({ trSummary, isLoading }) => {
 
 
     return (
-        !isLoading && <Doughnut redraw={true} options={options} data={data} />
+        <Doughnut redraw={true} options={options} data={data} />
     )
 }

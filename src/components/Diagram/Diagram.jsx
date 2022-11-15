@@ -31,7 +31,7 @@ export const Diagram = () => {
 
     }, [month, year, dispatch]);
 
-    const summaryList = (trSummary) => {
+    const summaryData = () => {
         if (!month || !year) {
             trSummary = null;
             return trSummary;
@@ -45,12 +45,12 @@ export const Diagram = () => {
             <Title>Statistics</Title>
             <Box>
                 <ChartBox>
-                    <Chart trSummary={summaryList(trSummary)} />
+                    <Chart trSummary={summaryData()} />
                 </ChartBox>
                 <StatisticTabel
                     setYear={setYear}
                     setMonth={setMonth}
-                    trSummary={summaryList(trSummary)}
+                    trSummary={summaryData()}
                 />
                 {error && <p>{error}</p>}
             </Box>

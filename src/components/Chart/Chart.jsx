@@ -27,6 +27,8 @@ export const Chart = ({ trSummary }) => {
         ],
     };
 
+    let redraw = false;
+
     useEffect(() => {
         const chartInfoList = () => {
             if (trSummary.categoriesSummary.length > 0) {
@@ -53,8 +55,16 @@ export const Chart = ({ trSummary }) => {
         }
     }, [trSummary, data.datasets, data.labels])
 
+    const redrawValue = () => {
+        if (trSummary) {
+            redraw = true;
+            return redraw;
+        } else {
+            return redraw;
+        }
+    }
 
     return (
-        <Doughnut redraw={true} options={options} data={data} />
+        <Doughnut redraw={redrawValue()} options={options} data={data} />
     )
 }

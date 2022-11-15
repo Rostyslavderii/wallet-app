@@ -6,12 +6,10 @@ import theme from 'utils/theme';
 // import { useSelector } from 'react-redux';
 // import { selectBalance } from 'redux/transactions/transactionSelectors';
 
-ChartJS.register(ArcElement, Tooltip);
-
 export const Chart = ({ trSummary, isLoading }) => {
+    ChartJS.register(ArcElement, Tooltip);
     // console.log("chart component")
     // const balance = useSelector(selectBalance);
-
     const options = {
         cutout: "70%"
     }

@@ -71,9 +71,10 @@ export const ModalAddTransaction = ({ onClose }) => {
       const newTransaction = {
         transactionDate,
         type: type ? 'EXPENSE' : 'INCOME',
-        categoryId: categoryId
-          ? categoryId
-          : '063f1132-ba5d-42b4-951d-44011ca46262',
+        categoryId:
+          categoryId && type
+            ? categoryId
+            : '063f1132-ba5d-42b4-951d-44011ca46262',
         comment,
         amount: type ? -Number(amount) : Number(amount),
       };

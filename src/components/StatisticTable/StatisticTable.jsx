@@ -1,4 +1,3 @@
-// import { DropdownMonth } from './DropdownMonth';
 import {
   Table,
   TableHeading,
@@ -10,9 +9,6 @@ import {
   TrSummaryStr,
   TrSummaryNum,
   SelectWrap,
-  // SelectField,
-  // Select,
-  // Option,
   NoDataField,
   TextMessage,
 } from './StatisticTable.styled';
@@ -66,7 +62,6 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
 
   return (
     <div>
-      {/* <DropdownMonth onChange={handleChange} /> */}
       <SelectWrap>
         <Select
           name="month"
@@ -88,38 +83,6 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
           options={selectOption(generateArrayOfYears())}
         ></Select>
       </SelectWrap>
-
-      {/* <SelectWrap>
-        <SelectField>
-          <Select onChange={handleChange} name="month">
-            <Option value="" hidden>
-              Month
-            </Option>
-            <Option value="1">January</Option>
-            <Option value="2">February</Option>
-            <Option value="3">March</Option>
-            <Option value="4">April</Option>
-            <Option value="5">May</Option>
-            <Option value="6">June</Option>
-            <Option value="7">July</Option>
-            <Option value="8">August</Option>
-            <Option value="9">September</Option>
-            <Option value="10">October</Option>
-            <Option value="11">November</Option>
-            <Option value="12">December</Option>
-          </Select>
-        </SelectField>
-
-        <SelectField>
-          <Select onChange={handleChange} name="year">
-            <Option value="" hidden>
-              Year
-            </Option>
-            <Option value="2022">2022</Option>
-            <Option value="2023">2023</Option>
-          </Select>
-        </SelectField>
-      </SelectWrap> */}
 
       <Wrapper>
         {trSummary ? (
@@ -173,16 +136,15 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
             ) : (
               <NoDataField>
                 <TextMessage>
-                  In this period you don't have any expances
+                  In this period you don't have any expances.
                 </TextMessage>
               </NoDataField>
             )}
           </>
         ) : (
           <NoDataField>
-            <TextMessage>
-              Could you please indicate the month and year when you made any
-              transactions?
+            <TextMessage firtsTime>
+              Choose month and year to see statistics.
             </TextMessage>
           </NoDataField>
         )}

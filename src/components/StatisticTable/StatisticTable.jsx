@@ -174,17 +174,14 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
             ) : (
               <NoDataField>
                 <TextMessage>
-                  In this period you don't have any expances
+                  In this period you don't have any expanses
                 </TextMessage>
               </NoDataField>
             )}
           </>
         ) : (
           <NoDataField>
-            <TextMessage>
-              Could you please indicate the month and year when you made any
-              transactions?
-            </TextMessage>
+            <TextMessage>Choose month and year to see statistic</TextMessage>
           </NoDataField>
         )}
       </Wrapper>

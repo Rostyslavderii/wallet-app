@@ -6,7 +6,6 @@ import theme from 'utils/theme';
 export const Chart = ({ trSummary }) => {
     ChartJS.register(ArcElement, Tooltip);
 
-
     const data = {
         labels: [],
         datasets: [
@@ -63,10 +62,11 @@ export const Chart = ({ trSummary }) => {
     }
 
     const redrawValue = () => {
-        if (trSummary || trSummary?.categoriesSummary.length === 0) {
+        if (trSummary) {
             redraw = true;
             return redraw;
         } else {
+            redraw = false;
             return redraw;
         }
     }

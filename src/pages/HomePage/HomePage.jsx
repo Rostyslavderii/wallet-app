@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
-import { selectTransaction } from 'redux/transactions/transactionSelectors';
+import {
+  selectIsLoading,
+  selectTransaction,
+} from 'redux/transactions/transactionSelectors';
 import { selectCategories } from 'redux/categories/categoriesSelectors';
 import { TransactionTable } from 'components/TransactionTable/TransactionTable';
 import { ModalAddTransaction } from 'components/ModalAddTransaction/ModalAddTransaction';
@@ -21,6 +24,7 @@ const HomePage = () => {
   const isMobile = useMedia('(max-width: 767px)');
   const transactions = useSelector(selectTransaction);
   const categories = useSelector(selectCategories);
+  const isFetchingTransaction = useSelector(selectIsLoading);
 
   const closeEditModal = () => {
     setTransactionToEdit(null);
@@ -48,7 +52,7 @@ const HomePage = () => {
           </AddTransactionBtn>
         </>
       ) : (
-        <NoTableImg openModal={openModal} />
+        !isFetchingTransaction && <NoTableImg openModal={openModal} />
       )}
 
       {(modalIsOpen || transactionToEdit) && (

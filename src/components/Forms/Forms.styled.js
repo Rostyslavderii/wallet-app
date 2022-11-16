@@ -257,6 +257,7 @@ export const FormButton = styled.button`
   border-radius: ${p => p.theme.borderRadius.r20};
 
   font-size: 18px;
+  font-weight: 400;
   line-height: calc(27 / 18);
   letter-spacing: 0.1em;
   text-transform: uppercase;

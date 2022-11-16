@@ -109,6 +109,15 @@ body {
     }
   }
 }
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  background-color: #24CCA7;
+}
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  background-color: #fed057;
+}
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: #ff6596;
+}
 
 body {
   font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,

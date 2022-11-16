@@ -6,7 +6,7 @@ export const Head = styled.header`
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 15;
   }
 `;
 
@@ -67,6 +67,10 @@ export const LogOutButton = styled('button')`
   color: ${p => p.theme.colors.inputGray};
 
   transition: all 0.3s;
+
+  svg {
+    font-size: 24px;
+  }
 
   @keyframes exitIcon {
     0% {

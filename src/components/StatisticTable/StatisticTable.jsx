@@ -11,6 +11,7 @@ import {
   SelectWrap,
   NoDataField,
   TextMessage,
+  Box,
 } from './StatisticTable.styled';
 
 import { customStylesSelect } from './StatisticTable.styled';
@@ -61,7 +62,7 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
     }, []);
 
   return (
-    <div>
+    <Box>
       <SelectWrap>
         <Select
           name="month"
@@ -149,6 +150,6 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
           </NoDataField>
         )}
       </Wrapper>
-    </div>
+    </Box>
   );
 };

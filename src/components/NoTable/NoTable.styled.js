@@ -9,10 +9,19 @@ export const NoTable = styled.div`
 
 p {
     padding-left: 30px;
-    display: flex;
     justify-content: center;
     align-items: center;
+    color: #24cca7;
+    line-height:1.5;
+    text-align: center;
 
+  }
+
+  i {
+    padding-left: 10px;
+    padding-right: 5px;
+    color: #ff6596;
+    font-weight:600;
   }
 font-weight: ${p => p.theme.fontWeight.fw4};
 
@@ -24,10 +33,19 @@ font-weight: ${p => p.theme.fontWeight.fw4};
 
 export const Div = styled.div`
   position: relative;
+      width: 280px;
+      height: 250px;
+@media screen and (min-width: 768px) {
+      width: 700px;
+      height: 250px;
+}
+@media screen and (max-width: 767px) {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
 
-width: 700px;
-height: 250px;
 
+}
 
 `;
 

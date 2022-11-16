@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { switchBgStatistic } from 'helpers/switchBgStatistic';
 
+export const Box = styled.div`
+  @media screen and (min-width: 768px) {
+      width: 336px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+  }
+`;
+
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 320px;
@@ -178,7 +187,7 @@ export const customStylesSelect = isMobile => ({
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
     paddingLeft: '10px',
     paddingRight: '16px',
-    
+
     color: '#e0e0e0',
     fontFamily: 'Exo,  sans-serif',
     fontWeight: `400`,
@@ -186,11 +195,11 @@ export const customStylesSelect = isMobile => ({
     lineHeight: 1.5,
     outline: 'none',
     cursor: 'pointer',
-    marginBottom:  isMobile ? '20px' : '0',
+    marginBottom: isMobile ? '20px' : '0',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    
+
     ':hover': {
       borderColor: '#000000'
     }
@@ -224,18 +233,18 @@ export const customStylesSelect = isMobile => ({
     backgroundColor: isDisabled
       ? undefined
       : isSelected
-      ? data.color
-      : isFocused
-      ? 'rgba(255, 255, 255, 0.5)'
-      : undefined,
+        ? data.color
+        : isFocused
+          ? 'rgba(255, 255, 255, 0.5)'
+          : undefined,
 
     color: isDisabled
       ? '#ccc'
       : isSelected
-      ? data.color
-      : isFocused
-      ? '#ff6596'
-      : undefined,
+        ? data.color
+        : isFocused
+          ? '#ff6596'
+          : undefined,
 
     cursor: isDisabled ? 'not-allowed' : 'default',
 
@@ -269,14 +278,14 @@ export const customStylesSelect = isMobile => ({
     overflow: 'hidden scroll',
 
     '::-webkit-scrollbar': {
-    width: '4px',
-  },
-  '::-webkit-scrollbar-track': {
-    borderRadius: '2px',
-  },
-  '::-webkit-scrollbar-thumb': {
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-    borderRadius:' 2px',
-  }
+      width: '4px',
+    },
+    '::-webkit-scrollbar-track': {
+      borderRadius: '2px',
+    },
+    '::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+      borderRadius: ' 2px',
+    }
   }),
 });

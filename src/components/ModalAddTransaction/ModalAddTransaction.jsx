@@ -32,7 +32,6 @@ import {
   Error,
 } from './ModalAddTransaction.styled';
 import Select from 'react-select';
-import { FormButton } from 'components/Forms/Forms.styled';
 import { useMedia } from 'react-use';
 import { selectBalance } from 'redux/transactions/transactionSelectors';
 import { toast } from 'react-toastify';
@@ -51,7 +50,8 @@ export const ModalAddTransaction = ({ onClose }) => {
     amount: yup
       .number()
       .typeError('Must be a number')
-      .moreThan(0, 'Please, enter number more than 0'),
+      .moreThan(0, 'Please, enter number more than 0')
+      .required(''),
   });
 
   const changeDate = date => {
@@ -62,7 +62,7 @@ export const ModalAddTransaction = ({ onClose }) => {
   };
   const { handleSubmit, values, handleChange, errors, resetForm } = useFormik({
     initialValues: {
-      type: false,
+      type: true,
       comment: '',
       amount: '',
     },
@@ -71,9 +71,10 @@ export const ModalAddTransaction = ({ onClose }) => {
       const newTransaction = {
         transactionDate,
         type: type ? 'EXPENSE' : 'INCOME',
-        categoryId: categoryId
-          ? categoryId
-          : '063f1132-ba5d-42b4-951d-44011ca46262',
+        categoryId:
+          categoryId && type
+            ? categoryId
+            : '063f1132-ba5d-42b4-951d-44011ca46262',
         comment,
         amount: type ? -Number(amount) : Number(amount),
       };
@@ -116,6 +117,7 @@ export const ModalAddTransaction = ({ onClose }) => {
             name="type"
             value={values.type}
             onChange={handleChange}
+            checked={values.type}
           />
           <CheckBox>
             <CheckButton props={values.type}>
@@ -177,7 +179,9 @@ export const ModalAddTransaction = ({ onClose }) => {
           onChange={handleChange}
         />
         <ButtonCard>
-          <FormButton type="submit">ADD</FormButton>
+          <Button primary type="submit">
+            ADD
+          </Button>
           <Button type="button" onClick={onClose}>
             CANCEL
           </Button>

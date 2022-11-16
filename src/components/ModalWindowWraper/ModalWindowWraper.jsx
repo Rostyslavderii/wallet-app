@@ -18,8 +18,12 @@ export const ModalWindowWraper = ({ children, clickOnBackdrop }) => {
   );
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    return () => {
+      window.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = 'auto';
+    };
   }, [handleKey]);
 
   return (

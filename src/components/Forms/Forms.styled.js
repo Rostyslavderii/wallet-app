@@ -253,6 +253,7 @@ export const Input = styled.input`
 export const FormButton = styled.button`
   padding: 13px;
   background: ${p => p.theme.colors.btGreen};
+  border: 1px solid transparent;
   border-radius: ${p => p.theme.borderRadius.r20};
 
   font-size: 18px;
@@ -278,7 +279,7 @@ export const FormLink = styled(Link)`
   display: block;
   padding: 13px;
   background-color: ${p => p.theme.colors.white};
-  outline: ${p => p.theme.borderColor.b};
+  border: ${p => p.theme.borderColor.b};
   border-radius: ${p => p.theme.borderRadius.r20};
 
   font-size: 18px;

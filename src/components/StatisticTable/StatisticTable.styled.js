@@ -46,7 +46,13 @@ export const TextMessage = styled.h2`
   justify-content: center;
   align-items: center;
   font-weight: 400;
-  font-size: ${p => p.firtsTime ? '19px' : '17px'};
+  font-size: ${p => p.firtsTime ? '14px' : '13.5px'};
+    @media screen and (min-width: 768px){
+  font-size: ${p => p.firtsTime ? '16px' : '15px'};    
+  }
+  @media screen and (min-width: 1280px){
+  font-size: ${p => p.firtsTime ? '19px' : '17px'};    
+  }
 `;
 
 export const Table = styled.table`

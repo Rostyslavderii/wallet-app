@@ -12,6 +12,7 @@ import { authPersistedReducer } from './auth/authSlice';
 import { transactionsReducer } from './transactions/transactionSlice';
 import { categoriesReducer } from './categories/categoriesSlice';
 import { trSummaryReducer } from './transactionsSummary/trSummarySlice';
+import { currencyPersistedReducer } from './privatBank/privatBankSlice';
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
     transactions: transactionsReducer,
     categories: categoriesReducer,
     trSummary: trSummaryReducer,
+    privatBank: currencyPersistedReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

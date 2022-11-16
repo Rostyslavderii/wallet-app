@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   TableCurrency,
   Container,
@@ -7,34 +6,19 @@ import {
   ItemHead,
   ItemBody,
 } from './Currency.styled';
+import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'components/Loader/Loader';
+import { getCurrency } from 'redux/privatBank/privatBankOperations';
+import { selectCurrency, selectIsLoading } from 'redux/privatBank/privatBankSelectors';
+
 export const Currency = () => {
-  const [dataCurrency, setDataCurrency] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const currencyData = useSelector(selectCurrency);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const baseRequest = axios.create({
-      baseURL: 'https://api.privatbank.ua/p24api',
-    });
-
-    async function fetchCurrency() {
-      const list = ['USD', 'EUR'];
-      setIsLoading(true);
-      try {
-        const { data } = await baseRequest.get(
-          '/pubinfo?json&exchange&coursid=5'
-        );
-        const result = data.filter(({ ccy }) => list.includes(ccy));
-        setDataCurrency(result);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchCurrency();
-  }, []);
+    dispatch(getCurrency())
+  }, [dispatch])
 
   return (
     <Container>
@@ -50,16 +34,15 @@ export const Currency = () => {
             </Head>
           </thead>
           <tbody>
-            {dataCurrency.length > 0 &&
-              dataCurrency.map(({ ccy, buy, sale }) => (
+            {currencyData && currencyData.length > 0
+              ? currencyData.map(({ ccy, buy, sale }) => (
                 <tr key={ccy}>
                   <ItemBody>{ccy}</ItemBody>
                   <ItemBody>{buy.slice(0, 5)}</ItemBody>
                   <ItemBody>{sale.slice(0, 5)}</ItemBody>
                 </tr>
-              ))}
-            {error && (
-              <>
+              ))
+              : <>
                 <tr>
                   <ItemBody>USD</ItemBody>
                   <ItemBody>0.00</ItemBody>
@@ -71,7 +54,7 @@ export const Currency = () => {
                   <ItemBody>0.00</ItemBody>
                 </tr>
               </>
-            )}
+            }
           </tbody>
         </TableCurrency>
       )}

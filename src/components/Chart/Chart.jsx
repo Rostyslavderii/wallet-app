@@ -5,14 +5,13 @@ import theme from 'utils/theme';
 
 export const Chart = ({ trSummary }) => {
     ChartJS.register(ArcElement, Tooltip);
-    const options = {
-        cutout: "70%"
-    }
+
+
     const data = {
         labels: [],
         datasets: [
             {
-                label: '# of Votes',
+                label: 'Statistics',
                 data: trSummary && trSummary?.categoriesSummary.length > 0 ? [] : [100],
                 backgroundColor: trSummary && trSummary?.categoriesSummary.length > 0 ? [] : ['#BDBDBD'],
                 borderColor: [
@@ -21,6 +20,22 @@ export const Chart = ({ trSummary }) => {
             },
         ],
     };
+
+    const options = {
+        cutout: "70%",
+        animation: {
+            delay: 200
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function ({ label, raw }) {
+                        return `${label}: ${raw}%`;
+                    }
+                }
+            },
+        }
+    }
 
     let redraw = false;
 
@@ -37,8 +52,8 @@ export const Chart = ({ trSummary }) => {
                 data.datasets[0].backgroundColor.push(bgColor);
                 data.labels.push(name);
 
-                const totalTr = Math.round(amount / expence * 100);
-                data.datasets[0].data.push(totalTr);
+                const percentage = Math.round(amount / expence * 100);
+                data.datasets[0].data.push(percentage);
             })
         }
     }

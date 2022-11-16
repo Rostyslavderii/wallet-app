@@ -23,7 +23,6 @@ export const Backdrop = styled.div`
 `;
 
 export const Content = styled.div`
-  overflow: hidden scroll;
   min-width: 320px;
   width: 100%;
 
@@ -34,6 +33,7 @@ export const Content = styled.div`
   left: calc(50% - 320px / 2);
 
   @media (max-width: 767px) {
+    overflow: hidden scroll;
     height: 100%;
   }
 

@@ -132,7 +132,7 @@ export const StyledTd = styled.td`
 
   padding: 8px 10px;
   height: 52px;
-  line-height: calc(18 / 16);
+  line-height: calc(24 / 16);
   color: ${switchColor};
   font-weight: ${p => (p.type ? '700' : '400')};
   text-align: ${chooseTextAlign};

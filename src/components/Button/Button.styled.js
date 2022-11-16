@@ -23,12 +23,13 @@ export const StyledButton = styled.button`
       return `
       background: ${p.theme.colors.btGreen};
       color: ${p.theme.colors.white};
+      border: 1px solid transparent;
       &:hover {
         box-shadow: 0px 6px 15px ${p.theme.colors.btGreen};
       }`;
     }
     return `    
-    outline: ${p.theme.borderColor.b};
+    border: ${p.theme.borderColor.b};
     color: ${p.theme.colors.btBlue};
     
     &:hover {

@@ -174,7 +174,7 @@ export const StatisticTabel = ({ trSummary, setYear, setMonth }) => {
             ) : (
               <NoDataField>
                 <TextMessage>
-                  In this period you don't have any expanses
+                  In this period you don't have any expenses
                 </TextMessage>
               </NoDataField>
             )}

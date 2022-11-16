@@ -25,12 +25,8 @@ export const Diagram = () => {
     const isMobile = useMedia('(max-width: 768px)');
 
     useEffect(() => {
-        const fetchTransactionsSummary = ({ month, year }) => {
-            dispatch(getTransactionsSummary({ month, year }));
-        };
-
         if (month && year) {
-            fetchTransactionsSummary({ month, year });
+            dispatch(getTransactionsSummary({ month, year }));
         }
 
     }, [month, year, dispatch]);

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { switchBgStatistic } from 'helpers/switchBgStatistic';
-import icon from '../../images/icons/accardionBtn.svg'
 
 export const Box = styled.div`
   @media screen and (min-width: 768px) {
@@ -43,7 +42,11 @@ export const NoDataField = styled.div`
 `;
 
 export const TextMessage = styled.h2`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: ${p => p.firtsTime ? '19px' : '17px'};
 `;
 
 export const Table = styled.table`
@@ -64,7 +67,6 @@ export const TableHeading = styled.th`
   border: none;
   background-color: ${p => p.theme.colors.white};
   text-align: ${p => (p.left ? 'left' : 'right')};
-  /* padding: 16px 10px 15px 20px; */
   padding: ${p => p.left ? '16px 10px 15px 20px' : '16px 20px 15px 10px'};
   @media screen and (min-width: 1280px) {
     padding: ${p => p.left ? '16px 10px 15px 28px' : '16px 28px 15px 10px'};
@@ -174,56 +176,6 @@ export const SelectWrap = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SelectField = styled.div`
-      @media screen and (max-width: 767px) {
-      &:not(:last-child) {
-      margin-bottom: 20px;
-    } 
-  }
-   position: relative;
-
-   &::after {
-  content: '';
-  background-image: url(${icon});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 18px;
-  height: 9px;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px;
-  position: absolute;
-  pointer-events: none;
-}
-`;
-
-export const Select = styled.select`
-  appearance: none;
-  width: 160px;
-  height: 50px;
-  border: 1px solid #000000;
-  border-radius: 30px;
-  padding: 12px 30px 14px 20px;
-  background-color: inherit;
-  outline: none;
-  cursor: pointer;
-  &::-ms-expand {
-     display: none;
-}
-
-  @media screen and (max-width: 767px) {
-      width: 100%;
-    } 
-    @media screen and (min-width: 1280px) {
-      width: 182px;
-    }
-`;
-
-export const Option = styled.option`
-  line-height: calc(24 / 16);
-`;
-
 export const customStylesSelect = isMobile => ({
   control: styles => ({
     ...styles,
@@ -307,7 +259,6 @@ export const customStylesSelect = isMobile => ({
     ':hover': {
       color: '#ff6596',
       background: 'rgba(255, 255, 255, 0.5)',
-
     },
     ':focus': {
       color: '#ff6596',

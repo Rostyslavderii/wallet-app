@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
   min-width: 300px;
 
   font-size: 18px;
+  font-weight: 400;
   line-height: calc(27 / 18);
   letter-spacing: 0.1em;
   text-transform: uppercase;

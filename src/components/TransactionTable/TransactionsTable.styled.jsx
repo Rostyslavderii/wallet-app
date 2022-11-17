@@ -107,6 +107,7 @@ export const TrData = styled.tr`
     &:not(:last-child) {
       &::after {
         content: '';
+        display: block;
         position: absolute;
         left: 0;
         bottom: 0;

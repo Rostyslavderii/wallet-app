@@ -15,7 +15,7 @@ export const getCurrency = createAsyncThunk(
       return {
         currency,
         date: dateTS,
-      }
+      };
     }
 
     try {
@@ -25,7 +25,7 @@ export const getCurrency = createAsyncThunk(
       const result = {
         currency: data,
         date: Date.now() + 1000 * 60 * 60,
-      }
+      };
       return result;
     } catch (error) {
       return rejectWithValue(error.message);

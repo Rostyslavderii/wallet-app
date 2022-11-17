@@ -3,7 +3,7 @@ import { switchBgStatistic } from 'helpers/switchBgStatistic';
 import { Doughnut } from 'react-chartjs-2';
 import theme from 'utils/theme';
 
-export const Chart = ({ trSummary }) => {
+export const Chart = ({ trSummary, isLoading }) => {
     ChartJS.register(ArcElement, Tooltip);
 
     const data = {
@@ -12,37 +12,37 @@ export const Chart = ({ trSummary }) => {
             {
                 label: 'Statistics',
                 data: trSummary && trSummary?.categoriesSummary.length > 0 ? [] : [100],
-                backgroundColor: trSummary && trSummary?.categoriesSummary.length > 0 ? [] : ['#BDBDBD'],
-                borderColor: [
-                    'transparent',
-                ],
+                backgroundColor:
+                    trSummary && trSummary?.categoriesSummary.length > 0
+                        ? []
+                        : ['#BDBDBD'],
+                borderColor: ['transparent'],
             },
         ],
     };
 
     const options = {
-        cutout: "70%",
-        animation: {
-            delay: 200
-        },
+        cutout: '70%',
+        // animation: {
+        //     delay: 200
+        // },
         plugins: {
             tooltip: {
                 callbacks: {
                     label: function ({ label, raw }) {
                         return `${label}: ${raw}%`;
-                    }
-                }
+                    },
+                },
             },
-        }
-    }
+        },
+    };
 
     let redraw = false;
 
     const chartInfoList = () => {
         if (trSummary.categoriesSummary.length > 0) {
-
             trSummary.categoriesSummary.forEach(({ name, type, total }) => {
-                if (type === "INCOME") {
+                if (type === 'INCOME') {
                     return;
                 }
                 const bgColor = switchBgStatistic({ name, theme });
@@ -51,14 +51,14 @@ export const Chart = ({ trSummary }) => {
                 data.datasets[0].backgroundColor.push(bgColor);
                 data.labels.push(name);
 
-                const percentage = Math.round(amount / expence * 100);
+                const percentage = Math.round((amount / expence) * 100);
                 data.datasets[0].data.push(percentage);
-            })
+            });
         }
-    }
+    };
 
     if (trSummary) {
-        chartInfoList()
+        chartInfoList();
     }
 
     const redrawValue = () => {
@@ -69,9 +69,15 @@ export const Chart = ({ trSummary }) => {
             redraw = false;
             return redraw;
         }
-    }
+    };
 
     return (
-        <Doughnut redraw={redrawValue()} options={options} data={data} />
-    )
-}
+        <>
+            {isLoading ? (
+                <h2>Loading</h2>
+            ) : (
+                <Doughnut redraw={redrawValue()} options={options} data={data} />
+            )}
+        </>
+    );
+};

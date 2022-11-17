@@ -120,7 +120,7 @@ export const TransactionTable = ({
                     </StyledTd>
                     <StyledTd textAlign="right">
                       {isMobile && <DataHeading>Balance</DataHeading>}
-                      {balanceAfter.toFixed(2)}
+                      {Math.abs(balanceAfter).toFixed(2)}
                     </StyledTd>
                     <StyledTd>
                       {isMobile && (

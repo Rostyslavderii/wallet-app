@@ -3,7 +3,7 @@ import { switchBgStatistic } from 'helpers/switchBgStatistic';
 
 export const Box = styled.div`
   @media screen and (min-width: 768px) {
-      width: 336px;
+    width: 336px;
   }
   @media screen and (min-width: 1280px) {
     width: 395px;
@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     margin-top: 46px;
     margin-right: 0;
     max-width: 715px;
-    max-height: 80vh;
+    max-height: 50vh;
   }
   &::-webkit-scrollbar {
     width: 4px;

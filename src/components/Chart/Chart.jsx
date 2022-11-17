@@ -3,7 +3,7 @@ import { switchBgStatistic } from 'helpers/switchBgStatistic';
 import { Doughnut } from 'react-chartjs-2';
 import theme from 'utils/theme';
 
-export const Chart = ({ trSummary }) => {
+export const Chart = ({ trSummary, isLoading }) => {
     ChartJS.register(ArcElement, Tooltip);
 
     const data = {
@@ -22,9 +22,9 @@ export const Chart = ({ trSummary }) => {
 
     const options = {
         cutout: "70%",
-        animation: {
-            delay: 200
-        },
+        // animation: {
+        //     delay: 200
+        // },
         plugins: {
             tooltip: {
                 callbacks: {
@@ -72,6 +72,8 @@ export const Chart = ({ trSummary }) => {
     }
 
     return (
-        <Doughnut redraw={redrawValue()} options={options} data={data} />
+        <>
+            {!isLoading && <Doughnut redraw={redrawValue()} options={options} data={data} />}
+        </>
     )
 }

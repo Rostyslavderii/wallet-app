@@ -17,6 +17,7 @@ const Title = styled.h2`
 
 const Wrapper = styled.div`
     padding-top: 128px;
+    padding-bottom: 30px;
 
      @media screen and (max-width: 767px) {
         margin: 0 auto;

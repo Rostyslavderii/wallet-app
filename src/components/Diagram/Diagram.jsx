@@ -7,7 +7,7 @@ import { selectBalance } from 'redux/transactions/transactionSelectors';
 import { getTransactionsSummary } from 'redux/transactionsSummary/trSummaryOperations';
 import {
     selectError,
-    // selectIsLoadingSummary,
+    selectIsLoadingSummary,
     selectTrSummary,
 } from 'redux/transactionsSummary/trSummarySelectors';
 import { ChartBox, Box, Title, Wrapper, BalanceText } from './Diagram.styled';
@@ -18,11 +18,11 @@ export const Diagram = () => {
 
     let trSummary = useSelector(selectTrSummary);
 
-    // const isLoadingSummary = useSelector(selectIsLoadingSummary);
+    const isLoadingSummary = useSelector(selectIsLoadingSummary);
     const balance = useSelector(selectBalance);
     const error = useSelector(selectError);
     const dispatch = useDispatch();
-    const isMobile = useMedia('(max-width: 768px)');
+    const isMobile = useMedia('(max-width: 767px)');
 
     useEffect(() => {
         if (month && year) {
@@ -45,7 +45,7 @@ export const Diagram = () => {
             <Title>Statistics</Title>
             <Box>
                 <ChartBox>
-                    <Chart trSummary={summaryData()} />
+                    <Chart trSummary={summaryData()} isLoading={isLoadingSummary} />
                     {isMobile && <BalanceText>&#8372; {balance.toFixed(2)}</BalanceText>}
                 </ChartBox>
                 <StatisticTabel

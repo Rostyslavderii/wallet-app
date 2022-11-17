@@ -28,7 +28,6 @@ export const Diagram = () => {
         if (month && year) {
             dispatch(getTransactionsSummary({ month, year }));
         }
-
     }, [month, year, dispatch]);
 
     const summaryData = () => {
@@ -38,7 +37,7 @@ export const Diagram = () => {
         } else {
             return trSummary;
         }
-    }
+    };
 
     return (
         <Wrapper>

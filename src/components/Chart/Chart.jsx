@@ -73,7 +73,9 @@ export const Chart = ({ trSummary, isLoading }) => {
 
     return (
         <>
-            {isLoading ? <h2>Loading</h2> : (
+            {isLoading ? (
+                <h2>Loading</h2>
+            ) : (
                 <Doughnut redraw={redrawValue()} options={options} data={data} />
             )}
         </>

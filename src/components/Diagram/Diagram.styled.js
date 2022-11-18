@@ -36,21 +36,20 @@ const Box = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
     gap: 32px;
   }
 `;
 
 const ChartBox = styled.div`
+  position: relative;
   margin-bottom: 32px;
   width: 100%;
   min-height: 200px;
   flex-shrink: 0;
-  @media screen and (max-width: 767px) {
-    position: relative;
-  }
   @media screen and (min-width: 768px) {
     width: 336px;
-    min-height: 200px;
+    min-height: 288px;
     flex-shrink: 0;
   }
   @media screen and (min-width: 1280px) {
@@ -58,16 +57,4 @@ const ChartBox = styled.div`
   }
 `;
 
-const BalanceText = styled.p`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: ${p => p.theme.ff.familyPoppins};
-  font-weight: ${p => p.theme.fontWeight.fw7};
-  font-size: ${p => p.theme.fontSize.fs18};
-  line-height: 1.5;
-  color: ${p => p.theme.colors.black};
-`;
-
-export { Title, Wrapper, Box, ChartBox, BalanceText };
+export { Title, Wrapper, Box, ChartBox };

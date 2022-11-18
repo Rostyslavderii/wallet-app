@@ -12,15 +12,12 @@ import {
 import { ChartBox, Box, Title, Wrapper } from './Diagram.styled';
 
 export const Diagram = () => {
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
-
-  //   const [month, setMonth] = useState(
-  //     () => JSON.parse(localStorage.getItem('month-statistic')) ?? ''
-  //   );
-  //   const [year, setYear] = useState(
-  //     () => JSON.parse(localStorage.getItem('year-statistic')) ?? ''
-  //   );
+  const [month, setMonth] = useState(
+    () => JSON.parse(localStorage.getItem('month-statistic')) ?? ''
+  );
+  const [year, setYear] = useState(
+    () => JSON.parse(localStorage.getItem('year-statistic')) ?? ''
+  );
 
   let trSummary = useSelector(selectTrSummary);
 
@@ -35,24 +32,14 @@ export const Diagram = () => {
     }
   }, [month, year, dispatch]);
 
-  //   const setMonthLS = month => {
-  //     console.log('MONTH', month);
-  //     setMonth(month);
-  //     localStorage.setItem('month-statistic', month);
-  //   };
+  const setMonthLS = month => {
+    setMonth(month);
+    localStorage.setItem('month-statistic', month);
+  };
 
-  //   const setYearLS = year => {
-  //     console.log('YEAR', year);
-  //     setYear(year);
-  //     localStorage.setItem('year-statistic', year);
-  //   };
-  const summaryData = () => {
-    if (!month || !year) {
-      trSummary = null;
-      return trSummary;
-    } else {
-      return trSummary;
-    }
+  const setYearLS = year => {
+    setYear(year);
+    localStorage.setItem('year-statistic', year);
   };
 
   return (
@@ -61,7 +48,7 @@ export const Diagram = () => {
       <Box>
         <ChartBox>
           <Chart
-            trSummary={summaryData()}
+            trSummary={trSummary}
             isLoading={isLoadingSummary}
             balance={balance}
           />
@@ -69,9 +56,9 @@ export const Diagram = () => {
         <StatisticTabel
           month={month}
           year={year}
-          setYear={setYear}
-          setMonth={setMonth}
-          trSummary={summaryData()}
+          setYear={setYearLS}
+          setMonth={setMonthLS}
+          trSummary={trSummary}
         />
         {error && <p>{error}</p>}
       </Box>

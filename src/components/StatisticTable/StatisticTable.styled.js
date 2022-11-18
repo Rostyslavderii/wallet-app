@@ -46,12 +46,12 @@ export const TextMessage = styled.h2`
   justify-content: center;
   align-items: center;
   font-weight: 400;
-  font-size: ${p => p.firtsTime ? '14px' : '13.5px'};
-    @media screen and (min-width: 768px){
-  font-size: ${p => p.firtsTime ? '16px' : '15px'};    
+  font-size: ${p => (p.firtsTime ? '14px' : '13.5px')};
+  @media screen and (min-width: 768px) {
+    font-size: ${p => (p.firtsTime ? '16px' : '15px')};
   }
-  @media screen and (min-width: 1280px){
-  font-size: ${p => p.firtsTime ? '19px' : '17px'};    
+  @media screen and (min-width: 1280px) {
+    font-size: ${p => (p.firtsTime ? '19px' : '17px')};
   }
 `;
 
@@ -73,11 +73,10 @@ export const TableHeading = styled.th`
   border: none;
   background-color: ${p => p.theme.colors.white};
   text-align: ${p => (p.left ? 'left' : 'right')};
-  padding: ${p => p.left ? '16px 10px 15px 20px' : '16px 20px 15px 10px'};
+  padding: ${p => (p.left ? '16px 10px 15px 20px' : '16px 20px 15px 10px')};
   @media screen and (min-width: 1280px) {
-    padding: ${p => p.left ? '16px 10px 15px 28px' : '16px 28px 15px 10px'};
+    padding: ${p => (p.left ? '16px 10px 15px 28px' : '16px 28px 15px 10px')};
   }
-  
 
   font-weight: 700;
   font-size: 18px;
@@ -85,23 +84,25 @@ export const TableHeading = styled.th`
 `;
 
 export const TrData = styled.tr`
-    &:not(:last-child) {
-      margin-bottom: 8px;
+  &:not(:last-child) {
+    margin-bottom: 8px;
   }
-  &:first-child {margin-top: 8px}
-    position: relative;
-    font-size: 16px;
-  
-     
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        border: 1px solid #dcdcdf;
-        box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-      }
+  &:first-child {
+    margin-top: 8px;
+  }
+  position: relative;
+  font-size: 16px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid #dcdcdf;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  }
 `;
 
 export const StyledTd = styled.td`
@@ -117,8 +118,8 @@ export const StyledTd = styled.td`
   @media screen and (max-width: 767px) {
     max-width: 188px;
   }
- 
-  @media screen and (min-width: 1280px){
+
+  @media screen and (min-width: 1280px) {
     padding-left: ${p => (p.name ? '68px' : '0')};
     padding-right: ${p => (p.right ? '28px' : '0')};
   }
@@ -128,7 +129,7 @@ export const StyledTd = styled.td`
     position: absolute;
     top: 50%;
     left: 18px;
-    @media screen and (min-width: 1280px){
+    @media screen and (min-width: 1280px) {
       left: 28px;
     }
     transform: translateY(-50%);
@@ -154,7 +155,7 @@ export const TrSummaryField = styled.div`
   align-items: center;
   padding: 0 20px;
 
-  @media screen and (min-width: 1280px){
+  @media screen and (min-width: 1280px) {
     padding: 0 28px;
   }
 `;
@@ -164,7 +165,6 @@ export const TrSummaryStr = styled.span`
   line-height: calc(24 / 16);
 `;
 
-
 export const TrSummaryNum = styled.span`
   font-weight: 700;
   line-height: calc(24 / 16);
@@ -172,13 +172,13 @@ export const TrSummaryNum = styled.span`
 `;
 
 export const SelectWrap = styled.div`
-   @media screen and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     display: block;
   }
- 
+
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-bottom: 20px;
 `;
 
@@ -207,8 +207,8 @@ export const customStylesSelect = isMobile => ({
     justifyContent: 'space-between',
 
     ':hover': {
-      borderColor: '#000000'
-    }
+      borderColor: '#000000',
+    },
   }),
   container: styles => ({
     ...styles,
@@ -239,18 +239,18 @@ export const customStylesSelect = isMobile => ({
     backgroundColor: isDisabled
       ? undefined
       : isSelected
-        ? data.color
-        : isFocused
-          ? 'rgba(255, 255, 255, 0.5)'
-          : undefined,
+      ? data.color
+      : isFocused
+      ? 'rgba(255, 255, 255, 0.5)'
+      : undefined,
 
     color: isDisabled
       ? '#ccc'
       : isSelected
-        ? data.color
-        : isFocused
-          ? '#ff6596'
-          : undefined,
+      ? data.color
+      : isFocused
+      ? '#ff6596'
+      : undefined,
 
     cursor: isDisabled ? 'not-allowed' : 'default',
 
@@ -292,6 +292,6 @@ export const customStylesSelect = isMobile => ({
     '::-webkit-scrollbar-thumb': {
       backgroundColor: 'rgba(0, 0, 0, 0.2)',
       borderRadius: ' 2px',
-    }
+    },
   }),
 });
